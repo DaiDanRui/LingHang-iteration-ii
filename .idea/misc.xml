@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -16,6 +17,8 @@
       </profile-state>
     </entry>
   </component>
+=======
+>>>>>>> c71f5376aeae90be26fdd6647b6bf6040bea8cc5
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -26,6 +29,7 @@
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
+<<<<<<< HEAD
   <component name="masterDetails">
     <states>
       <state key="ScopeChooserConfigurable.UI">
@@ -41,4 +45,6 @@
       </state>
     </states>
   </component>
+=======
+>>>>>>> c71f5376aeae90be26fdd6647b6bf6040bea8cc5
 </project>
