@@ -9,11 +9,11 @@ namespace Home\Model;
 use Think\Model;
 
 class MessageModel extends Model{
-    protected $fields = [
+    protected $fields = array(
         'message_id',
         'commodity_id',
         'talker_id',
         'time',
         'content'
-    ];
+    );
 }

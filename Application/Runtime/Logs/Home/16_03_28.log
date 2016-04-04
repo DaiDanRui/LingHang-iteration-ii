@@ -1,0 +1,126 @@
+[ 2016-03-28T23:11:40+08:00 ] 127.0.0.1 /LingHang-iteration-ii/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.029521s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029181s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.029382s ]
+ERR: 模板不存在:./Application/Home/View/Home/index.html
+
+[ 2016-03-28T23:11:48+08:00 ] 127.0.0.1 /LingHang-iteration-ii/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000890s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001630s ]
+ERR: 模板不存在:./Application/Home/View/Home/index.html
+
+[ 2016-03-28T23:12:38+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000967s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001058s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001208s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.016581s ]
+INFO: [ app_end ] --END-- [ RunTime:0.016782s ]
+
+[ 2016-03-28T23:17:28+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000971s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001368s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001528s ]
+
+[ 2016-03-28T23:18:34+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000846s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001154s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001323s ]
+NOTIC: [2] require(../Common/commodityOprations.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory F:\phpwokspace\LingHang-iteration-ii\Application\Home\Controller\SkillController.class.php 第 22 行.
+
+[ 2016-03-28T23:19:03+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000782s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001038s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001190s ]
+NOTIC: [2] require(Common/commodityOprations.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory F:\phpwokspace\LingHang-iteration-ii\Application\Home\Controller\SkillController.class.php 第 22 行.
+
+[ 2016-03-28T23:19:53+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000072s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001562s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001783s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001971s ]
+
+[ 2016-03-28T23:20:27+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000956s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001345s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001499s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'lgdreamer_linghang.tblbudget' doesn't exist
+
+[ 2016-03-28T23:20:50+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000068s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001206s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001064s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001216s ]
+SQL: SHOW COLUMNS FROM `tbl_budget` [ RunTime:0.0408s ]
+NOTIC: [8] Undefined index: field F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Model.class.php 第 379 行.
+NOTIC: [2] array_walk() expects parameter 1 to be array, null given F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Db\Driver.class.php 第 867 行.
+NOTIC: [2] implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Db\Driver.class.php 第 868 行.
+SQL: INSERT INTO `tbl_budget` () SELECT * FROM `tbl_budget`  [ RunTime:0.0016s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001594s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001782s ]
+
+[ 2016-03-28T23:21:22+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000781s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001058s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001229s ]
+
+[ 2016-03-28T23:25:09+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000908s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001348s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001507s ]
+NOTIC: [8] Undefined index: field F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Model.class.php 第 379 行.
+NOTIC: [2] array_walk() expects parameter 1 to be array, null given F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Db\Driver.class.php 第 867 行.
+NOTIC: [2] implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Db\Driver.class.php 第 868 行.
+SQL: INSERT INTO `tbl_budget` () SELECT * FROM `tbl_budget`  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001558s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001713s ]
+
+[ 2016-03-28T23:26:22+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/browse
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000839s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001077s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001236s ]
+NOTIC: [8] Undefined index: field F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Model.class.php 第 379 行.
+NOTIC: [2] array_walk() expects parameter 1 to be array, null given F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Db\Driver.class.php 第 867 行.
+NOTIC: [2] implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Db\Driver.class.php 第 868 行.
+SQL: INSERT INTO `tbl_budget` () SELECT * FROM `tbl_budget`  [ RunTime:0.0011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001948s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002237s ]
+

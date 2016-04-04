@@ -10,7 +10,7 @@ namespace Home\Model;
 use Think\Model;
 
 class UserModel extends Model{
-    protected $fields = [
+    protected $fields = array(
       'user_id',
         'is_seller',
 
@@ -37,5 +37,5 @@ class UserModel extends Model{
         'hobby',
         'introduction',
 
-    ];
+    );
 }

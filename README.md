@@ -11,13 +11,13 @@ skill/upload
 reward/upload
 
 skill/evaluate
-reward/evalute
+reward/evaluate
 
 skill/accept
 reward/accept
 
-login
-register
+user/login
+user/register
 
 my/main
 my/topic

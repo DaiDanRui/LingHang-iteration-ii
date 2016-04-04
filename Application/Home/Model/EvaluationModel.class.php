@@ -10,7 +10,7 @@ namespace Home\Model;
 use Think\Model;
 class EvaluationModel extends Model{
 
-    protected  $fields =- [
+    protected  $fields = array(
         'evaluation_id',
         'commodity_id',
         'is_payer',
@@ -22,5 +22,5 @@ class EvaluationModel extends Model{
         'score1',
         'score2',
         'score3'
-    ];
+    );
 }

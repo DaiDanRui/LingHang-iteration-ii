@@ -11,12 +11,14 @@ use Think\Model;
 class BudgetModel extends Model
 {
 
-    protected  $fields = [
+    protected  $fields = array(
         'budget_id',
         'transaction_id',
         'pay_date',
         'commodity_id',
         'payer_id',
-        'holder_id',
-    ];
+        'holder_id'
+    );
+
+
 }

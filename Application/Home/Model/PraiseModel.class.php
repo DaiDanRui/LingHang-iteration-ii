@@ -10,9 +10,9 @@ namespace Home\Model;
 use Think\Model;
 
 class PraiseModel extends Model{
-    protected $fields = [
+    protected $fields = array(
         'praise_id',
         'commodity_id',
         'praiser_id'
-    ];
+    );
 }

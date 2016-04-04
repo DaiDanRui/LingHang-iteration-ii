@@ -1,0 +1,24 @@
+[ 2016-04-04T22:08:22+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000785s ]
+ERR: 无法加载模块:Skill
+
+[ 2016-04-04T22:08:42+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000946s ]
+ERR: 无法加载模块:Skill
+
+[ 2016-04-04T22:08:45+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001234s ]
+ERR: 无法加载模块:Skill
+
+[ 2016-04-04T22:09:10+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000958s ]
+ERR: 无法加载模块:Skill
+

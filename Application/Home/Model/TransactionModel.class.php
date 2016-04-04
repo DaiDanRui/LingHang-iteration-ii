@@ -10,7 +10,7 @@ namespace Home\Model;
 use Think\Model;
 
 class TransactionModel extends Model{
-    protected $fields = [
+    protected $fields = array(
       'transaction_id',
         'commodity_id',
         'state',
@@ -21,5 +21,5 @@ class TransactionModel extends Model{
         'last_update',
         'pay_id',
         'skill_or_reward',
-    ];
+    );
 }

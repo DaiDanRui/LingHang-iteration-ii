@@ -1,0 +1,21 @@
+[ 2016-04-03T23:53:59+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001023s ]
+NOTIC: [2] array_shift() expects parameter 1 to be array, string given F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Route.class.php 第 38 行.
+ERR: 无法加载模块:Skill
+
+[ 2016-04-03T23:54:09+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000884s ]
+NOTIC: [2] array_shift() expects parameter 1 to be array, string given F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Route.class.php 第 38 行.
+ERR: 无法加载模块:Skill
+
+[ 2016-04-03T23:54:12+08:00 ] 127.0.0.1 /LingHang-iteration-ii/Index.php/skill/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000071s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001327s ]
+NOTIC: [2] array_shift() expects parameter 1 to be array, string given F:\phpwokspace\LingHang-iteration-ii\ThinkPHP\Library\Think\Route.class.php 第 38 行.
+ERR: 无法加载模块:Skill
+

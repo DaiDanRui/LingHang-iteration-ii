@@ -10,9 +10,9 @@ namespace Home\Model;
 use Think\Model;
 
 class PictureModel extends Model{
-    protected  $fields = [
+    protected  $fields = array(
         'picture_id',
         'commodity_id',
         'path'
-    ];
+    );
 }

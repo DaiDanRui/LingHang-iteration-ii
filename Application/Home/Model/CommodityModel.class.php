@@ -13,7 +13,7 @@ use Think\Model;
 
 class CommodityModel extends Model
 {
-    protected  $fields = [
+    protected  $fields = array(
         'commodity_id',
         'skill_or_reward',
         'type',
@@ -29,5 +29,14 @@ class CommodityModel extends Model
         'commodity_state',
         'star_numbers',
         'message_numbers'
-    ];
+    );
+
+    public function  test()
+    {
+        return 'get testing';
+    }
+
+
+    public function browse(){
+    }
 }
