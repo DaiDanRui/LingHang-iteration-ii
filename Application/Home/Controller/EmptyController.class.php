@@ -12,6 +12,6 @@ use Think\Controller;
 class EmptyController extends Controller
 {
     public function index(){
-        echo CONTROLLER_NAME;
+        echo "index";
     }
 }

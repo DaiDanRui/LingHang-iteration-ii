@@ -18,9 +18,8 @@ class UserController extends Controller
      */
     protected $userModel;
 
-    protected  function  _initModel(){
-        $this->userModel = new UserModel();
-    }
+
+
 
     public function  loginPage(){
         $this->display('');
@@ -33,7 +32,7 @@ class UserController extends Controller
         $where = array('nickname'=>$nickname);
         $field = array('password','user_id');
 
-        $this->_initModel();
+        $this->userModel = new UserModel();
         $search_array = $this->userModel->field($field)->where($where)->select();
 
         if(!$search_array){ //null or false

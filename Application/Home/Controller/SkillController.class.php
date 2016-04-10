@@ -13,12 +13,15 @@ use Think\Controller;
 
 class SkillController extends Controller
 {
+
+
     /**
      * 浏览商品模式
      */
     public function browse()
     {
-        echo 'testing second';
+        $commodity = new CommodityController();
+        $commodity->browse(2);
     }
 
     /**
@@ -49,6 +52,6 @@ class SkillController extends Controller
      */
     public function accept()
     {
-
+        senderSMS('18795855867','PS','DARXAN');
     }
 }

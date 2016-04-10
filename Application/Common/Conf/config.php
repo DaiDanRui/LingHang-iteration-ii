@@ -10,6 +10,7 @@ return array(
         'register'=>'register/register',
         'user/test' =>'user/test',
         'skill/browse' => 'skill/browse',
+        'skill/browse/page/:page' => 'skill/browse',
         'skill/upload' => 'skill/upload',
         'skill/praise' => 'skill/praise',
     ),
@@ -30,4 +31,6 @@ return array(
     'DB_RW_SEPARATE'        =>  false,       // 数据库读写是否分离 主从式有效
     'DB_MASTER_NUM'         =>  1, // 读写分离后 主服务器数量
     'DB_SLAVE_NO'           =>  '', // 指定从服务器序号
+
+    'PAGE_SIZE'             => 10,
 );
