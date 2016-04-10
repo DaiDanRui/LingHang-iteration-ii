@@ -121,10 +121,14 @@ class CommodityController extends Controller
     }
 
     /**
-     * 点赞并收藏
+     * star ,点赞并收藏
      */
     public function praise()
     {
+        $where = array('commodity_id'=>I('id'));
+        $model = new CommodityModel();
+        $result = $model->where($where)->setInc('praise',1);
+        dump($result);
     }
 
     /**
