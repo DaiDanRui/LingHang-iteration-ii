@@ -37,6 +37,7 @@ class CommodityController extends Controller
             $where['title'] = array('like','%'.I('search').'%');
         }
         //排序控制
+        $order = null;
         if(isset($_POST['price-high'])){//价格最高的
             $order=('price desc')  ;
         }else if(isset($_POST['price-low'])){//价格最低的
@@ -59,22 +60,24 @@ class CommodityController extends Controller
 
         $tree_value = array();
         foreach ($rows as $row){
-            if(key_exists($row['commodity_id'],$tree_value)){
-                $urls = $tree_value[$row['commodity_id']];
+            $commodity_id = $row['commodity_id'];
+            if(key_exists($commodity_id,$tree_value)){
+                $temp_row = $tree_value[$commodity_id];
+                $urls = $temp_row['url'];
                 $urls[] = $row['path'];
             }
             else{
-               $tree_value[] = array(
-                    'imgs' => $row['pic_path'],
-                    'description' => $row['description'],
-                    'title' => $row['title'],
-                    'price' => $row['price'],
-                    'url' =>   $row['path'], //'upload/default.jpg',
-                    'name' => $row['nickname'],
-                    'time' => get_time($row['release_date']),
-                    'star_numbers' => $row['star_numbers'],
-                    'message_numbers' => $row['message_numbers'],
-                    'id' => $row['commodity_id'],
+               $tree_value[$commodity_id] = array(
+                        'imgs' => $row['pic_path'],
+                        'description' => $row['description'],
+                        'title' => $row['title'],
+                        'price' => $row['price'],
+                        'url' =>   array($row['path']), //'upload/default.jpg',
+                        'name' => $row['nickname'],
+                        'time' => get_time($row['release_date']),
+                        'star_numbers' => $row['star_numbers'],
+                        'message_numbers' => $row['message_numbers'],
+                        'id' => $row['commodity_id'],
                 );
             }
 
@@ -88,12 +91,12 @@ class CommodityController extends Controller
     /**
      * 上传
      */
-    public function upload($type)
+    public function upload()
     {
         $pic_path = '';
         $commodity_message = Array
         (
-            'course_or_reward'  => (int)I['course_or_reward'],
+            'course_or_reward'  => (int)I('course_or_reward'),
             'type' =>isset($_POST['type'])?  I('type'):'其他' ,
             'publisher_id' => $_SESSION['CURRENT_LOGIN_ID']     ,
 
@@ -101,15 +104,15 @@ class CommodityController extends Controller
             'release_date' =>  getCurrentTime(),
             'deleted_date' => I('time'),
 
-            'title' => Injection::excute('topic'),
-            'description' => Injection::excute('description')  	,
+            'title' => I('topic'),
+            'description' => I('description')  	,
 
             'pic_path' => $pic_path ,
-            'communication_number' => Injection::excute('phone')
+            'communication_number' => I('phone')
         );
         $model = new CommodityModel();
         $result = $model->add($commodity_message);
-        dump('result');
+        dump($result);
     }
 
     /**
@@ -118,6 +121,42 @@ class CommodityController extends Controller
      */
     public function details()
     {
+        $commodity_id = I('id');
+        $where = array('commodity_id'=>$commodity_id,);
+        $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture' ,'tbl_user' =>'user');
+        $field = array('commodity.commodity_id','publisher_id','title','price','release_date',
+            'star_numbers','message_numbers',
+            'path','nickname','pic_path',
+        );
+
+        $model = new CommodityModel();
+        $model
+            ->table($table)
+            ->field($field)
+            ->where($where)
+            ->where('commodity.publisher_id=user.user_id AND commodity.commodity_id=picture.commodity_id');
+        $rows = $model->select();
+
+        $row = $rows[0];
+        $tree_value = array(
+            'imgs' => $row['pic_path'],
+            'description' => $row['description'],
+            'title' => $row['title'],
+            'price' => $row['price'],
+        //    'url' =>  array(),
+            'name' => $row['nickname'],
+            'time' => get_time($row['release_date']),
+            'star_numbers' => $row['star_numbers'],
+            'message_numbers' => $row['message_numbers'],
+            'id' => $row['commodity_id'],
+        );
+        $url = array();
+        foreach ($rows as $row){
+            $url[] = $row['path'];
+        }
+        $tree_value['url'] = $url;
+
+        return $tree_value;
     }
 
     /**
@@ -136,6 +175,5 @@ class CommodityController extends Controller
      */
     public function accept()
     {
-        senderSMS('18795855867','PS','1','187196855867');
     }
 }

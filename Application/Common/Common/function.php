@@ -66,5 +66,5 @@ function getCurrentTime()
 
 
 function get_time($time){
-
+    return $time;
 }
