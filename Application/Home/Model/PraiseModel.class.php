@@ -13,6 +13,6 @@ class PraiseModel extends Model{
     protected $fields = array(
         'praise_id',
         'commodity_id',
-        'praiser_id'
+        'praiser_id',  //unique praiser_id , commodity_id
     );
 }

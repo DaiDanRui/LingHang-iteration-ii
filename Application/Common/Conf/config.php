@@ -9,10 +9,14 @@ return array(
         'login'=>'user/loginPage',
         'register'=>'register/register',
         'user/test' =>'user/test',
+
         'skill/browse' => 'skill/browse',
         'skill/browse/page/:page' => 'skill/browse',
-        'skill/upload' => 'skill/upload',
-        'skill/praise' => 'skill/praise',
+        'skill/upload' => 'skill/uploadPictures',
+        'skill/details/id/:id' => 'skill/details',
+        'myCommodity/skill/page/:page'=>'myCommodity/publishSkill',
+        'myCommodity/reward'=>'myCommodity/publishReward',
+//        'skill/details' => 'skill/details',
     ),
 
     /** 数据库设置 */

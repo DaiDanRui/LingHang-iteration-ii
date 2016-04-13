@@ -14,12 +14,13 @@ class TransactionModel extends Model{
       'transaction_id',
         'commodity_id',
         'state',
-        'commodity_holder_id',
-        'commodity_buyer_id',
-        'price',
+//        'commodity_holder_id',
+//        'commodity_buyer_id',
+//        'price',
         'date_choose',
         'last_update',
         'pay_id',
-        'skill_or_reward',
+        'trader_id', //new one
+//        'skill_or_reward',
     );
 }

@@ -18,7 +18,6 @@ class RewardController extends  Controller
      */
     public function browse()
     {
-        echo 'testing second';
     }
 
     /**
@@ -44,11 +43,5 @@ class RewardController extends  Controller
     {
     }
 
-    /**
-     * 我要接受某一订单
-     */
-    public function accept()
-    {
 
-    }
 }

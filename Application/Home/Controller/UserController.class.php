@@ -19,7 +19,12 @@ class UserController extends Controller
     protected $userModel;
 
 
-
+    public function passwordChanged(){}
+    public function passwordChangedPage(){}
+    public function phoneChangedPage(){}
+    public function phoneChanged(){}
+    public function findPassword(){}
+    public function findPasswordPage(){}
 
     public function  loginPage(){
         $this->display('');
@@ -30,7 +35,7 @@ class UserController extends Controller
         $nickname = I('username');
         $input_password = I('pwd');
         $where = array('nickname'=>$nickname);
-        $field = array('password','user_id');
+        $field = array('password','user_id','pic_path','phone');
 
         $this->userModel = new UserModel();
         $search_array = $this->userModel->field($field)->where($where)->select();
@@ -40,8 +45,13 @@ class UserController extends Controller
         }else{
             $password = $search_array['password'];
             $user_id = $search_array['user_id'];
+            $user_pic = $search_array['pic_path'];
+            $user_phone = $search_array['phone'];
             if($password==$input_password){
-                session('CURRENT_LOGIN_ID',$user_id) ;
+                session(CURRENT_LOGIN_ID,$user_id) ;
+                session(CURRENT_LOGIN_USERNAME,$nickname);
+                session(CURRENT_LOGIN_AVATAR,$user_pic);
+                session(CURRENT_LOGIN_PHONE,$user_phone);
                 $this->success('success to login');
             }else{
                 $this->error('wrong password');
@@ -63,11 +73,9 @@ class UserController extends Controller
             'create_time'=> getCurrentTime(),
             'last_log'=> getCurrentTime(),
             'account_state'=>1,
-
             'good_seller'=>5,
             'good_buyer'=>5,
-
-            'pic_path' => 'avatar.jpg',
+            'pic_path' => DEFAULT_AVATAR,
         );
 
         $result = $this->userModel->add($input_array);
@@ -79,6 +87,11 @@ class UserController extends Controller
     }
 
     public function logout(){
+        if(isLogined()){
+            session('[destroy]');
+        }else{
+            $this->error('请先登录');
+        }
     }
 
 }

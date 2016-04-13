@@ -20,8 +20,9 @@ class SkillController extends Controller
      */
     public function browse()
     {
+//          senderSMS('18362929116','java','chenrui','18362929116');
         $commodity = new CommodityController();
-        $commodity->browse(2);
+        $commodity->browse(SKILL);
     }
 
     /**
@@ -38,6 +39,8 @@ class SkillController extends Controller
      */
     public function details()
     {
+        $commodity = new CommodityController();
+        $commodity->details();
     }
 
     /**
@@ -47,11 +50,5 @@ class SkillController extends Controller
     {
     }
 
-    /**
-     * 我要接受某一订单
-     */
-    public function accept()
-    {
-        senderSMS('18795855867','PS','DARXAN');
-    }
+
 }
