@@ -24,6 +24,20 @@ function convertCommoditiesForHtml($urlKey,$dateKey,&$tableRows){
 }
 
 /**
+ * 具有函数副左右.
+ * <br/>时间转换
+ * @param $dateKey string the key of release_date
+ * @param $tableRows array 从数据库取出关联数组
+ */
+function convertCommoditiesWithOnePic($dateKey,&$tableRows){
+    foreach ($tableRows as &$row){
+        $time = &$row[$dateKey];
+        $time = getBeforetime($time);
+    }
+}
+
+
+/**
  * 获取上传图片数组，并且移动到默认文件夹，返回图片唯一标识名
  * @return array
  */
@@ -81,11 +95,11 @@ function sendCURL($headers,$dataJson,$URL){
     return $response;
 }
 
-define('CURRENT_LOGIN_ID',16545);
-define('CURRENT_LOGIN_USERNAME',564512);
+define('CURRENT_LOGIN_ID',256);
+define('CURRENT_LOGIN_USERNAME',257);
 define('BROWSE_PAGE_SIZE',10);
-define('CURRENT_LOGIN_PHONE',46110);
-define('CURRENT_LOGIN_AVATAR',1111);
+define('CURRENT_LOGIN_PHONE',258);
+define('CURRENT_LOGIN_AVATAR',259);
 define('REWARD',1);
 define('SKILL',2);
 define('DEFAULT_AVATAR','avatar.jpg');

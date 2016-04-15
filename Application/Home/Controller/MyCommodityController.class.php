@@ -40,55 +40,25 @@ class MyCommodityController extends Controller
     public function publish($type){
 
         $page = (int) I('page');
-        $current_loginer = $_SESSION[CURRENT_LOGIN_ID];
-        dump($current_loginer);
+        $current_user = $_SESSION[CURRENT_LOGIN_ID];
         $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture');
 
         $where = array(
             'commodity.skill_or_reward'=>$type,
-            'commodity.publisher_id'=>$current_loginer,
+            'commodity.publisher_id'=>$current_user,
         );
-        $field = array(
-            'commodity.commodity_id','publisher_id','title','price','release_date','description',
-            'star_numbers','message_numbers', 'path'
-        );
+        $field = CHOOSE_FIELDS;
         $model = new CommodityModel();
         $model->table($table)->field($field)->where($where)->page($page,BROWSE_PAGE_SIZE)
             ->where('commodity.commodity_id=picture.commodity_id');
         $rows = $model->select();
-
-        $tree_value = $this->_convertCommoditiesToTree($rows);
+        $imgs = &$rows['imgs'];
+        $time = &$rows['time'];
+        $imgs = explode(',',$imgs);
+        $time = getBeforetime($time);
         dump($rows);
-        dump($tree_value);
-        return $tree_value;
+        return $rows;
     }
 
-    private function _convertCommoditiesToTree($tableRows){
-        $tree_value = array();
-        $currentLoginAvatar = $_SESSION[CURRENT_LOGIN_AVATAR];
-        $nickname = $_SESSION[CURRENT_LOGIN_USERNAME];
-        foreach ($tableRows as $row){
-            $commodity_id = $row['commodity_id'];
-            if(key_exists($commodity_id,$tree_value)){
-                $temp_row = $tree_value[$commodity_id];
-                $urls = $temp_row['url'];
-                $urls[] = $row['path'];
-            }
-            else{
-                $tree_value[$commodity_id] = array(
-                    'imgs' => $currentLoginAvatar,
-                    'description' => $row['description'],
-                    'title' => $row['title'],
-                    'price' => $row['price'],
-                    'url' =>   array($row['path']), //'upload/default.jpg',
-                    'name' => $nickname,
-                    'time' => getBeforetime($row['release_date']),
-                    'star_numbers' => $row['star_numbers'],
-                    'message_numbers' => $row['message_numbers'],
-                    'id' => $row['commodity_id'],
-                );
-            }
-        }
-        return $tree_value;
-    }
+
 }

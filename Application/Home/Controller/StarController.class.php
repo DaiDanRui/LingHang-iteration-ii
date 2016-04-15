@@ -47,20 +47,19 @@ class StarController extends  Controller
             'title','price',
             'release_date as time',
             'star_numbers','message_numbers','description',
-            'group_concat(path) as url',
+            'group_concat(path) as imgs',
             'nickname as name',
-            'pic_path as imgs',
+            'pic_path as url',
         );
         $model = new PraiseModel();
         $where = 'praise.praiser_id='."'$current_loginer'"
                 . 'AND praise.commodity_id=commodity.commodity_id AND praise.commodity_id=picture.commodity_id';
         $model->table($table)->field($field)->where($where)->page($page,BROWSE_PAGE_SIZE)->group('id');
-        $rows = $model->select();
+        $result = $model->select();
 
-        $tree_value = convertCommoditiesForHtml($rows);
-        dump($rows);
-        dump($tree_value);
-        return $tree_value;
+        convertCommoditiesForHtml('imgs','time',$result);
+        dump($result);
+        return $result;
     }
 
 

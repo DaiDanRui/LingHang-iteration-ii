@@ -2,13 +2,16 @@
 return array(
 	//'配置项'=>'配置值'
 
+    'URL_MODEL'=>1,
     /**路由配置*/
     'URL_ROUTER_ON'   => true,
 
     'URL_ROUTE_RULES'=>array(
-        'login'=>'user/loginPage',
-        'register'=>'register/register',
-        'user/test' =>'user/test',
+        'user/loginPage'=>'user/loginPage',
+        'user/login'=>'user/login',
+        'user/registerPage'=>'user/registerPage',
+        'user/register'=>'user/register',
+
 
         'skill/browse' => 'skill/browse',
         'skill/browse/page/:page' => 'skill/browse',

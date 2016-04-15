@@ -28,10 +28,6 @@ class MySetting extends  Controller
     }
 
 
-
-
-
-
     public function accountSetPage(){
         $this->display('');
     }

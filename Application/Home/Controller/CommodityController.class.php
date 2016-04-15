@@ -30,9 +30,9 @@ class CommodityController extends Controller
             'title','price',
             'release_date as time',
             'star_numbers','message_numbers','description',
-            'group_concat(path) as url',
+            'group_concat(path) as imgs',
             'nickname as name',
-            'pic_path as imgs',
+            'pic_path as url',
         );
         $where = 'commodity.publisher_id=user.user_id'
                 .' AND commodity.commodity_id=picture.commodity_id'
@@ -57,7 +57,7 @@ class CommodityController extends Controller
         $model->table($table)->field($field)->where($where)->order($order)->page($page,BROWSE_PAGE_SIZE);
         $rows = $model->group('id')->select();
         dump($rows);
-        convertCommoditiesForHtml('pic','time',$rows);
+        convertCommoditiesForHtml('imgs','time',$rows);
         dump($rows);
         return $rows;
     }
