@@ -16,43 +16,6 @@ use Think\Controller;
 class EvaluationController extends Controller
 {
 
-    public function myEvaluation(){}
-
-    /**
-     *
-     */
-    public function myEvaluationSkill(){
-        if(!isLogined()){
-            $this->success('','');
-            return;
-        }
-        $evaluator = $_SESSION[CURRENT_LOGIN_ID];
-        $tables = array('tbl_evaluation evaluation','tbl_user user');
-        $fields = array('evaluation.*,user.pic_path,user.nickname');
-        $where = array('evaluation.evaluator_id'=>$evaluator,'user.user_id'=>'evaluation.evaluator_id');
-        $model = new EvaluationModel();
-        $evaluation_array = $model->table($tables)->field($fields)->where($where)->select();
-        dump($evaluation_array);
-        $array_for_html = $this->__convertForHtml($evaluation_array);
-        dump($array_for_html);
-    }
-
-    public function myEvaluated(){
-        if(!isLogined()){
-            $this->success('','');
-            return;
-        }
-        $evaluated_id = $_SESSION[CURRENT_LOGIN_ID];
-        $tables = array('tbl_evaluation evaluation','tbl_user user');
-        $fields = array('evaluation.*,user.pic_path,user.nickname');
-        $where = array('evaluation.evaluated_id'=>$evaluated_id,'user.user_id'=>'evaluation.evaluator_id');
-        $model = new EvaluationModel();
-        $evaluation_array = $model->table($tables)->field($fields)->where($where)->select();
-        dump($evaluation_array);
-        $array_for_html = $this->__convertForHtml($evaluation_array);
-        dump($array_for_html);
-    }
-
     public function evaluatedPage(){
         if(isLogined()){
             $this->display('');
@@ -60,23 +23,55 @@ class EvaluationController extends Controller
             $this->success('','');
         }
     }
-    
-    private function __convertForHtml($evaluation_array){
-        $array_for_html = array();
-        foreach ($evaluation_array as $row) {
-            $array_for_html[] = array(
-                'url_header' =>$row['pic_path'],
-                'title' => $row['title'],
-                'price' => $row['price'],
-                'username' => $row['nickname'],
-                'point_study' => $row['score1'],
-                'point_care' => $row['score2'],
-                'point_total' => $row['score3'],
-                'time' => $row['evaluate_time'],
-            );
-        }
-        return $array_for_html;
+
+    public function myEvaluation(){
+        $evaluator = $_SESSION[CURRENT_LOGIN_ID];
+        $where = 'evaluation.evaluator_id='."'$evaluator'".' AND evaluation.evaluated_id=user.user_id';
+        $array_for_html = $this->__commonEvaluation($where);
+        dump($array_for_html);
     }
+
+    public function myEvaluated(){
+
+        $evaluated_id = $_SESSION[CURRENT_LOGIN_ID];
+        $where = 'evaluation.evaluated_id='."'$evaluated_id'"
+                .' AND evaluation.evaluator_id=user.user_id';
+        $array_for_html = $this->__commonEvaluation($where);
+        dump($array_for_html);
+    }
+
+
+    private function __commonEvaluation($where){
+        if(!isLogined()){
+            $this->success('','');
+            return false;
+        }
+        $page = I('page');
+        $tables = array(
+            'tbl_evaluation'=> 'evaluation',
+            'tbl_user' => 'user',
+            'tbl_commodity'=>'commodity',
+            'tbl_transaction'=>'transaction',
+        );
+        $fields = array(
+            'evaluation.score1 as point_study',
+            'evaluation.score2 as point_care',
+            'evaluation.score3 as point_total',
+            'user.pic_path as url_header',
+            'user.nickname as username',
+            'commodity.price',
+            'commodity.title',
+            'commodity.commodity_id',
+        );
+        $where .= ' AND evaluation.transaction_id=transaction.transaction_id'
+                .' AND transaction.commodity_id=commodity.commodity_id';
+        $model = new EvaluationModel();
+        $evaluation_array = $model->table($tables)->field($fields)->page($page)->where($where)->select();
+        dump($evaluation_array);
+        return $evaluation_array;
+    }
+
+
 
     /**
      * 1.检查是否当前用户存在权限评价
@@ -125,8 +120,7 @@ class EvaluationController extends Controller
                 'score2'=>$score2,
                 'score3'=>$score3
             );
-            $result = $model->table('tbl_evaluation evaluation')
-                ->add($evaluation_array);
+            $result = $model->add($evaluation_array);
             dump($result);
             return $result;
 

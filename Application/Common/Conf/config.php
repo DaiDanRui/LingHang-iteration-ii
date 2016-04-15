@@ -17,6 +17,16 @@ return array(
         'myCommodity/skill/page/:page'=>'myCommodity/publishSkill',
         'myCommodity/reward'=>'myCommodity/publishReward',
 //        'skill/details' => 'skill/details',
+
+        'transaction/accept/skill/page/:page'=>'transaction/transactionSkill',
+        'transaction/accept/reward/page/:page'=>'transaction/transactionReward',
+        'transaction/accepted/reward/page/:page'=>'transaction/transactionAcceptedReward',
+        'transaction/accepted/skill/page/:page'=>'transaction/transactionAcceptedSkill',
+
+        'star/add/commodity_id/:commodity_id'=>'star/add',
+        'evaluation/myEvaluated/page/:page'=>'evaluation/myEvaluated',
+        'evaluation/myEvaluation/page/:page'=>'evaluation/myEvaluation',
+
     ),
 
     /** 数据库设置 */

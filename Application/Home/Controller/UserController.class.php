@@ -21,14 +21,22 @@ class UserController extends Controller
 
     public function passwordChanged(){}
     public function passwordChangedPage(){}
+
     public function phoneChangedPage(){}
     public function phoneChanged(){}
+
     public function findPassword(){}
     public function findPasswordPage(){}
+
+    public function setPhone(){}
+
+    public function verifyCode(){
+    }
 
     public function  loginPage(){
         $this->display('');
     }
+
 
     public function login(){
 

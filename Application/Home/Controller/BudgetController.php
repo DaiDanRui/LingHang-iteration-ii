@@ -42,6 +42,7 @@ class BudgetController extends Controller
         dump($arrayForHtml);
     }
 
+
     /**
      * @param $array
      * @param $income_or_outcome string

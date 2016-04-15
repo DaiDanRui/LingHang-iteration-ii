@@ -24,11 +24,19 @@ class CommodityController extends Controller
     {
         $page = (int) I('page');
         $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture' ,'tbl_user' =>'user');
-        $field = array('commodity.commodity_id','publisher_id','title','price','release_date',
+        $field = array(
+            'commodity.commodity_id as id',
+            'publisher_id',
+            'title','price',
+            'release_date as time',
             'star_numbers','message_numbers','description',
-            'path','nickname','pic_path',
+            'group_concat(path) as url',
+            'nickname as name',
+            'pic_path as imgs',
         );
-        $where = array('skill_or_reward' => $type);
+        $where = 'commodity.publisher_id=user.user_id'
+                .' AND commodity.commodity_id=picture.commodity_id'
+                .' AND skill_or_reward=' ."'$type'";
         //是否有进行搜索
         if(isset($_REQUEST['search'])){
             $where['title'] = array('like','%'.I('search').'%');
@@ -46,13 +54,12 @@ class CommodityController extends Controller
         }
 
         $model = new CommodityModel();
-        $model->table($table)->field($field)->where($where)->order($order)->page($page,BROWSE_PAGE_SIZE)
-              ->where('commodity.publisher_id=user.user_id AND commodity.commodity_id=picture.commodity_id');
-        $rows = $model->select();
+        $model->table($table)->field($field)->where($where)->order($order)->page($page,BROWSE_PAGE_SIZE);
+        $rows = $model->group('id')->select();
         dump($rows);
-        $tree_value = convertCommoditiesToTree($rows);
-        dump($tree_value);
-        return $tree_value;
+        convertCommoditiesForHtml('pic','time',$rows);
+        dump($rows);
+        return $rows;
     }
 
     public function uploadPage(){

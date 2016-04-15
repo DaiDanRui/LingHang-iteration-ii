@@ -6,37 +6,21 @@
 * Date: 2016/4/3
 * Time: 21:40
 */
-
-
 /**
- * @param $tableRows array database data
- * @return array a associate array
+ * 具有函数副左右.
+ * <br/>图片集合转换为数组‘url’
+ * <br/>时间转换
+ * @param $urlKey string the key of pictures
+ * @param $dateKey string the key of release_date
+ * @param $tableRows array 从数据库取出关联数组
  */
-function convertCommoditiesToTree($tableRows){
-    $tree_value = array();
-    foreach ($tableRows as $row){
-        $commodity_id = $row['commodity_id'];
-        if(key_exists($commodity_id,$tree_value)){
-            $temp_row = $tree_value[$commodity_id];
-            $urls = $temp_row['url'];
-            $urls[] = $row['path'];
-        }
-        else{
-            $tree_value[$commodity_id] = array(
-                'imgs' => $row['pic_path'],
-                'description' => $row['description'],
-                'title' => $row['title'],
-                'price' => $row['price'],
-                'url' =>   array($row['path']), //'upload/default.jpg',
-                'name' => $row['nickname'],
-                'time' => getBeforetime($row['release_date']),
-                'star_numbers' => $row['star_numbers'],
-                'message_numbers' => $row['message_numbers'],
-                'id' => $row['commodity_id'],
-            );
-        }
+function convertCommoditiesForHtml($urlKey,$dateKey,&$tableRows){
+    foreach ($tableRows as &$row){
+        $url = &$row[$urlKey];
+        $time = &$row[$dateKey];
+        $time = getBeforetime($time);
+        $url = explode(',',$url);
     }
-    return $tree_value;
 }
 
 /**
@@ -56,6 +40,8 @@ function getUploadPicturesAndMove(){
  * @param $title string   对应技能或悬赏名
  * @param $username string 请求人用户名
  * @param $phone string 联系电话
+ * @return mixed|true on success or false on failure. However, if the CURLOPT_RETURNTRANSFER
+ * option is set, it will return the result on success, false on failure.
  */
 function senderSMS($target_phone, $title, $username, $phone)
 {
@@ -63,7 +49,6 @@ function senderSMS($target_phone, $title, $username, $phone)
         'Content-Type: application/json',
         'X-LC-Id: yaY0plwRCXkC1fj95Wpb0qMr-gzGzoHsz',
         'X-LC-Key: hEWBidWo48673Jd9AKBGW3Vl',
-
     );
     $dataJson = json_encode(
         array(
@@ -75,25 +60,23 @@ function senderSMS($target_phone, $title, $username, $phone)
         )
     );
     $URL = 'https://api.leancloud.cn/1.1/requestSmsCode';
+    return sendCURL($headers,$dataJson,$URL);
+}
 
+function sendCURL($headers,$dataJson,$URL){
     $curlConn = curl_init();
-
-
     curl_setopt($curlConn, CURLOPT_TIMEOUT, 30);
     curl_setopt($curlConn, CURLOPT_SSL_VERIFYPEER, FALSE);
     curl_setopt($curlConn, CURLOPT_USERAGENT, 'https://api.leancloud.cn/1.1/requestSmsCode');
     curl_setopt($curlConn, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curlConn, CURLINFO_HEADER_OUT, true);
     curl_setopt($curlConn, CURLOPT_HTTPHEADER, $headers);
-
     curl_setopt($curlConn, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($curlConn, CURLOPT_POSTFIELDS, $dataJson);
     curl_setopt($curlConn, CURLOPT_URL, $URL);
 
     $response = curl_exec($curlConn);
-//    dump($response);
 //    $responseCode = curl_getinfo($curlConn, CURLINFO_HTTP_CODE);
-//    dump($responseCode);
     curl_close($curlConn);
     return $response;
 }
@@ -140,7 +123,7 @@ function getAfterTime($date){
     return (int)( ($now_time-$time) /3600/24);
 }
 session_start();
-$_SESSION[CURRENT_LOGIN_ID] = 1;
+$_SESSION[CURRENT_LOGIN_ID] = 2;
 $_SESSION[CURRENT_LOGIN_AVATAR] = DEFAULT_AVATAR;
 $_SESSION[CURRENT_LOGIN_PHONE] = 18795855867;
 $_SESSION[CURRENT_LOGIN_USERNAME] = 'loginername';
