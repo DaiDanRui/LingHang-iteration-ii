@@ -1,0 +1,102 @@
+@import "common";
+@import "../boots/bootstrap.css";
+
+html,body{
+  height: 100%;
+}
+
+//login界面input外观
+.input-out-1{
+  background-color: transparent;
+  border: solid white 2px;
+  border-radius: @radius-1;
+  color: white;
+}
+
+.input-fill-1{
+  background-color: white;
+  color: @blue;
+  border: none;
+}
+
+//placeholder
+input::-webkit-input-placeholder{
+  color: white !important;
+}
+
+//login界面background
+.login-body{
+  background-color: @blue;
+}
+
+//login界面logo
+.head-login{
+  width: 50%;
+  margin-top: 110px;
+  height: auto;
+  @media (max-width: @screen-sm-min) {
+    width: 40%;
+    margin-top: 40px;
+  }
+}
+
+.register-head{
+  margin-left: -15px;
+  margin-right: -15px;
+  background-color: rgb(106,207,223);
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  height: 40px;
+  line-height: 40px;
+}
+
+//login界面input组
+.login-form{
+  margin-top: 60px;
+}
+
+//login界面input
+.input-1{
+  .input-out-1;
+  font-size: @font-size-1;
+  height: 60px;
+  //margin-top: 25px;
+
+  &:focus{
+    border-color: white;
+  }
+
+  @media (max-width: @screen-sm-min) {
+    
+  }
+}
+
+//input with img
+.form-horizontal>.form-group{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.input-group>.form-control{
+  border-left: 0;
+  box-shadow: none;
+  padding-left: 0;
+}
+
+//login btn
+#sub{
+  .input-fill-1;
+}
+
+//footer
+.login-body>.container{
+  height: 100%;
+  margin-bottom: -20px;
+}
+
+.login-footer{
+  font-size: 15px;
+  color: white;
+  text-align: center;
+}

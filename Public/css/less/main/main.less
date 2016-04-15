@@ -1,0 +1,162 @@
+@import "../../boots/bootstrap.min.css";
+@import "../common";
+
+// nav bar
+body{
+  padding-top: 50px;
+  @media (max-width: @screen-sm-min) {
+    background-color: rgb(218, 255, 251);
+    padding-top: 93px;
+    padding-bottom: 40px;
+  }
+}
+
+.navbar-fixed-top{
+  border: 0;
+}
+.navbar-fixed-top-2{
+  margin-top: 49px;
+}
+
+//顶部nav-desktop
+.nav-top{
+  background-color: rgb(254,203,69);
+  .navbar-brand{
+    .clear-pad;
+    padding-top: 3px;
+    padding-left: 10px;
+  }
+  .navbar-nav>.active>a,.navbar-nav>.active>a:hover{
+    background-color: rgb(203,152,61);
+  }
+  .navbar-nav>li>a,.navbar-nav>.active>a{
+    width: 100px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+  }
+  .navbar-right>li>a{
+    width: 70px;
+    color: white;
+    font-size: 17px;
+  }
+}
+
+//顶部nav-mobile
+.mobile-nav-top-1{
+  background-color: rgb(111,219,237);
+  height: 50px;
+  .col-xs-8>input{
+    margin-top: 5px;
+    border: none;
+    border-radius: 1em;
+  }
+  .mobile-top-1-btn{
+    .mobile-nav-top-2>.select;
+    height: 50px;
+  }
+}
+
+.mobile-nav-top-2{
+  background-color: rgb(152,237,250);
+  height: 40px;
+  min-height: 40px;
+  .select{
+    background-color: transparent;
+    border: none;
+    height: 40px;
+  }
+}
+
+//搜索-desktop
+.search-container{
+  height: 175px;
+  background-image: url("../../../img/test5.jpg");
+  background-size: 100% 100%;
+}
+
+//边栏-desktop
+.side{
+  margin-top: 10px;
+  .clear-pad-left;
+
+  .panel{
+    //border: none;
+    border-left-width: 5px;
+    border-radius: 0;
+    background-color: @dark-gray;
+    padding-left: 3px;
+    margin-bottom: 1px;
+    .panel-heading{
+      .clear-pad;
+      color: white;
+      background-color: transparent;
+      margin-top: 10px;
+    ;
+    }
+    .panel-body{
+      .clear-pad;
+      padding-bottom: 15px;
+      .label{
+        border: 1px solid white;
+        display: inline-block;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+//主容器
+.main-container{
+  width: 100%;
+  max-width: 1024px;
+  @media (max-width: @screen-sm-min) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+//中间内容
+.main-row{
+  margin-top: 10px;
+  @media (max-width: @screen-sm-min) {
+    margin-top: 0;
+  }
+  .main-card{
+    width: 512px;
+    float: left;
+    @media (max-width: @screen-sm-min) {
+      width: 100%;
+    }
+  }
+  .main-img{
+    float: left;
+    height: 136px;
+    width: 136px;
+    margin-right: 10px;
+  }
+}
+
+//中间card
+
+//底部nav-mobile
+.navbar-fixed-bottom{
+  background-color: rgb(111,219,237);
+  height: 40px;
+  min-height: 40px;
+  .nav-bottom>.btn{
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+  }
+}
+.nav-bottom{
+  margin-bottom: -50px;
+}
+.pub-container{
+  #publish{
+    margin: 0 auto;
+    width: 56px;
+    height:56px;
+  }
+}

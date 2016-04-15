@@ -1,0 +1,36 @@
+@import "../common";
+
+@media (max-width: @screen-sm-min) {
+  html,body{
+    height: 100%;
+  }
+  body{
+    padding-top: 45px;
+  }
+  body>.navbar{
+    height: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    background-color: @blue;
+  }
+  body>.container-fluid{
+    height: 100%;
+  }
+  .form-horizontal>.form-group{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  body>.container-fluid>.row{
+    height: 100%;
+    margin-bottom: -50px;
+  }
+  .publish_btn{
+    background-color: red;
+    color: white;
+  }
+}
+.datepicker{
+  margin-top: 0;
+}

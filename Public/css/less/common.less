@@ -1,0 +1,114 @@
+@import "../boots/make";
+
+@blue : #6ADBEF;
+@blue-2 : rgb(107, 205, 253);
+@gray : #cccccc;
+@dark-gray : #3c3c3c;
+@radius-1: 20px;
+@font-size-1: 20px;
+
+.img-full{
+  width: 100%;
+  height: auto;
+}
+
+.clear-pad-left{
+  padding-left: 0;
+}
+.clear-pad-right{
+  padding-right: 0;
+}
+.clear-pad{
+  padding: 0;
+}
+
+.price{
+  color: red;
+}
+.desktop{
+  @media (max-width: @screen-sm-min) {
+    display: none;
+  }
+}
+.mobile{
+  display: none;
+  @media (max-width: @screen-sm-min) {
+    display: block;
+  }
+}
+
+.main-card{
+  border: none;
+  margin-bottom: 0;
+  .panel-heading{
+    .clear-pad;
+    height: 45px;
+    h5{
+      font-size: 15px;
+      margin-top: 5px;
+      margin-bottom: 0;
+      @media (max-width: @screen-sm-min) {
+        margin-top: 15px;
+      }
+    }
+    @media (max-width: @screen-sm-min) {
+      img{
+        margin-top: 5px;
+        margin-left: 10px;
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+  .panel-body{
+    .clear-pad;
+    height: 55px;
+    @media (max-width: @screen-sm-min) {
+      height: auto;
+      .main-imgs{
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .main-imgs>.col-xs-4{
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+    }
+  }
+  .panel-footer{
+    .clear-pad;
+    height: 36px;
+    img{
+      float: left;
+      margin-top: 3px;
+      margin-right: 4px;
+      width: 30px;
+      height: 30px;
+    }
+    .icon-sm{
+      float: right;
+      margin-top: 11px;
+      margin-right: 2px;
+      width: 16px;
+      height: 13px;
+      background-size: cover;
+    }
+    .num{
+      margin-top: 8px;
+      margin-right: 3px;
+      width: auto;
+      font-weight: 200;
+      color: @gray;
+    }
+    .save{
+      background-image: url("../../../img/icon-save.png");
+    }
+    .msg{
+      background-image: url("../../../img/icon-msg.png");
+    }
+  }
+  .panel-heading,.panel-footer{
+    background-color: transparent;
+    border: none;
+  }
+}
