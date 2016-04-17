@@ -141,3 +141,27 @@
   background-color: red;
   color: white;
 }
+body {
+  padding-top: 40px;
+}
+.container-fluid {
+  height: 100%;
+}
+.container-fluid > .row {
+  height: 100%;
+  margin-bottom: -50px;
+}
+.container-fluid .margin-more {
+  margin-top: 40px;
+}
+.avatar {
+  width: 27px;
+  height: 27px;
+  margin-left: 15px;
+  margin-top: 4px;
+}
+.depict {
+  width: 95px;
+  height: 95px;
+  margin-left: 10px;
+}

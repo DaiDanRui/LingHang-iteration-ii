@@ -12,6 +12,10 @@
   height: auto;
 }
 
+.clear-pad-ud{
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .clear-pad-left{
   padding-left: 0;
 }
@@ -20,6 +24,10 @@
 }
 .clear-pad{
   padding: 0;
+}
+.clear-mar-lr{
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .price{
@@ -37,6 +45,7 @@
   }
 }
 
+//主card
 .main-card{
   border: none;
   margin-bottom: 0;
@@ -111,4 +120,35 @@
     background-color: transparent;
     border: none;
   }
+}
+
+//顶部nav
+.navbar-fixed-top{
+  @media (max-width: @screen-sm-min) {
+    background-color: rgb(111,219,237);
+    height: 40px;
+    min-height: 40px;
+    .title{
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+    }
+  }
+}
+
+//底部nav
+.navbar-fixed-bottom{
+  background-color: rgb(111,219,237);
+  height: 40px;
+  min-height: 40px;
+  .nav-bottom>.btn{
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+  }
+}
+
+.publish_btn{
+  background-color: red;
+  color: white;
 }
