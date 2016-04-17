@@ -47,7 +47,16 @@ class MyCommodityController extends Controller
             'commodity.skill_or_reward'=>$type,
             'commodity.publisher_id'=>$current_user,
         );
-        $field = CHOOSE_FIELDS;
+        $field = array(
+            'commodity.commodity_id as id',
+            'publisher_id',
+            'title','price',
+            'release_date as time',
+            'star_numbers','message_numbers','description',
+            'group_concat(path) as imgs',
+            'nickname as name',
+            'pic_path as url',
+        );;
         $model = new CommodityModel();
         $model->table($table)->field($field)->where($where)->page($page,BROWSE_PAGE_SIZE)
             ->where('commodity.commodity_id=picture.commodity_id');

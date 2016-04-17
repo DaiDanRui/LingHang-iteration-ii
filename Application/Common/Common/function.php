@@ -104,6 +104,8 @@ define('REWARD',1);
 define('SKILL',2);
 define('DEFAULT_AVATAR','avatar.jpg');
 
+define('INCOME','收入');
+define('OUTCOME','支出');
 
 function isLogined(){
     return isset($_SESSION[CURRENT_LOGIN_ID]);

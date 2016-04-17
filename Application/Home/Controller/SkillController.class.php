@@ -20,9 +20,12 @@ class SkillController extends Controller
      */
     public function browse()
     {
-//          senderSMS('18362929116','java','chenrui','18362929116');
-        $commodity = new CommodityController();
-        $commodity->browse(SKILL);
+//        $commodity = new CommodityController();
+//        $array = $commodity->browse(SKILL);
+//        $this->assign('array',$array);
+        $this->display('main/market-main');
+
+
     }
 
     /**
