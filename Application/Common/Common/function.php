@@ -138,6 +138,31 @@ function getAfterTime($date){
     $time=strtotime($date);
     return (int)( ($now_time-$time) /3600/24);
 }
+
+function getCommodityTypesAssociate($type){
+    $accociate = array(
+        '其他'=>0,
+        '计算机'=>1,
+        '音乐'=>2,
+        '体育'=>3,
+    );
+    if(isset($accociate[$type])){
+        return $accociate[$type];
+    }
+    return 0;
+}
+function getCommodityTypesArray($index){
+    $array = array(
+        0=>'其他',
+        1=>'计算机',
+        2=>'音乐',
+        3=>'体育',
+    );
+    if(isset($index)){
+        return $array[$index];
+    }return $array[0];
+}
+
 session_start();
 $_SESSION[CURRENT_LOGIN_ID] = 2;
 $_SESSION[CURRENT_LOGIN_AVATAR] = DEFAULT_AVATAR;

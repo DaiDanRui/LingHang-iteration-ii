@@ -37,10 +37,16 @@ class CommodityController extends Controller
         $where = 'commodity.publisher_id=user.user_id'
                 .' AND commodity.commodity_id=picture.commodity_id'
                 .' AND skill_or_reward=' ."'$type'";
+        if(isset($_REQUEST['type'])){
+            $typeOfCommodity = getCommodityTypesAssociate($_REQUEST['type']);
+            $where .= ' AND type='."'$typeOfCommodity'";
+        }
         //是否有进行搜索
         if(isset($_REQUEST['search'])){
-            $where['title'] = array('like','%'.I('search').'%');
+//            $where['title'] = array('like','%'.I('key').'%');
+            $where.= ' AND title like %'.I('key').'%';
         }
+
         //排序控制
         $order = null;
         if(isset($_POST['price-high'])){//价格最高的
@@ -65,9 +71,8 @@ class CommodityController extends Controller
     public function uploadPage(){
         if(isLogined()){
             $this->display('');
-        }else{
-            $this->success('','');
         }
+        $this->display('');
     }
 
     /**
@@ -80,8 +85,8 @@ class CommodityController extends Controller
         }
         $commodity_message = array(
             'course_or_reward'  => (int)I('course_or_reward'),
-            'type' =>isset($_POST['type'])?  I('type'):'其他' ,
-            'publisher_id' => $_SESSION['CURRENT_LOGIN_ID']     ,
+            'type' =>getCommodityTypesAssociate($_POST['type']),
+            'publisher_id' => $_SESSION[CURRENT_LOGIN_ID]     ,
             'price' => (int)I('price') ,
             'release_date' =>  getCurrentTime(),
             'deleted_date' => I('time'),
