@@ -49,6 +49,10 @@ input::-webkit-input-placeholder{
   font-size: 1.5em;
   height: 40px;
   line-height: 40px;
+  @media (min-width: @screen-md-min) {
+    height: 50px;
+    line-height: 50px;
+  }
 }
 
 //login界面input组
@@ -72,6 +76,25 @@ input::-webkit-input-placeholder{
   }
 }
 
+.register-form{
+  margin-top: 35px;
+  .form-group{
+    margin-bottom: 20px;
+  }
+  .input-1{
+    height: 50px;
+  }
+  @media (max-width: @screen-sm-min) {
+    margin-top: 67px;
+    .input-1{
+      height: 42px;
+    }
+    .form-group{
+      margin-bottom: 27px;
+    }
+  }
+}
+
 //input with img
 .form-horizontal>.form-group{
   margin-left: 0;
@@ -90,13 +113,24 @@ input::-webkit-input-placeholder{
 }
 
 //footer
-.login-body>.container{
+.login-body>.container-fluid{
   height: 100%;
-  margin-bottom: -20px;
+  margin-bottom: -25px;
+  @media (max-width: @screen-sm-min) {
+    margin-bottom: -20px;
+  }
 }
 
 .login-footer{
-  font-size: 15px;
+  font-size: 20px;
   color: white;
   text-align: center;
+  @media (max-width: @screen-sm-min) {
+    font-size: 15px;
+  }
+}
+
+#register-logo{
+  height: 140px;
+  margin-top: 60px;
 }

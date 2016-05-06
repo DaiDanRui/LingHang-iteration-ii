@@ -146,6 +146,12 @@
   background-color: red;
   color: white;
 }
+.plat-btn {
+  background-color: #fecb45;
+  color: white;
+  border-width: 0;
+  border-radius: 0;
+}
 html,
 body {
   height: 100%;
@@ -188,6 +194,12 @@ input::-webkit-input-placeholder {
   height: 40px;
   line-height: 40px;
 }
+@media (min-width: 992px) {
+  .register-head {
+    height: 50px;
+    line-height: 50px;
+  }
+}
 .login-form {
   margin-top: 60px;
 }
@@ -201,6 +213,26 @@ input::-webkit-input-placeholder {
 }
 .input-1:focus {
   border-color: white;
+}
+.register-form {
+  margin-top: 35px;
+}
+.register-form .form-group {
+  margin-bottom: 20px;
+}
+.register-form .input-1 {
+  height: 50px;
+}
+@media (max-width: 768px) {
+  .register-form {
+    margin-top: 67px;
+  }
+  .register-form .input-1 {
+    height: 42px;
+  }
+  .register-form .form-group {
+    margin-bottom: 27px;
+  }
 }
 .form-horizontal > .form-group {
   margin-left: 0;
@@ -216,12 +248,26 @@ input::-webkit-input-placeholder {
   color: #6ADBEF;
   border: none;
 }
-.login-body > .container {
+.login-body > .container-fluid {
   height: 100%;
-  margin-bottom: -20px;
+  margin-bottom: -25px;
+}
+@media (max-width: 768px) {
+  .login-body > .container-fluid {
+    margin-bottom: -20px;
+  }
 }
 .login-footer {
-  font-size: 15px;
+  font-size: 20px;
   color: white;
   text-align: center;
+}
+@media (max-width: 768px) {
+  .login-footer {
+    font-size: 15px;
+  }
+}
+#register-logo {
+  height: 140px;
+  margin-top: 60px;
 }
