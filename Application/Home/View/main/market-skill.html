@@ -12,7 +12,7 @@
 
         </div>
         <div class="col-xs-10">
-            <div class="title"> Dannini的技能 </div>
+            <div class="title"><{$username}>的技能 </div>
         </div>
     </div>
 </nav>
@@ -23,64 +23,76 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-2 clear-pad">
-                        <img src="../../img/test2.jpg" class="img-responsive img-circle">
+                        <img src="<{$avatar_url}>" class="img-responsive img-circle">
                     </div>
                     <div class="col-xs-8">
-                        <h5>线性代数</h5>
-                        <h6>Dannini(30天前)</h6>
+                        <h5><{$title}></h5>
+                        <h6><{$username}>(<{$publish_time}>天前)</h6>
                     </div>
                     <div class="col-xs-2">
-                        <h5 class="price">$178</h5>
+                        <h5 class="price">￥<{$price}></h5>
                     </div>
                 </div>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12">
-                        Org是伪指令(不生成对应的二进制指令，只是汇编器使用的)
+                        <!--Org是伪指令(不生成对应的二进制指令，只是汇编器使用的)-->
+                        <{$description}>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <img src="../../img/test2.jpg" class="img-responsive img-square img-full">
+                        <img src="<{$commodity_url}>" class="img-responsive img-square img-full">
                     </div>
                 </div>
             </div>
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-xs-4 col-xs-offset-8">
-                        <label class="icon-sm num">99+</label>
+                        <if condition = "$save_num gt 99">
+                            <label class="icon-sm num">99+</label>
+                        <else/>
+                            <label class="icon-sm num"><{$save_num}></label>
+                        </if>
                         <label class="icon-sm save"></label>
-                        <label class="icon-sm num">39</label>
+                        <if condition = "$msg_num gt 99">
+                            <label class="icon-sm num">99+</label>
+                            <else/>
+                            <label class="icon-sm num"><{$msg_num}></label>
+                        </if>
                         <label class="icon-sm msg"></label>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="row">
+        <foreach name = "msgs" item = "msg">
         <div class="panel main-skill-msg">
             <div class="panel-heading clear-pad-ud">
                 <div class="row">
                     <div class="col-xs-2 clear-pad">
-                        <img src="../../img/test1.jpg" class="img-responsive img-circle">
+                        <img src="<{$msg->avatar_url}>" class="img-responsive img-circle">
                     </div>
                     <div class="col-xs-8 clear-pad">
-                        <h5>CR14</h5>
+                        <h5><{$msg->username}></h5>
                     </div>
                     <div class="col-xs-2 clear-pad">
-                        <h6>3天前</h6>
+                        <h6><{$msg->publish_time}>天前</h6>
                     </div>
                 </div>
             </div>
             <div class="panel-body clear-pad-ud">
                 <div class="row">
                     <div class="col-xs-12">
-                        确定不会太贵?
+                        <{$msg->content}>
                     </div>
                 </div>
             </div>
         </div>
+        </foreach>
     </div>
 </div>
 

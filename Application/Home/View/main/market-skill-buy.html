@@ -22,19 +22,19 @@
         <div class="col-xs-12 main">
             <div class="row">
                 <div class="col-xs-1 clear-pad">
-                    <img src="../../img/test1.jpg" class="img-responsive img-circle avatar">
+                    <img src="<{avatar_url}>" class="img-responsive img-circle avatar">
                 </div>
                 <div class="col-xs-10">
-                    <h5>Dannini</h5>
+                    <h5><{$seller_name}></h5>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-4 clear-pad">
-                    <img src="../../img/test2.jpg" class="img-responsive depict">
+                    <img src="<{commodity_url}>" class="img-responsive depict">
                 </div>
                 <div class="col-xs-8 clear-pad">
-                    <h4>有教计组的同学吗</h4>
-                    <p>由反汇编代码可以看出， `mov bp, ax` 地址为 0x7c0e，然后....</p>
+                    <h4><{$title}></h4>
+                    <p><{$description}></p>
                 </div>
             </div>
             <div class="row margin-more">
@@ -42,7 +42,7 @@
                     <h4>总金额</h4>
                 </div>
                 <div class="col-xs-8">
-                    <h4 class="price"> $170 </h4>
+                    <h4 class="price"> ￥<{$price}> </h4>
                 </div>
             </div>
             <div class="row">
@@ -50,7 +50,7 @@
                     <h4>接单人</h4>
                 </div>
                 <div class="col-xs-8">
-                    <h4> 陈睿 </h4>
+                    <h4> <{$buyer_name}> </h4>
                 </div>
             </div>
             <div class="row">
@@ -58,7 +58,7 @@
                     <h4>联系方式</h4>
                 </div>
                 <div class="col-xs-8">
-                    <h4> 13920901029 </h4>
+                    <h4> <{$phone}> </h4>
                 </div>
             </div>
         </div>
