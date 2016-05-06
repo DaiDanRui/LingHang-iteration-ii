@@ -1,0 +1,52 @@
+@import "../common";
+
+//左侧navbar
+#left-dropdown{
+  .panel{
+    padding-left: 0;
+    >.panel-heading{
+      background-color: @gray2;
+      margin: 0;
+      padding: 10px;
+      .nav-title{
+        color: white;
+      }
+    }
+    .panel-body{
+      background-color: @gray3;
+      button{
+        border-width: 0;
+        background-color: transparent;
+        border-radius: 0;
+        color: white;
+      }
+      .btn-active{
+        color: @yellow;
+      }
+      padding-bottom: 0;
+    }
+  }
+}
+
+.search-container{
+  padding-top: 25px;
+  img{
+    width: 92px;
+    height: 92px;
+  }
+  .name{
+    margin-top: 10px;
+    display: block;
+    color: white;
+  }
+  .evaluate{
+    text-align: left;
+    color: white;
+    margin-top: 100px;
+  }
+}
+
+#info-modal{
+  @import "../main/main";
+  #publish-desk;
+}
