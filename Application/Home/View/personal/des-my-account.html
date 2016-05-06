@@ -43,13 +43,13 @@
                 </div>
                 <div class="col-md-5">
                     <div class="row clear-mar-lr money-out">
-                        <div class="money">总支出&nbsp;&nbsp;&nbsp;$&nbsp;&nbsp;30</div>
-                        <div class="money">总收入&nbsp;&nbsp;&nbsp;$&nbsp;&nbsp;30</div>
+                        <div class="money">总支出&nbsp;&nbsp;&nbsp;$&nbsp;&nbsp;<{$outcome}></div>
+                        <div class="money">总收入&nbsp;&nbsp;&nbsp;$&nbsp;&nbsp;<{$income}></div>
                     </div>
                     <div class="row clear-mar-lr">
                         <div class="evaluate">
-                            买家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            卖家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%
+                            买家好评&nbsp;:&nbsp;&nbsp;<{$comment_buyer}>&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            卖家好评&nbsp;:&nbsp;&nbsp;<{$comment_seller}>&nbsp;%
                         </div>
                     </div>
                 </div>
@@ -157,40 +157,50 @@
             <div class="col-md-8 col-xs-12">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="panel panel-default main">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <h4>接单:&nbsp;&nbsp;有没有教计组的同学</h4>
-                                    </div>
-                                    <div class="col-md-2">
-                                        来自
+                        <foreach name="items" item="item">
+                            <div class="panel panel-default main">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <if condition="<{$item[type]}> eq 1">
+                                                <h4>悬赏:&nbsp;&nbsp;<{$item[title]}></h4>
+                                            <else/>
+                                                <h4>接单:&nbsp;&nbsp;<{$item[title]}></h4>
+                                            </if>
+                                        </div>
+                                        <div class="col-md-2">
+                                            来自
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <div>收入:&nbsp;&nbsp;$45</div>
-                                    </div>
-                                    <div class="col-md-2 right">
-                                        <div class="row row-2">
-                                            <div class="col-xs-6 clear-pad-left">
-                                                <img src="../../img/test4.jpg" class="img-responsive img-circle">
-                                            </div>
-                                            <div class="col-xs-6 clear-pad">
-                                                CR14
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <if condition="<{$item[type]}> eq 1">
+                                                <div>支出:&nbsp;&nbsp;￥<{$item[money]}></div>
+                                            <else/>
+                                                <div>收入:&nbsp;&nbsp;￥<{$item[money]}></div>
+                                            </if>
+                                        </div>
+                                        <div class="col-md-2 right">
+                                            <div class="row row-2">
+                                                <div class="col-xs-6 clear-pad-left">
+                                                    <img src="<{$item[avatar_url]}>" class="img-responsive img-circle">
+                                                </div>
+                                                <div class="col-xs-6 clear-pad">
+                                                    <{$item[username]}>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="row clear-mar-lr">
-                                    <label class="num">2016-09-12</label>
+                                <div class="panel-footer">
+                                    <div class="row clear-mar-lr">
+                                        <label class="num"><{$item[time]}></label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </foreach>
                     </div>
                 </div>
             </div>

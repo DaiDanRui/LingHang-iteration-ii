@@ -43,8 +43,8 @@
                 </div>
                 <div class="col-md-5">
                     <div class="evaluate">
-                        买家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        卖家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%
+                        买家好评&nbsp;:&nbsp;&nbsp;<{$comment_buyer}>&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        卖家好评&nbsp;:&nbsp;&nbsp;<{$comment_seller}>&nbsp;%
                     </div>
                 </div>
             </div>
@@ -151,41 +151,43 @@
             <div class="col-md-8 col-xs-12">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="panel panel-default main">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-2 clear-pad-right">
-                                        <img src="../../img/test3.jpg" class="img-responsive img-1">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div>重装系统</div>
-                                        <div class="price">$178</div>
-                                    </div>
-                                    <div class="col-md-2 right">
-                                        <div class="row">
-                                            <div class="title">卖家</div>
+                        <foreach name="buys" item="buy">
+                            <div class="panel panel-default main">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-2 clear-pad-right">
+                                            <img src="<{$buy[pic_url][0]}>" class="img-responsive img-1">
                                         </div>
-                                        <div class="row row-2">
-                                            <div class="col-xs-6 clear-pad-left">
-                                                <img src="../../img/test4.jpg" class="img-responsive img-circle">
+                                        <div class="col-md-8">
+                                            <div><{$buy[title]}></div>
+                                            <div class="price">￥<{$buy[price]}></div>
+                                        </div>
+                                        <div class="col-md-2 right">
+                                            <div class="row">
+                                                <div class="title">卖家</div>
                                             </div>
-                                            <div class="col-xs-6 clear-pad">
-                                                CR14
+                                            <div class="row row-2">
+                                                <div class="col-xs-6 clear-pad-left">
+                                                    <img src="<{$buy[avatar_url]}>" class="img-responsive img-circle">
+                                                </div>
+                                                <div class="col-xs-6 clear-pad">
+                                                    <{$buy[username]}>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="row clear-mar-lr">
-                                    <label class="num">2016-09-12</label>
-                                    <label class="icon-sm num">删除</label>
-                                    <label class="icon-sm save"></label>
-                                    <label class="icon-sm num">查看评价</label>
-                                    <label class="icon-sm msg"></label>
+                                <div class="panel-footer">
+                                    <div class="row clear-mar-lr">
+                                        <label class="num"><{$buy[time]}></label>
+                                        <label class="icon-sm num">删除</label>
+                                        <label class="icon-sm save"></label>
+                                        <label class="icon-sm num">查看评价</label>
+                                        <label class="icon-sm msg"></label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </foreach>
                     </div>
                 </div>
             </div>

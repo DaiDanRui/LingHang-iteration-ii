@@ -25,7 +25,7 @@
                 <li><a href="#">悬赏</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">CR14</a></li>
+                <li><a href="#"><{$username}></a></li>
                 <li class="active"><a href="#">我的</a></li>
                 <li><a href="#">退出</a></li>
             </ul>
@@ -38,13 +38,13 @@
         <div class="col-md-12 search-container desktop">
             <div class="row">
                 <div class="col-md-offset-5 col-md-2">
-                    <img src="../../img/test3.jpg" class="img-responsive center-block img-circle">
+                    <img src="<{$avatar_url}>" class="img-responsive center-block img-circle">
                     <a class="name center-block" data-toggle="modal" data-target="#info-modal">详情>></a>
                 </div>
                 <div class="col-md-5">
                     <div class="evaluate">
-                        买家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        卖家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%
+                        买家好评&nbsp;:&nbsp;&nbsp;<{$comment_buyer}>&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        卖家好评&nbsp;:&nbsp;&nbsp;<{$comment_seller}>&nbsp;%
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                             <h5 class="clear-mar-ud">昵称</h5>
                         </div>
                         <div class="col-xs-9">
-                            <h5 class="clear-mar-ud">Top_CR</h5>
+                            <h5 class="clear-mar-ud"><{$username}></h5>
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                             <h5 class="clear-mar-ud">姓名</h5>
                         </div>
                         <div class="col-xs-9">
-                            <h5 class="clear-mar-ud">陈睿</h5>
+                            <h5 class="clear-mar-ud"><{$name}></h5>
                         </div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
                             <h5 class="clear-mar-ud">性别</h5>
                         </div>
                         <div class="col-xs-9">
-                            <h5 class="clear-mar-ud">男</h5>
+                            <h5 class="clear-mar-ud"><{$gender}></h5>
                         </div>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
                             <h5 class="clear-mar-ud">手机</h5>
                         </div>
                         <div class="col-xs-9">
-                            <h5 class="clear-mar-ud">12939281922</h5>
+                            <h5 class="clear-mar-ud"><{$phone}></h5>
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                             <h5 class="clear-mar-ud">邮箱</h5>
                         </div>
                         <div class="col-xs-9">
-                            <h5 class="clear-mar-ud">293729109@qq.com</h5>
+                            <h5 class="clear-mar-ud"><{$email}></h5>
                         </div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                             <h5 class="clear-mar-ud">生日</h5>
                         </div>
                         <div class="col-xs-9">
-                            <h5 class="clear-mar-ud">3.10</h5>
+                            <h5 class="clear-mar-ud"><{$birthday}></h5>
                         </div>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                             <h5 class="clear-mar-ud">擅长</h5>
                         </div>
                         <div class="col-xs-9">
-                            <h5 class="clear-mar-ud">小提琴</h5>
+                            <h5 class="clear-mar-ud"><{$good_at}></h5>
                         </div>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
                             <h5 class="clear-mar-ud">爱好</h5>
                         </div>
                         <div class="col-xs-9">
-                            <h5 class="clear-mar-ud">打篮球</h5>
+                            <h5 class="clear-mar-ud"><{$hobby}></h5>
                         </div>
                     </div>
                 </div>

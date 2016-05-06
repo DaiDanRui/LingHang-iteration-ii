@@ -42,8 +42,8 @@
                 </div>
                 <div class="col-md-5">
                     <div class="evaluate">
-                        买家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        卖家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%
+                        买家好评&nbsp;:&nbsp;&nbsp;<{$comment_buyer}>&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        卖家好评&nbsp;:&nbsp;&nbsp;<{$comment_seller}>&nbsp;%
                     </div>
                 </div>
             </div>
@@ -150,35 +150,32 @@
             <div class="col-md-8 col-xs-12">
                 <div class="row main-row">
                     <img src="../../img/test1.jpg" class="main-img img-responsive img-full desktop">
-                    <div class="panel panel-default main-card">
+                    <foreach name="commodities" item="commodity">
+                        <div class="panel panel-default main-card">
                         <div class="panel-heading to-detail">
                             <div class="row clear-mar-lr">
                                 <div class="col-xs-2 clear-pad mobile">
-                                    <img src="../../img/test2.jpg" class="img-responsive img-circle">
+                                    <img src="<{$commodity[pic_url][0]}>" class="img-responsive img-circle">
                                 </div>
                                 <div class="col-md-12 col-xs-8 clear-pad">
-                                    <h5>线性代数</h5>
-                                    <h5 class="price desktop">$178</h5>
+                                    <h5><{$commodity[title]}></h5>
+                                    <h5 class="price desktop">￥<{$commodity[price]}></h5>
                                 </div>
                                 <div class="col-xs-2 clear-pad mobile">
-                                    <h5 class="price">$178</h5>
+                                    <h5 class="price">￥<{$commodity[price]}></h5>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body to-detail">
                             <div class="row clear-mar-lr">
-                                Org是伪指令(不生成对应的二进制指令，只是汇编器使用的)
+                                <{$commodity[description]}>
                             </div>
                             <div class="row main-imgs">
-                                <div class="col-xs-4">
-                                    <img src="../../img/test2.jpg" class="img-responsive img-square img-full mobile">
-                                </div>
-                                <div class="col-xs-4">
-                                    <img src="../../img/test3.jpg" class="img-responsive img-square img-full mobile">
-                                </div>
-                                <div class="col-xs-4">
-                                    <img src="../../img/test4.jpg" class="img-responsive img-square img-full mobile">
-                                </div>
+                                <foreach name = "commodity->images" item = "image">
+                                    <div class="col-xs-4">
+                                        <img src="<{$image}>" class="img-responsive img-square img-full mobile">
+                                    </div>
+                                </foreach>
                             </div>
                         </div>
                         <div class="panel-footer">
@@ -188,15 +185,24 @@
                                 <label class="icon-sm save"></label>
                                 <label class="icon-sm num">删除</label>
                                 <label class="icon-sm msg"></label>
-                                <label class="num">CR 14</label>
-                                <label class="num">(1天前)</label>
-                                <label class="icon-sm num">99+</label>
+                                <label class="num"><{$commodity[username]}></label>
+                                <label class="num">(<{$commodity[publish_time]}>天前)</label>
+                                <if condition="<{commodity[save_num]}> gt 99">
+                                    <label class="icon-sm num">99+</label>
+                                <else/>
+                                    <label class="icon-sm num"><{commodity[save_num]}></label>
+                                </if>
                                 <label class="icon-sm save"></label>
-                                <label class="icon-sm num">39</label>
+                                <if condition="<{commodity[msg_num]}> gt 99">
+                                    <label class="icon-sm num">99+</label>
+                                    <else/>
+                                    <label class="icon-sm num"><{commodity[msg_num]}></label>
+                                </if>
                                 <label class="icon-sm msg"></label>
                             </div>
                         </div>
                     </div>
+                    </foreach>>
                 </div>
             </div>
         </div>

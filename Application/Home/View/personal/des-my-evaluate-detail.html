@@ -45,8 +45,8 @@
                 <div class="col-md-5">
                     <div class="row clear-mar-lr">
                         <div class="evaluate">
-                            买家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            卖家好评&nbsp;:&nbsp;&nbsp;76&nbsp;%
+                            买家好评&nbsp;:&nbsp;&nbsp;<{$comment_buyer}>&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            卖家好评&nbsp;:&nbsp;&nbsp;<{$comment_seller}>&nbsp;%
                         </div>
                     </div>
                 </div>
@@ -154,14 +154,15 @@
             <div class="col-md-8 col-xs-12">
                 <div class="row">
                     <div class="col-xs-12">
+                        <foreach name="comments" item="comment">
                         <div class="panel panel-default main">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-md-6 title">
-                                        <h4>有没有教计组的同学</h4>
+                                        <h4><{$comment[title]}></h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="price">$70</div>
+                                        <div class="price">￥<{$comment[price]}></div>
                                     </div>
                                     <div class="col-md-2">
                                         来自
@@ -179,11 +180,9 @@
                                                     </div>
                                                     <div class="col-xs-7 clear-pad-left">
                                                         <h5>
+                                                        <for start="1" end="<{$comment->language_starts}>">
                                                             <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
+                                                        </for>
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -195,11 +194,9 @@
                                                     </div>
                                                     <div class="col-xs-7 clear-pad-left">
                                                         <h5>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
+                                                            <for start="1" end="<{$comment->patient_starts}>">
+                                                                <span class="glyphicon glyphicon-star"></span>
+                                                            </for>
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -213,11 +210,9 @@
                                                     </div>
                                                     <div class="col-xs-7 clear-pad-left">
                                                         <h5>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
-                                                            <span class="glyphicon glyphicon-star"></span>
+                                                            <for start="1" end="<{$comment->total_starts}>">
+                                                                <span class="glyphicon glyphicon-star"></span>
+                                                            </for>
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -227,10 +222,10 @@
                                     <div class="col-md-2 col-md-offset-3 right">
                                         <div class="row row-2">
                                             <div class="col-xs-6 clear-pad-left">
-                                                <img src="../../img/test4.jpg" class="img-responsive img-circle">
+                                                <img src="<{$comment[avatar_url]}>" class="img-responsive img-circle">
                                             </div>
                                             <div class="col-xs-6 clear-pad">
-                                                CR14
+                                                <{$comment[username]}>
                                             </div>
                                         </div>
                                     </div>
@@ -238,10 +233,11 @@
                             </div>
                             <div class="panel-footer">
                                 <div class="row clear-mar-lr">
-                                    <label class="num">2016-09-12</label>
+                                    <label class="num"><{$comment[time]}></label>
                                 </div>
                             </div>
                         </div>
+                        </foreach>
                     </div>
                 </div>
             </div>
