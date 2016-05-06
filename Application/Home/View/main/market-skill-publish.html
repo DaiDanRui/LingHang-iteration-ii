@@ -10,9 +10,9 @@
 <body>
     <nav class="navbar navbar-fixed-top">
         <if condition="<{$type}> eq 1">
-            发布技能
-        <else/>
             发布悬赏
+        <else/>
+            发布技能
         </if>
     </nav>
     <div class="container-fluid">
@@ -36,9 +36,9 @@
                 <div class="form-group">
                     <div class="input-group">
                         <if condition="<{$type}> eq 1">
-                            <span class="input-group-addon" id="price">价格</span>
-                        <else/>
                             <span class="input-group-addon" id="pay">赏金</span>
+                        <else/>
+                            <span class="input-group-addon" id="price">价格</span>
                         </if>
                         <input name="price" class="form-control" placeholder="请填写" aria-describedby="pay">
                     </div>
@@ -49,9 +49,11 @@
                         <input name="phone" class="form-control" placeholder="请填写" aria-describedby="phone">
                     </div>
                 </div>
+                <!--<button class="btn btn-block publish_btn">确认发布</button>-->
+                <input type="submit" class="btn btn-block publish_btn" value="确认发布">
             </form>
         </div>
-        <button class="btn btn-block publish_btn">确认发布</button>
+
     </div>
     <script src="../../js/jquery.js"></script>
     <script src="../../js/fileinput.min.js"></script>

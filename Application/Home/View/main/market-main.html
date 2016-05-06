@@ -248,7 +248,11 @@
                     &times;
                 </button>
                 <h4 class="modal-title" id="publish-title">
-                    发布技能
+                    <if condition="<{$type}> eq 1">
+                        发布悬赏
+                    <else/>
+                        发布技能
+                    </if>
                 </h4>
             </div>
             <div class="modal-body">
@@ -272,7 +276,11 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon" id="pay">赏金</span>
+                                    <if condition="<{$type}> eq 1">
+                                        <span class="input-group-addon" id="pay">赏金</span>
+                                        <else/>
+                                        <span class="input-group-addon" id="price">价格</span>
+                                    </if>
                                     <input class="form-control" placeholder="请填写" aria-describedby="pay">
                                 </div>
                             </div>
@@ -317,8 +325,9 @@
                                 <div class="col-md-12">
                                     <div class="title"><{$commodity['title']}></div>
                                     <div>
-                                        <span class="label label-primary">舞蹈</span>
-                                        <span class="label label-primary">体育</span>
+                                        <foreach name="commodity[tabs]" item="tab">
+                                            <span class="label label-primary"><{$tab}></span>
+                                        </foreach>
                                     </div>
                                     <div class="price"> ￥<{$commodity['price']}> </div>
                                     <p class="content"> <{$commodity['description']}></p>
@@ -369,7 +378,11 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-toggle="modal" data-target="#buy-desk">我要买</button>
+                <if condition="<{$type}> eq 1">
+                    <button class="btn" data-toggle="modal" data-target="#buy-desk">我要接单</button>
+                <else/>
+                    <button class="btn" data-toggle="modal" data-target="#buy-desk">我要买</button>
+                </if>
                 <button class="btn" >取消</button>
             </div>
         </div><!-- /.modal-content -->
@@ -386,7 +399,11 @@
                     &times;
                 </button>
                 <h4 class="modal-title" id="buy-title">
-                    我要买
+                    <if condition="<{$type}> eq 1">
+                        我要接单
+                    <else/>
+                        我要买
+                    </if>
                 </h4>
             </div>
             <div class="modal-body">
@@ -420,7 +437,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <h4>接单人</h4>
+                                    <if condition="<{$type}> eq 1">
+                                        <h4>接单人</h4>
+                                        <else/>
+                                        <h4>购买者</h4>
+                                    </if>
                                 </div>
                                 <div class="col-xs-8">
                                     <h4> <{$currentUsername}> </h4>
