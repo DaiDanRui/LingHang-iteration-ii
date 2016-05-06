@@ -28,9 +28,10 @@ class CommodityController extends Controller
             'commodity.commodity_id as id',
             'publisher_id',
             'title','price',
-            'release_date as time',
-            'star_numbers','message_numbers','description',
-            'group_concat(path) as imgs',
+            'release_date as publish_time',
+            'star_numbers as save_num','message_numbers as msg_num','description',
+            'deleted_date as deadline',
+            'group_concat(path) as images',
             'nickname as name',
             'pic_path as url',
         );
@@ -62,9 +63,9 @@ class CommodityController extends Controller
         $model = new CommodityModel();
         $model->table($table)->field($field)->where($where)->order($order)->page($page,BROWSE_PAGE_SIZE);
         $rows = $model->group('id')->select();
-        dump($rows);
-        convertCommoditiesForHtml('imgs','time',$rows);
-        dump($rows);
+//        dump($rows);
+        convertCommoditiesForHtml('images','publish_time',$rows);
+//        dump($rows);
         return $rows;
     }
 
@@ -119,37 +120,37 @@ class CommodityController extends Controller
     public function details()
     {
         $commodity_id = I('id');
-        $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture' ,'tbl_user' =>'user');
+        $table = array(
+            'tbl_commodity' =>'commodity','tbl_picture' =>'picture' ,'tbl_user' =>'user'
+        );
         $field = array(
-            'publisher_id','title','price','release_date','description',
-            'star_numbers','message_numbers', 'path','nickname','pic_path',
+            'publisher_id','title','price',
+            'release_date as publish_time',
+            'description',
+            'star_numbers as save_num',
+            'message_numbers as msg_num',
+            'picture.path as commodity_url',
+            'nickname as username',
+            'pic_path as avatar_url',
+            'min(picture_id) as picture_id',
         );
         $where = array('commodity.commodity_id'=>$commodity_id,);
         $model = new CommodityModel();
         $model->table($table)->field($field)->where($where)
-              ->where('commodity.publisher_id=user.user_id AND commodity.commodity_id=picture.commodity_id');
+              ->where('commodity.publisher_id=user.user_id AND commodity.commodity_id=picture.commodity_id')
+              ->group('commodity.commodity_id');
         $rows = $model->select();
 
-        $url = array();
-        foreach ($rows as $row){
-            $url[] = $row['path'];
-        }
-        $row = $rows[0];
-        $tree_value = array(
-            'img' => $row['pic_path'], //发布人头像
-            'description' => $row['description'],
-            'title' => $row['title'],
-            'price' => $row['price'],
-            'nickname' => $row['nickname'],
-            'time' => getBeforetime($row['release_date']),
-            'star_numbers' => $row['star_numbers'],
-            'message_numbers' => $row['message_numbers'],
-            'id' => $commodity_id,
-            'description-img'=> $url, //商品图片
+        $row = &$rows[0];
+        $publish_time = &$row['publish_time'];
+        $publish_time = getBeforetime($publish_time);
+        $row['id'] = $commodity_id;
+
+        $message = $this->_getMessage($commodity_id);
+        return array(
+            'msg'=>$message,
+            'commodity'=>$row,
         );
-        dump($tree_value);
-        $messageArray = $this->_getMesssage($commodity_id);
-        dump($messageArray);
     }
 
     /**
@@ -157,23 +158,23 @@ class CommodityController extends Controller
      * @param $model CommodityModel
      * @return array
      */
-    public function _getMesssage($commodity_id){
+    private function _getMessage($commodity_id){
 
         $tables = array('tbl_user'=> 'user','tbl_message'=>'message');
-        $fields = array('message.content','message.time','user.nickname','user.pic_path');
+        $fields = array(
+            'message.content as description',
+            'message.time as publish_time',
+            'user.nickname as username',
+            'user.pic_path as avatar_url'
+        );
         $where  = array('message.commodity_id'=>$commodity_id,);
         $model = new MessageModel();
         $rows = $model->table($tables)->field($fields)->where($where)->where('message.talker_id=user.user_id')->select();
-        $array_message = array();
-        foreach ($rows as $temp_database_row_array) {
-            $array_message[] = array(
-                'description' => $temp_database_row_array['content'],
-                'time' => getBeforetime($temp_database_row_array['time']),
-                'nickname' => $temp_database_row_array['nick_name'],
-                'img' => $temp_database_row_array['pic_path'],//'upload/avatar.png',
-            );
+        foreach($rows as $row){
+            $publish_time = &$row['publish_time'];
+            $publish_time = getBeforetime($publish_time);
         }
-        return $array_message;
+        return $rows;
     }
 
     /**

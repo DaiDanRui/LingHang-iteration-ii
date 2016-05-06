@@ -20,9 +20,9 @@ class SkillController extends Controller
      */
     public function browse()
     {
-//        $commodity = new CommodityController();
-//        $array = $commodity->browse(SKILL);
-//        $this->assign('array',$array);
+        $commodity = new CommodityController();
+        $array = $commodity->browse(SKILL);
+        $this->assign('commodities',$array);
         $this->display('main/market-main');
 
 
@@ -43,7 +43,12 @@ class SkillController extends Controller
     public function details()
     {
         $commodity = new CommodityController();
-        $commodity->details();
+        $message = $commodity->details();
+        foreach($message as $key=>$value ) {
+            $this->assign($key,$value);
+        }
+        $this->display('main/market-skill');
+
     }
 
     /**

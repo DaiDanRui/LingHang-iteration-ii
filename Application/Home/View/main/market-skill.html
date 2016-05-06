@@ -2,8 +2,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../../css/boots/bootstrap.min.css" rel="stylesheet">
-    <link href="../../css/less/main/main-skill.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/boots/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/less/main/main-skill.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
@@ -12,7 +12,7 @@
 
         </div>
         <div class="col-xs-10">
-            <div class="title"><{$username}>的技能 </div>
+            <div class="title"><{$commodity['username']}>的技能 </div>
         </div>
     </div>
 </nav>
@@ -23,14 +23,14 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-2 clear-pad">
-                        <img src="<{$avatar_url}>" class="img-responsive img-circle">
+                        <img src="__PUBLIC__/picture/<{$commodity['avatar_url']}>" class="img-responsive img-circle">
                     </div>
                     <div class="col-xs-8">
                         <h5><{$title}></h5>
-                        <h6><{$username}>(<{$publish_time}>天前)</h6>
+                        <h6><{$username}>(<{$commodity['publish_time']}>天前)</h6>
                     </div>
                     <div class="col-xs-2">
-                        <h5 class="price">￥<{$price}></h5>
+                        <h5 class="price">￥<{$commodity['price']}></h5>
                     </div>
                 </div>
             </div>
@@ -38,28 +38,28 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!--Org是伪指令(不生成对应的二进制指令，只是汇编器使用的)-->
-                        <{$description}>
+                        <{$commodity['description']}>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <img src="<{$commodity_url}>" class="img-responsive img-square img-full">
+                        <img src="__PUBLIC__/picture/<{$commodity['commodity_url']}>" class="img-responsive img-square img-full">
                     </div>
                 </div>
             </div>
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-xs-4 col-xs-offset-8">
-                        <if condition = "$save_num gt 99">
+                        <if condition = "$$commodity['save_num'] gt 99">
                             <label class="icon-sm num">99+</label>
                         <else/>
-                            <label class="icon-sm num"><{$save_num}></label>
+                            <label class="icon-sm num"><{$commodity['save_num']}></label>
                         </if>
                         <label class="icon-sm save"></label>
                         <if condition = "$msg_num gt 99">
                             <label class="icon-sm num">99+</label>
                             <else/>
-                            <label class="icon-sm num"><{$msg_num}></label>
+                            <label class="icon-sm num"><{$commodity['msg_num']}></label>
                         </if>
                         <label class="icon-sm msg"></label>
                     </div>
@@ -74,20 +74,20 @@
             <div class="panel-heading clear-pad-ud">
                 <div class="row">
                     <div class="col-xs-2 clear-pad">
-                        <img src="<{$msg->avatar_url}>" class="img-responsive img-circle">
+                        <img src="__PUBLIC__/picture/<{$msg['avatar_url']}>" class="img-responsive img-circle">
                     </div>
                     <div class="col-xs-8 clear-pad">
-                        <h5><{$msg->username}></h5>
+                        <h5><{$msg['username']}></h5>
                     </div>
                     <div class="col-xs-2 clear-pad">
-                        <h6><{$msg->publish_time}>天前</h6>
+                        <h6><{$msg['publish_time']}>天前</h6>
                     </div>
                 </div>
             </div>
             <div class="panel-body clear-pad-ud">
                 <div class="row">
                     <div class="col-xs-12">
-                        <{$msg->content}>
+                        <{$msg['content']}>
                     </div>
                 </div>
             </div>
@@ -103,6 +103,6 @@
         <a class="btn col-xs-4" type="text">我要买</a>
     </div>
 </nav>
-<script src="../../js/jquery.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
 </body>

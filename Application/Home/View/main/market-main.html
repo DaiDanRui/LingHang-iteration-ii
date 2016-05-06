@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>市场-主页</title>
-    <link href="../../css/boots/bootstrap.min.css" rel="stylesheet">
-    <link href="../../css/less/main/main.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/boots/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/less/main/main.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top nav-top desktop">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="../../img/logo.png" style="height: 45px;">
+                <img alt="Brand" src="__PUBLIC__/img/logo.png" style="height: 45px;">
             </a>
         </div>
 
@@ -34,13 +34,13 @@
 <nav class="navbar navbar-fixed-top mobile mobile-nav-top-1">
     <div class="container-fluid clear-pad">
         <button class="col-xs-2 mobile-top-1-btn">
-            <img src="../../img/icon-home.png">
+            <img src="__PUBLIC__/img/icon-home.png">
         </button>
         <div class="col-xs-8 clear-pad">
             <input class="form-control" type="text">
         </div>
         <button class="col-xs-2 mobile-top-1-btn">
-            <img src="../../img/icon-search.png">
+            <img src="__PUBLIC__/img/icon-search.png">
         </button>
     </div>
 </nav>
@@ -49,13 +49,13 @@
     <div class="container-fluid clear-pad">
         <div class="col-xs-8 col-xs-offset-2">
             <button class="col-xs-4 select">
-                <img src="../../img/icon-type.png">
+                <img src="__PUBLIC__/img/icon-type.png">
             </button>
             <button class="col-xs-4 select">
-                <img src="../../img/icon-time.png">
+                <img src="__PUBLIC__/img/icon-time.png">
             </button>
             <button class="col-xs-4 select">
-                <img src="../../img/icon-price.png">
+                <img src="__PUBLIC__/img/icon-price.png">
             </button>
         </div>
         <div class="col-xs-12 clear-pad" id="pad-1" style="min-height:0;background-color: dimgray;height: 0;border: 0">
@@ -128,7 +128,7 @@
             <div class="col-md-8 col-xs-12">
                 <foreach name = "commodities" item = "commodity">
                     <div class="row main-row">
-                        <img src="<{$commodity->pic_url}>" class="main-img img-responsive img-full desktop">
+                        <img src="<{$commodity['pic_url']}>" class="main-img img-responsive img-full desktop">
                         <div class="panel panel-default main-card">
                             <div class="panel-heading to-detail">
                                 <div class="row clear-mar-lr">
@@ -136,20 +136,20 @@
                                         <img src="<{$user_avatar_url}>" class="img-responsive img-circle">
                                     </div>
                                     <div class="col-md-12 col-xs-8 clear-pad">
-                                        <h5><{$commodity->title}></h5>
-                                        <h5 class="price desktop">￥<{$commodity->price}></h5>
+                                        <h5><{$commodity['title']}></h5>
+                                        <h5 class="price desktop">￥<{$commodity['price']}></h5>
                                     </div>
                                     <div class="col-xs-2 clear-pad mobile">
-                                        <h5 class="price">￥<{$commodity->price}></h5>
+                                        <h5 class="price">￥<{$commodity['price']}></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-body to-detail">
                                 <div class="row clear-mar-lr">
-                                    <{$commodity->description}>
+                                    <{$commodity['description']}>
                                 </div>
                                 <div class="row main-imgs">
-                                    <foreach name = "commodity->images" item = "image">
+                                    <foreach name = "commodity['images']" item = "image">
                                         <div class="col-xs-4">
                                             <img src="<{$image}>" class="img-responsive img-square img-full mobile">
                                         </div>
@@ -158,19 +158,19 @@
                             </div>
                             <div class="panel-footer">
                                 <div class="row clear-mar-lr">
-                                    <img src="../../img/test2.jpg" class="img-responsive img-circle desktop">
-                                    <label class="num"><{$commodity->username}></label>
-                                    <label class="num">(<{$commodity->publish_time}>天前)</label>
-                                    <if condition="<{$commodity->save_num}> gt 99">
+                                    <img src="__PUBLIC__/img/test2.jpg" class="img-responsive img-circle desktop">
+                                    <label class="num"><{$commodity['username']}></label>
+                                    <label class="num">(<{$commodity['publish_time']}>天前)</label>
+                                    <if condition="$commodity['save_num'] gt 99">
                                         <label class="icon-sm num">99+</label>
                                     <else/>
-                                        <label class="icon-sm num"><{$commodity->save_num}></label>
+                                        <label class="icon-sm num"><{$commodity['save_num']}></label>
                                     </if>
                                     <label class="icon-sm save"></label>
-                                    <if condition="<{$commodity->msg_num}> gt 99">
+                                    <if condition="$commodity['msg_num'] gt 99">
                                         <label class="icon-sm num">99+</label>
                                         <else/>
-                                        <label class="icon-sm num"><{$commodity->msg_num}></label>
+                                        <label class="icon-sm num"><{$commodity['msg_num']}></label>
                                     </if>
                                     <label class="icon-sm msg"></label>
                                 </div>
@@ -187,7 +187,7 @@
                                 <button class="btn-block btn btn-default" data-toggle="modal" data-target="#publish-desk">
                                     <h4>
                                         一键发布
-                                        <img src="../../img/icon-publish.png">
+                                        <img src="__PUBLIC__/img/icon-publish.png">
                                     </h4>
                                     <p>
                                         快和大家分享技能吧
@@ -213,11 +213,11 @@
                                                 <h5>No.<{$item->rank}></h5>
                                             </div>
                                             <div class="col-md-3 clear-pad">
-                                                <img src="<{item->avatar_url}>" class="img-responsive img-circle">
+                                                <img src="<{item['avatar_url']}>" class="img-responsive img-circle">
                                             </div>
                                             <div class="col-md-6 clear-pad">
-                                                <h6><{$item->title}></h6>
-                                                <h6><{$item->username}></h6>
+                                                <h6><{$item['title']}></h6>
+                                                <h6><{$item['username']}></h6>
                                             </div>
                                         </div>
                                     </foreach>
@@ -236,7 +236,7 @@
         <a class="btn col-xs-6" type="text">市场</a>
         <a class="btn col-xs-6" type="text">悬赏</a>
     </div>
-    <a class="col-xs-12 pub-container"><img id="publish" class="img-circle img-responsive" src="../../img/icon-publish.png"></a>
+    <a class="col-xs-12 pub-container"><img id="publish" class="img-circle img-responsive" src="__PUBLIC__/img/icon-publish.png"></a>
 </nav>
 
 <!-- 模态框（publish） -->
@@ -310,33 +310,33 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4 clear-pad">
-                            <img src="../../img/test1.jpg" class="detail-img img-responsive img-full">
+                            <img src="__PUBLIC__/img/test1.jpg" class="detail-img img-responsive img-full">
                         </div>
                         <div class="col-md-8 body-right">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="title"><{$detail->title}></div>
+                                    <div class="title"><{$detail['title']}></div>
                                     <div>
                                         <span class="label label-primary">舞蹈</span>
                                         <span class="label label-primary">体育</span>
                                     </div>
-                                    <div class="price"> ￥<{$detail->price}> </div>
-                                    <p class="content"> <{$detail->description}></p>
+                                    <div class="price"> ￥<{$detail['price']}> </div>
+                                    <p class="content"> <{$detail['description']}></p>
                                     <div class="row clear-mar-lr">
-                                        <img src="../../img/test2.jpg" class="img-responsive img-circle desktop">
-                                        <label class="num"><{$detail->username}></label>
-                                        <label class="num">(<{$detail->publish_time}>天前)</label>
+                                        <img src="__PUBLIC__/img/test2.jpg" class="img-responsive img-circle desktop">
+                                        <label class="num"><{$detail['username']}></label>
+                                        <label class="num">(<{$detail['publish_time']}>天前)</label>
 
-                                        <if condition="<{$detail->save_num}> gt 99">
+                                        <if condition="$detail['save_num'] gt 99">
                                             <label class="icon-sm num">99+</label>
                                             <else/>
-                                            <label class="icon-sm num"><{$detail->save_num}></label>
+                                            <label class="icon-sm num"><{$detail['save_num']}></label>
                                         </if>
                                         <label class="icon-sm save"></label>
-                                        <if condition="<{$detail->msg_num}> gt 99">
+                                        <if condition="$detail['msg_num'] gt 99">
                                             <label class="icon-sm num">99+</label>
                                             <else/>
-                                            <label class="icon-sm num"><{$detail->msg_num}></label>
+                                            <label class="icon-sm num"><{$detail['msg_num']}></label>
                                         </if>
                                         <label class="icon-sm msg"></label>
                                     </div>
@@ -346,21 +346,21 @@
                     </div>
                     <div class="row">
                         <div class="list-group col-md-12">
-                            <div class="list-group-item">截止日期:&nbsp;&nbsp;&nbsp;&nbsp;<{detail->deadline}></div>
+                            <div class="list-group-item">截止日期:&nbsp;&nbsp;&nbsp;&nbsp;<{detail['deadline']}></div>
                             <div class="list-group-item">留言
                                 <button class="btn btn-default mesg">留言</button>
                             </div>
                             <foreach name="detail_msgs" item = "detail_msg">
                                 <div class="list-group-item row clear-mar-lr">
                                     <div class="col-xs-1 clear-pad">
-                                        <img src="<{$detail_msg->avatar_url}>" class="img-responsive img-circle msg-img">
+                                        <img src="<{$detail_msg['avatar_url']}>" class="img-responsive img-circle msg-img">
                                     </div>
                                     <div class="col-xs-1 clear-pad msg-title">
-                                        <div><{$detail_msg->username}></div>
-                                        <{$detail_msg->publish_time}>天前
+                                        <div><{$detail_msg['username']}></div>
+                                        <{$detail_msg['publish_time']}>天前
                                     </div>
                                     <div class="col-xs-9" style="line-height: 50px">
-                                        <{$detail_msg->content}>
+                                        <{$detail_msg['content']}>
                                     </div>
                                 </div>
                             </foreach>
@@ -395,19 +395,19 @@
                         <div class="col-xs-12 main">
                             <div class="row">
                                 <div class="col-xs-1 clear-pad-right">
-                                    <img src="<{$buy->avatar_url}>" class="img-responsive img-circle avatar">
+                                    <img src="<{$buy['avatar_url']}>" class="img-responsive img-circle avatar">
                                 </div>
                                 <div class="col-xs-10">
-                                    <h5><{$buy->seller_name}></h5>
+                                    <h5><{$buy['seller_name']}></h5>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <img src="<{$buy->commodity_url}>" class="img-responsive depict">
+                                    <img src="<{$buy['commodity_url']}>" class="img-responsive depict">
                                 </div>
                                 <div class="col-xs-8 clear-pad">
-                                    <h4><{$buy->title}></h4>
-                                    <p><{$buy->description}></p>
+                                    <h4><{$buy['title']}></h4>
+                                    <p><{$buy['description']}></p>
                                 </div>
                             </div>
                             <div class="row margin-more">
@@ -415,7 +415,7 @@
                                     <h4>总金额</h4>
                                 </div>
                                 <div class="col-xs-8">
-                                    <h4 class="price"> ￥<{$buy->price}> </h4>
+                                    <h4 class="price"> ￥<{$buy['price']}> </h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -423,7 +423,7 @@
                                     <h4>接单人</h4>
                                 </div>
                                 <div class="col-xs-8">
-                                    <h4> <{$buy->buyer_name}> </h4>
+                                    <h4> <{$buy['buyer_name']}> </h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -431,7 +431,7 @@
                                     <h4>联系方式</h4>
                                 </div>
                                 <div class="col-xs-8">
-                                    <h4> <{$buy->buyer_phone}> </h4>
+                                    <h4> <{$buy['buyer_phone']}> </h4>
                                 </div>
                             </div>
                         </div>
@@ -446,11 +446,11 @@
     </div>
 </div>
 
-<script src="../../js/jquery.js"></script>
-<script src="../../js/fileinput.min.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/bootstrap-datepicker.js"></script>
-<script src="../../js/common.js"></script>
-<script src="../../js/market-main.js"></script>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src="__PUBLIC__/js/fileinput.min.js"></script>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/js/bootstrap-datepicker.js"></script>
+<script src="__PUBLIC__/js/common.js"></script>
+<script src="__PUBLIC__/js/market-main.js"></script>
 </body>
 </html>

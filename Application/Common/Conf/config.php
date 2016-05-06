@@ -17,8 +17,11 @@ return array(
         'skill/browse/page/:page' => 'skill/browse',
         'skill/upload' => 'skill/uploadPictures',
         'skill/details/id/:id' => 'skill/details',
+
         'myCommodity/skill/page/:page'=>'myCommodity/publishSkill',
         'myCommodity/reward'=>'myCommodity/publishReward',
+        'my-accepted/skill'=>'myCommodity/publishSkill',
+        'my-accepted/reward'=>'myCommodity/publishReward',
 //        'skill/details' => 'skill/details',
 
         'transaction/accept/skill/page/:page'=>'transaction/transactionSkill',
@@ -29,6 +32,10 @@ return array(
         'star/add/commodity_id/:commodity_id'=>'star/add',
         'evaluation/myEvaluated/page/:page'=>'evaluation/myEvaluated',
         'evaluation/myEvaluation/page/:page'=>'evaluation/myEvaluation',
+
+        'my-main'=>'mySetting/myPage',
+        'my-account/income'=>'budget/income',
+        'my-account/outcome'=>'budget/outcome',
 
     ),
 
@@ -50,4 +57,8 @@ return array(
     'DB_SLAVE_NO'           =>  '', // 指定从服务器序号
 
     'PAGE_SIZE'             => 10,
+
+
+    'TMPL_L_DELIM'          =>  '<{',            // 模板引擎普通标签开始标记
+    'TMPL_R_DELIM'          =>  '}>',            // 模板引擎普通标签结束标记
 );
