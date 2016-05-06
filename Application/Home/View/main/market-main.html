@@ -359,7 +359,7 @@
                         <div class="list-group col-md-12">
                             <div class="list-group-item">截止日期:&nbsp;&nbsp;&nbsp;&nbsp;<{$commodity['deadline']}></div>
                             <div class="list-group-item">留言
-                                <button class="btn btn-default mesg">留言</button>
+                                <button class="btn btn-default mesg" data-toggle="modal" data-target="#msg-desk">留言</button>
                             </div>
                             <foreach name="detail_msgs" item = "detail_msg">
                                 <div class="list-group-item row clear-mar-lr">
@@ -466,6 +466,41 @@
                 <button class="btn" >取消</button>
             </div>
         </div><!-- /.modal-content -->
+    </div>
+</div>
+
+<!-- 模态框（msg） -->
+<div class="modal fade" id="msg-desk" tabindex="-1" role="dialog" aria-labelledby="msg-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="msg-title">
+                    留言
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-1 clear-pad-right">
+                        <img src="__PUBLIC__/img/test3.jpg" class="img-responsive img-circle">
+                    </div>
+                    <div class="col-md-2 name">
+                        CR14
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <textarea class="form-control msg" placeholder="留言"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" >确认</button>
+                <button class="btn" >取消</button>
+            </div>
+        </form><!-- /.modal-content -->
     </div>
 </div>
 

@@ -671,6 +671,119 @@
 #info-modal #buy-desk .modal-body .depict {
   height: 178px;
 }
+#info-modal #msg-desk .modal-content {
+  width: 656px;
+  border-radius: 0;
+}
+#info-modal #msg-desk .modal-content > .modal-header {
+  padding-top: 10px;
+  background-color: #fecb45;
+  color: white;
+  height: 40px;
+}
+#info-modal #msg-desk .modal-content > .modal-header > .close {
+  font-size: 35px;
+  font-weight: 100;
+  color: white;
+  opacity: 1;
+  margin-top: -10px;
+}
+#info-modal #msg-desk .publish_btn_des {
+  width: 348px;
+  height: 38px;
+  background-color: #fecb45;
+  color: white;
+  border-width: 0;
+  border-radius: 0;
+}
+#info-modal #msg-desk .modal-content > .modal-body .detail-img {
+  height: 208px;
+}
+#info-modal #msg-desk .modal-content > .modal-body .msg-img {
+  height: 48px;
+}
+#info-modal #msg-desk .modal-content > .modal-body .body-right {
+  padding: 0;
+  height: 36px;
+  background-color: transparent;
+  border: none;
+  padding-left: 10px;
+}
+#info-modal #msg-desk .modal-content > .modal-body .body-right img {
+  float: left;
+  margin-top: 3px;
+  margin-right: 4px;
+  width: 30px;
+  height: 30px;
+}
+#info-modal #msg-desk .modal-content > .modal-body .body-right .icon-sm {
+  float: right;
+  margin-top: 11px;
+  margin-right: 2px;
+  width: 16px;
+  height: 13px;
+  background-size: cover;
+}
+#info-modal #msg-desk .modal-content > .modal-body .body-right .num {
+  margin-top: 8px;
+  margin-right: 3px;
+  width: auto;
+  font-weight: 200;
+  color: #cccccc;
+}
+#info-modal #msg-desk .modal-content > .modal-body .body-right .save {
+  background-image: url("../../../img/icon-save.png");
+}
+#info-modal #msg-desk .modal-content > .modal-body .body-right .msg {
+  background-image: url("../../../img/icon-msg.png");
+}
+#info-modal #msg-desk .modal-content > .modal-body .body-right .content {
+  height: 100px;
+}
+#info-modal #msg-desk .modal-content > .modal-body .mesg {
+  background-color: #fecb45;
+  color: white;
+  border-width: 0;
+  border-radius: 0;
+  padding: 0;
+  float: right;
+  margin-top: -5px;
+  width: 45px;
+  height: 30px;
+}
+#info-modal #msg-desk .modal-content .msg-title {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+#info-modal #msg-desk .modal-content > .modal-footer button {
+  width: 110px;
+  height: 40px;
+  float: right;
+  background-color: #fecb45;
+  color: white;
+  border-width: 0;
+  border-radius: 0;
+  margin-left: 10px;
+}
+#info-modal #msg-desk .modal-body .avatar {
+  height: 37px;
+  margin-bottom: 5px;
+}
+#info-modal #msg-desk .modal-body .depict {
+  height: 178px;
+}
+#info-modal #msg-desk img {
+  height: 39px;
+}
+#info-modal #msg-desk .name {
+  height: 39px;
+  line-height: 39px;
+}
+#info-modal #msg-desk .msg {
+  border-radius: 0;
+  margin-top: 10px;
+  height: 150px;
+}
 #info-modal .modal-content {
   width: 656px;
   border-radius: 0;
