@@ -17,11 +17,13 @@ use Think\Controller;
 class CommodityController extends Controller
 {
 
+
     /**
      * 浏览商品模式
      */
     public function browse($type)
     {
+
         $page = (int) I('page');
         $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture' ,'tbl_user' =>'user');
         $field = array(
@@ -33,7 +35,7 @@ class CommodityController extends Controller
             'deleted_date as deadline',
             'group_concat(path) as pic_url',
             'nickname as name',
-            'pic_path as url',
+            'pic_path as avatar_url',
         );
         $where = 'commodity.publisher_id=user.user_id'
                 .' AND commodity.commodity_id=picture.commodity_id'

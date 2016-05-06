@@ -158,7 +158,7 @@
                             </div>
                             <div class="panel-footer">
                                 <div class="row clear-mar-lr">
-                                    <img src="__PUBLIC__/img/test2.jpg" class="img-responsive img-circle desktop">
+                                    <img src="__PUBLIC__/picture/<{$commodity['avatar_url']}>" class="img-responsive img-circle desktop">
                                     <label class="num"><{$commodity['username']}></label>
                                     <label class="num">(<{$commodity['publish_time']}>天前)</label>
                                     <if condition="$commodity['save_num'] gt 99">
@@ -310,33 +310,33 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4 clear-pad">
-                            <img src="__PUBLIC__/img/test1.jpg" class="detail-img img-responsive img-full">
+                            <img src="__PUBLIC__/picture/<{$commodity['pic_url'][0]}>" class="detail-img img-responsive img-full">
                         </div>
                         <div class="col-md-8 body-right">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="title"><{$detail['title']}></div>
+                                    <div class="title"><{$commodity['title']}></div>
                                     <div>
                                         <span class="label label-primary">舞蹈</span>
                                         <span class="label label-primary">体育</span>
                                     </div>
-                                    <div class="price"> ￥<{$detail['price']}> </div>
-                                    <p class="content"> <{$detail['description']}></p>
+                                    <div class="price"> ￥<{$commodity['price']}> </div>
+                                    <p class="content"> <{$commodity['description']}></p>
                                     <div class="row clear-mar-lr">
-                                        <img src="__PUBLIC__/img/test2.jpg" class="img-responsive img-circle desktop">
-                                        <label class="num"><{$detail['username']}></label>
-                                        <label class="num">(<{$detail['publish_time']}>天前)</label>
+                                        <img src="__PUBLIC__/picture/<{$commodity['avatar_url']}>" class="img-responsive img-circle desktop">
+                                        <label class="num"><{$commodity['username']}></label>
+                                        <label class="num">(<{$commodity['publish_time']}>天前)</label>
 
-                                        <if condition="$detail['save_num'] gt 99">
+                                        <if condition="$commodity['save_num'] gt 99">
                                             <label class="icon-sm num">99+</label>
                                             <else/>
-                                            <label class="icon-sm num"><{$detail['save_num']}></label>
+                                            <label class="icon-sm num"><{$commodity['save_num']}></label>
                                         </if>
                                         <label class="icon-sm save"></label>
-                                        <if condition="$detail['msg_num'] gt 99">
+                                        <if condition="$commodity['msg_num'] gt 99">
                                             <label class="icon-sm num">99+</label>
                                             <else/>
-                                            <label class="icon-sm num"><{$detail['msg_num']}></label>
+                                            <label class="icon-sm num"><{$commodity['msg_num']}></label>
                                         </if>
                                         <label class="icon-sm msg"></label>
                                     </div>
@@ -346,7 +346,7 @@
                     </div>
                     <div class="row">
                         <div class="list-group col-md-12">
-                            <div class="list-group-item">截止日期:&nbsp;&nbsp;&nbsp;&nbsp;<{detail['deadline']}></div>
+                            <div class="list-group-item">截止日期:&nbsp;&nbsp;&nbsp;&nbsp;<{$commodity['deadline']}></div>
                             <div class="list-group-item">留言
                                 <button class="btn btn-default mesg">留言</button>
                             </div>
@@ -395,19 +395,19 @@
                         <div class="col-xs-12 main">
                             <div class="row">
                                 <div class="col-xs-1 clear-pad-right">
-                                    <img src="__PUBLIC__/picture/<{$buy['avatar_url']}>" class="img-responsive img-circle avatar">
+                                    <img src="__PUBLIC__/picture/<{$commodity['avatar_url']}>" class="img-responsive img-circle avatar">
                                 </div>
                                 <div class="col-xs-10">
-                                    <h5><{$buy['seller_name']}></h5>
+                                    <h5><{$commodity['name']}></h5>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <img src="__PUBLIC__/picture/<{$buy['commodity_url']}>" class="img-responsive depict">
+                                    <img src="__PUBLIC__/picture/<{$commodity['pic_url'][0]}>" class="img-responsive depict">
                                 </div>
                                 <div class="col-xs-8 clear-pad">
-                                    <h4><{$buy['title']}></h4>
-                                    <p><{$buy['description']}></p>
+                                    <h4><{$commodity['title']}></h4>
+                                    <p><{$commodity['description']}></p>
                                 </div>
                             </div>
                             <div class="row margin-more">
@@ -415,7 +415,7 @@
                                     <h4>总金额</h4>
                                 </div>
                                 <div class="col-xs-8">
-                                    <h4 class="price"> ￥<{$buy['price']}> </h4>
+                                    <h4 class="price"> ￥<{$commodity['price']}> </h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -423,7 +423,7 @@
                                     <h4>接单人</h4>
                                 </div>
                                 <div class="col-xs-8">
-                                    <h4> <{$buy['buyer_name']}> </h4>
+                                    <h4> <{$currentUsername}> </h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -431,7 +431,7 @@
                                     <h4>联系方式</h4>
                                 </div>
                                 <div class="col-xs-8">
-                                    <h4> <{$buy['buyer_phone']}> </h4>
+                                    <h4> <{$currentUserPhone}> </h4>
                                 </div>
                             </div>
                         </div>

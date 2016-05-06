@@ -23,6 +23,9 @@ class SkillController extends Controller
         $commodity = new CommodityController();
         $array = $commodity->browse(SKILL);
         $this->assign('commodities',$array);
+        $this->assign('currentUsername',$_SESSION[CURRENT_LOGIN_USERNAME]);
+        $this->assign('currentUserPhone',$_SESSION[CURRENT_LOGIN_PHONE]);
+
         $this->display('main/market-main');
 
 

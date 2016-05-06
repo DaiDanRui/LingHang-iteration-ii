@@ -95,11 +95,11 @@ function sendCURL($headers,$dataJson,$URL){
     return $response;
 }
 
-define('CURRENT_LOGIN_ID',256);
-define('CURRENT_LOGIN_USERNAME',257);
+define('CURRENT_LOGIN_ID',15256);
+define('CURRENT_LOGIN_USERNAME',12257);
 define('BROWSE_PAGE_SIZE',10);
-define('CURRENT_LOGIN_PHONE',258);
-define('CURRENT_LOGIN_AVATAR',259);
+define('CURRENT_LOGIN_PHONE',12258);
+define('CURRENT_LOGIN_AVATAR',12259);
 define('REWARD',1);
 define('SKILL',2);
 define('DEFAULT_AVATAR','avatar.jpg');
