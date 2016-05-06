@@ -20,49 +20,55 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
-            <div class="panel panel-default main-card">
-                <div class="panel-heading">
-                    <div class="row clear-mar-lr">
-                        <div class="col-xs-2 clear-pad mobile">
-                            <img src="../../img/test2.jpg" class="img-responsive img-circle">
+            <foreach name="stars" item="star">
+                <div class="panel panel-default main-card">
+                    <div class="panel-heading">
+                        <div class="row clear-mar-lr">
+                            <div class="col-xs-2 clear-pad mobile">
+                                <img src="<{star->avatar_url}>" class="img-responsive img-circle">
+                            </div>
+                            <div class="col-md-12 col-xs-8 clear-pad">
+                                <h5><{$star->title}></h5>
+                                <h5 class="price desktop">￥<{$star->price}></h5>
+                            </div>
+                            <div class="col-xs-2 clear-pad mobile">
+                                <h5 class="price">￥<{$star->price}></h5>
+                            </div>
                         </div>
-                        <div class="col-md-12 col-xs-8 clear-pad">
-                            <h5>线性代数</h5>
-                            <h5 class="price desktop">$178</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row clear-mar-lr">
+                            <{$star->description}>
                         </div>
-                        <div class="col-xs-2 clear-pad mobile">
-                            <h5 class="price">$178</h5>
+                        <div class="row main-imgs">
+                            <foreach name="$star->images" item="image">
+                                <div class="col-xs-4">
+                                    <img src="<{$image}>" class="img-responsive img-square img-full mobile">
+                                </div>
+                            </foreach>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row clear-mar-lr">
+                            <img src="../../img/test2.jpg" class="img-responsive img-circle desktop">
+                            <label class="num"><{$star->username}></label>
+                            <label class="num">(<{$star->publish_time}>天前)</label>
+                            <if condition="<{$star->save_num}> gt 99">
+                                <label class="icon-sm num">99+</label>
+                            <else/>
+                                <label class="icon-sm num"><{$star->save_num}></label>
+                            </if>
+                            <label class="icon-sm save"></label>
+                            <if condition="<{$star->msg_num}> gt 99">
+                                <label class="icon-sm num">99+</label>
+                                <else/>
+                                <label class="icon-sm num"><{$star->msg_num}></label>
+                            </if>
+                            <label class="icon-sm msg"></label>
                         </div>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <div class="row clear-mar-lr">
-                        Org是伪指令(不生成对应的二进制指令，只是汇
-                    </div>
-                    <div class="row main-imgs">
-                        <div class="col-xs-4">
-                            <img src="../../img/test2.jpg" class="img-responsive img-square img-full mobile">
-                        </div>
-                        <div class="col-xs-4">
-                            <img src="../../img/test3.jpg" class="img-responsive img-square img-full mobile">
-                        </div>
-                        <div class="col-xs-4">
-                            <img src="../../img/test4.jpg" class="img-responsive img-square img-full mobile">
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <div class="row clear-mar-lr">
-                        <img src="../../img/test2.jpg" class="img-responsive img-circle desktop">
-                        <label class="num">CR 14</label>
-                        <label class="num">(1天前)</label>
-                        <label class="icon-sm num">99+</label>
-                        <label class="icon-sm save"></label>
-                        <label class="icon-sm num">39</label>
-                        <label class="icon-sm msg"></label>
-                    </div>
-                </div>
-            </div>
+            </foreach>
         </div>
     </div>
 </div>

@@ -20,85 +20,81 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
-            <div class="panel panel-default main-card">
-                <div class="panel-heading">
-                    <div class="row clear-mar-lr">
-                        <div class="col-xs-2 clear-pad mobile">
-                            <img src="../../img/test2.jpg" class="img-responsive img-circle">
-                        </div>
-                        <div class="col-md-12 col-xs-8 clear-pad">
-                            <h5>CR for me</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-10">
-                            <h4>有同学教计组吗</h4>
-                        </div>
-                        <div class="col-xs-2 clear-pad-left">
-                            <h5 class="price">$180</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="row">
-                                <div class="col-xs-5 clear-pad-right">
-                                    <h5>语言表达</h5>
-                                </div>
-                                <div class="col-xs-7 clear-pad-left">
-                                    <h5>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </h5>
-                                </div>
+            <foreach name = "comments" item = "comment">
+                <div class="panel panel-default main-card">
+                    <div class="panel-heading">
+                        <div class="row clear-mar-lr">
+                            <div class="col-xs-2 clear-pad mobile">
+                                <img src="<{$comment->avatar_url}>" class="img-responsive img-circle">
                             </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="row">
-                                <div class="col-xs-5 clear-pad-right">
-                                    <h5>耐心</h5>
-                                </div>
-                                <div class="col-xs-7 clear-pad-left">
-                                    <h5>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </h5>
-                                </div>
+                            <div class="col-md-12 col-xs-8 clear-pad">
+                                <h5><{$comment->username}> for me</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="row">
-                                <div class="col-xs-5 clear-pad-right">
-                                    <h5>总体</h5>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <h4><{$comment->title}></h4>
+                            </div>
+                            <div class="col-xs-2 clear-pad-left">
+                                <h5 class="price">￥<{$comment->price}></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-5 clear-pad-right">
+                                        <h5>语言表达</h5>
+                                    </div>
+                                    <div class="col-xs-7 clear-pad-left">
+                                        <h5>
+                                            <for start="1" end="<{$comment->language_starts}>">
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            </for>
+                                        </h5>
+                                    </div>
                                 </div>
-                                <div class="col-xs-7 clear-pad-left">
-                                    <h5>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </h5>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-5 clear-pad-right">
+                                        <h5>耐心</h5>
+                                    </div>
+                                    <div class="col-xs-7 clear-pad-left">
+                                        <h5>
+                                            <for start="1" end="<{$comment->patient_starts}>">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </for>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-5 clear-pad-right">
+                                        <h5>总体</h5>
+                                    </div>
+                                    <div class="col-xs-7 clear-pad-left">
+                                        <h5>
+                                            <for start="1" end="<{$comment->total_starts}>">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </for>
+                                        </h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="panel-footer">
-                    <div class="row clear-mar-lr">
-                        <label class="num">2016-02-10</label>
+                    <div class="panel-footer">
+                        <div class="row clear-mar-lr">
+                            <label class="num"><{$comment->time}></label>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </foreach>
         </div>
     </div>
 </div>
