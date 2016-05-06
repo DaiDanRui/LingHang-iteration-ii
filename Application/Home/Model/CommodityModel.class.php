@@ -31,12 +31,5 @@ class CommodityModel extends Model
         'message_numbers'
     );
 
-    public function  test()
-    {
-        return 'get testing';
-    }
 
-
-    public function browse(){
-    }
 }

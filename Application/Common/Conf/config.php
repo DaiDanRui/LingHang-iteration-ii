@@ -15,7 +15,7 @@ return array(
 
         'skill/browse' => 'skill/browse',
         'skill/browse/page/:page' => 'skill/browse',
-        'skill/upload' => 'skill/uploadPictures',
+        'commodity/upload' => 'commodity/upload',
         'skill/details/id/:id' => 'skill/details',
 
         'myCommodity/skill/page/:page'=>'myCommodity/publishSkill',

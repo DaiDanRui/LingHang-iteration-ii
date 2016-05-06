@@ -10,8 +10,8 @@ namespace Home\Controller;
 
 
 use Home\Model\CommodityModel;
-use Home\Model\MessageModel;
 use Home\Model\PictureModel;
+use Home\Model\PraiseModel;
 use Think\Controller;
 
 class CommodityController extends Controller
@@ -71,11 +71,12 @@ class CommodityController extends Controller
         return $rows;
     }
 
-    public function uploadPage(){
+    public function uploadPage($type){
         if(isLogined()){
-            $this->display('');
+            $this->error('');
         }
-        $this->display('');
+        $this->assign('type',$type);
+        $this->display('main/market-skill-publish');
     }
 
     /**
@@ -85,6 +86,11 @@ class CommodityController extends Controller
     {
         if(!isLogined()){
             $this->success('','');
+            exit;
+        }
+        else{
+            echo  'upload';
+            exit;
         }
         $commodity_message = array(
             'course_or_reward'  => (int)I('course_or_reward'),
@@ -155,7 +161,8 @@ class CommodityController extends Controller
         );
     }
 
-    public function getMessage(){
+
+    public function getMessageJson(){
         $commodity_id = I('id');
         $array = $this->_getMessage($commodity_id);
         $this->ajaxReturn($array);
@@ -183,28 +190,6 @@ class CommodityController extends Controller
             $publish_time = getBeforetime($publish_time);
         }
         return $rows;
-    }
-
-    /**
-     * star ,点赞并收藏
-     */
-    public function praise()
-    {
-        $commodity_id = I('id');
-        $praiser_id = $_SESSION[CURRENT_LOGIN_ID];
-        $model = new MessageModel();
-        $praiseArray = array(
-            'commodity_id'=>$commodity_id,
-            'praiser_id'=>$praiser_id,
-        );
-        $result = $model->add($praiseArray);
-        if(!$result){
-            $this->error('');
-        }else{
-            $where = array('commodity_id'=>$commodity_id);
-            $result = $model->table('tbl_commodity')->where($where)->setInc('praise',1);
-            dump($result);
-        }
     }
 
 }

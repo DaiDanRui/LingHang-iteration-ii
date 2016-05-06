@@ -23,6 +23,10 @@ class StarController extends  Controller
      * 赞 收藏
      */
     public function add(){
+        if(!isLogined()){
+            $this->success('请先登录','login/login');
+            exit;
+        }
         $commodity_id = I('commodity_id');
         $user_id = $_SESSION[CURRENT_LOGIN_ID];
         $star= array('commodity_id'=>$commodity_id,'praiser_id'=>$user_id);
@@ -30,7 +34,16 @@ class StarController extends  Controller
         $selectResult = $model->where($star)->select();
         if(empty($selectResult)){
             $model->add($star);
+            $result =  $model->add($star);
+            if(!$result){
+                $this->error('add failed');
+            }else{
+                $where = array('commodity_id'=>$commodity_id);
+                $result = $model->table('tbl_commodity')->where($where)->setInc('praise',1);
+                dump($result);
+            }
         }
+
     }
 
     /**

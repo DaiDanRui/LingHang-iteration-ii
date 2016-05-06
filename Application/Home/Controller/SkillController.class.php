@@ -25,19 +25,13 @@ class SkillController extends Controller
         $this->assign('commodities',$array);
         $this->assign('currentUsername',$_SESSION[CURRENT_LOGIN_USERNAME]);
         $this->assign('currentUserPhone',$_SESSION[CURRENT_LOGIN_PHONE]);
-
+        $this->assign('type',SKILL);
         $this->display('main/market-main');
 
 
     }
 
-    /**
-     * 上传
-     */
-    public function upload()
-    {
 
-    }
 
     /**
      * 详细查看某一个具体悬赏或者技能
