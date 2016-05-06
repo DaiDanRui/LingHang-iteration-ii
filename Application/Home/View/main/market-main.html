@@ -66,13 +66,24 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-md-12 clear-pad search-container desktop">
-            <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+        <div class="col-md-12 clear-pad search-container desktop">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h3>
+                        我们眼中第二好的技能交流平台
+                    </h3>
+                </div>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+            <div class="row">
+                <form class="col-md-6 col-md-offset-3 search-form">
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">搜索</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -115,55 +126,106 @@
                 </div>
             </div>
             <div class="col-md-8 col-xs-12">
-                <div class="row main-row">
-                    <img src="../../img/test1.jpg" class="main-img img-responsive img-full desktop">
-                    <div class="panel panel-default main-card">
-                        <div class="panel-heading">
-                            <div class="row clear-mar-lr">
-                                <div class="col-xs-2 clear-pad mobile">
-                                    <img src="../../img/test2.jpg" class="img-responsive img-circle">
+                <foreach name = "commodities" item = "commodity">
+                    <div class="row main-row">
+                        <img src="<{$commodity->pic_url}>" class="main-img img-responsive img-full desktop">
+                        <div class="panel panel-default main-card">
+                            <div class="panel-heading to-detail">
+                                <div class="row clear-mar-lr">
+                                    <div class="col-xs-2 clear-pad mobile">
+                                        <img src="<{$user_avatar_url}>" class="img-responsive img-circle">
+                                    </div>
+                                    <div class="col-md-12 col-xs-8 clear-pad">
+                                        <h5><{$commodity->title}></h5>
+                                        <h5 class="price desktop">￥<{$commodity->price}></h5>
+                                    </div>
+                                    <div class="col-xs-2 clear-pad mobile">
+                                        <h5 class="price">￥<{$commodity->price}></h5>
+                                    </div>
                                 </div>
-                                <div class="col-md-12 col-xs-8 clear-pad">
-                                    <h5>线性代数</h5>
-                                    <h5 class="price desktop">$178</h5>
+                            </div>
+                            <div class="panel-body to-detail">
+                                <div class="row clear-mar-lr">
+                                    <{$commodity->description}>
                                 </div>
-                                <div class="col-xs-2 clear-pad mobile">
-                                    <h5 class="price">$178</h5>
+                                <div class="row main-imgs">
+                                    <foreach name = "images" item = "image">
+                                        <div class="col-xs-4">
+                                            <img src="<{$image}>" class="img-responsive img-square img-full mobile">
+                                        </div>
+                                    </foreach>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row clear-mar-lr">
+                                    <img src="../../img/test2.jpg" class="img-responsive img-circle desktop">
+                                    <label class="num"><{$commodity->username}></label>
+                                    <label class="num">(<{$commodity->publish_time}>天前)</label>
+                                    <if condition="<{$commodity->save_num}> gt 99">
+                                        <label class="icon-sm num">99+</label>
+                                    <else/>
+                                        <label class="icon-sm num"><{$commodity->save_num}></label>
+                                    </if>
+                                    <label class="icon-sm save"></label>
+                                    <if condition="<{$commodity->msg_num}> gt 99">
+                                        <label class="icon-sm num">99+</label>
+                                        <else/>
+                                        <label class="icon-sm num"><{$commodity->msg_num}></label>
+                                    </if>
+                                    <label class="icon-sm msg"></label>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body">
-                            <div class="row clear-mar-lr">
-                                Org是伪指令(不生成对应的二进制指令，只是汇编器使用的)
-                            </div>
-                            <div class="row main-imgs">
-                                <div class="col-xs-4">
-                                    <img src="../../img/test2.jpg" class="img-responsive img-square img-full mobile">
-                                </div>
-                                <div class="col-xs-4">
-                                    <img src="../../img/test3.jpg" class="img-responsive img-square img-full mobile">
-                                </div>
-                                <div class="col-xs-4">
-                                    <img src="../../img/test4.jpg" class="img-responsive img-square img-full mobile">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <div class="row clear-mar-lr">
-                                <img src="../../img/test2.jpg" class="img-responsive img-circle desktop">
-                                <label class="num">CR 14</label>
-                                <label class="num">(1天前)</label>
-                                <label class="icon-sm num">99+</label>
-                                <label class="icon-sm save"></label>
-                                <label class="icon-sm num">39</label>
-                                <label class="icon-sm msg"></label>
+                    </div>
+                </foreach>
+            </div>
+            <div class="col-md-2 side-right desktop">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-primary panel-1">
+                            <div class="panel-body">
+                                <button class="btn-block btn btn-default" data-toggle="modal" data-target="#publish-desk">
+                                    <h4>
+                                        一键发布
+                                        <img src="../../img/icon-publish.png">
+                                    </h4>
+                                    <p>
+                                        快和大家分享技能吧
+                                    </p>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-2 side desktop">
-                <div class="panel panel-primary">...</div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-primary panel-2">
+                            <div class="panel-heading">
+                                <h3>
+                                    Top 5
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="container-fluid">
+                                    <foreach name = "items" item = "item">
+                                        <div class="row">
+                                            <div class="col-md-3 clear-pad">
+                                                <h5>No.<{$item->rank}></h5>
+                                            </div>
+                                            <div class="col-md-3 clear-pad">
+                                                <img src="<{item->avatar_url}>" class="img-responsive img-circle">
+                                            </div>
+                                            <div class="col-md-6 clear-pad">
+                                                <h6><{$item->title}></h6>
+                                                <h6><{$item->username}></h6>
+                                            </div>
+                                        </div>
+                                    </foreach>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -177,10 +239,218 @@
     <a class="col-xs-12 pub-container"><img id="publish" class="img-circle img-responsive" src="../../img/icon-publish.png"></a>
 </nav>
 
+<!-- 模态框（publish） -->
+<div class="modal fade" id="publish-desk" tabindex="-1" role="dialog" aria-labelledby="publish-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="publish-title">
+                    发布技能
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <form class="form-horizontal col-xs-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="主题">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="简要概述:"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input id="boots-file" name="files" type="file" class="file form-control" multiple data-show-upload="false" data-show-caption="false">
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="deadline">截止日期</span>
+                                    <input class="form-control datepicker" placeholder="请选择" aria-describedby="deadline" data-date-format="yyyy-mm-dd">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="pay">赏金</span>
+                                    <input class="form-control" placeholder="请填写" aria-describedby="pay">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="phone">联系方式</span>
+                                    <input class="form-control" placeholder="请填写" aria-describedby="phone">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-block publish_btn_des center-block">确认发布</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
+
+
+<!-- 模态框（detail） -->
+<div class="modal fade" id="detail-desk" tabindex="-1" role="dialog" aria-labelledby="detail-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="detail-title">
+                    技能详情
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4 clear-pad">
+                            <img src="../../img/test1.jpg" class="detail-img img-responsive img-full">
+                        </div>
+                        <div class="col-md-8 body-right">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="title"><{$detail->title}></div>
+                                    <div>
+                                        <span class="label label-primary">舞蹈</span>
+                                        <span class="label label-primary">体育</span>
+                                    </div>
+                                    <div class="price"> ￥<{$detail->price}> </div>
+                                    <p class="content"> <{$detail->description}></p>
+                                    <div class="row clear-mar-lr">
+                                        <img src="../../img/test2.jpg" class="img-responsive img-circle desktop">
+                                        <label class="num"><{$detail->username}></label>
+                                        <label class="num">(<{$detail->publish_time}>天前)</label>
+
+                                        <if condition="<{$detail->save_num}> gt 99">
+                                            <label class="icon-sm num">99+</label>
+                                            <else/>
+                                            <label class="icon-sm num"><{$detail->save_num}></label>
+                                        </if>
+                                        <label class="icon-sm save"></label>
+                                        <if condition="<{$detail->msg_num}> gt 99">
+                                            <label class="icon-sm num">99+</label>
+                                            <else/>
+                                            <label class="icon-sm num"><{$detail->msg_num}></label>
+                                        </if>
+                                        <label class="icon-sm msg"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="list-group col-md-12">
+                            <div class="list-group-item">截止日期:&nbsp;&nbsp;&nbsp;&nbsp;<{detail->deadline}></div>
+                            <div class="list-group-item">留言
+                                <button class="btn btn-default mesg">留言</button>
+                            </div>
+                            <foreach name="detail_msgs" item = "detail_msg">
+                                <div class="list-group-item row clear-mar-lr">
+                                    <div class="col-xs-1 clear-pad">
+                                        <img src="<{$detail_msg->avatar_url}>" class="img-responsive img-circle msg-img">
+                                    </div>
+                                    <div class="col-xs-1 clear-pad msg-title">
+                                        <div><{$detail_msg->username}></div>
+                                        <{$detail_msg->publish_time}>天前
+                                    </div>
+                                    <div class="col-xs-9" style="line-height: 50px">
+                                        <{$detail_msg->content}>
+                                    </div>
+                                </div>
+                            </foreach>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-toggle="modal" data-target="#buy-desk">我要买</button>
+                <button class="btn" >取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
+
+
+<!-- 模态框（buy） -->
+<div class="modal fade" id="buy-desk" tabindex="-1" role="dialog" aria-labelledby="buy-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="buy-title">
+                    我要买
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 main">
+                            <div class="row">
+                                <div class="col-xs-1 clear-pad-right">
+                                    <img src="<{$buy->avatar_url}>" class="img-responsive img-circle avatar">
+                                </div>
+                                <div class="col-xs-10">
+                                    <h5><{$buy->seller_name}></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <img src="<{$buy->commodity_url}>" class="img-responsive depict">
+                                </div>
+                                <div class="col-xs-8 clear-pad">
+                                    <h4><{$buy->title}></h4>
+                                    <p><{$buy->description}></p>
+                                </div>
+                            </div>
+                            <div class="row margin-more">
+                                <div class="col-xs-4">
+                                    <h4>总金额</h4>
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4 class="price"> ￥<{$buy->price}> </h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4>接单人</h4>
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4> <{$buy->buyer_name}> </h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h4>联系方式</h4>
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4> <{$buy->buyer_phone}> </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" >确认</button>
+                <button class="btn" >取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
+
 <script src="../../js/jquery.js"></script>
 <script src="../../js/fileinput.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/bootstrap-datepicker.js"></script>
 <script src="../../js/common.js"></script>
+<script src="../../js/market-main.js"></script>
 </body>
 </html>
