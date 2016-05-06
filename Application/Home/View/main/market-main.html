@@ -128,12 +128,12 @@
             <div class="col-md-8 col-xs-12">
                 <foreach name = "commodities" item = "commodity">
                     <div class="row main-row">
-                        <img src="<{$commodity['pic_url']}>" class="main-img img-responsive img-full desktop">
+                        <img src="__PUBLIC__/picture/<{$commodity['pic_url'][0]}>" class="main-img img-responsive img-full desktop">
                         <div class="panel panel-default main-card">
                             <div class="panel-heading to-detail">
                                 <div class="row clear-mar-lr">
                                     <div class="col-xs-2 clear-pad mobile">
-                                        <img src="<{$user_avatar_url}>" class="img-responsive img-circle">
+                                        <img src="__PUBLIC__/picture/<{$user_avatar_url}>" class="img-responsive img-circle">
                                     </div>
                                     <div class="col-md-12 col-xs-8 clear-pad">
                                         <h5><{$commodity['title']}></h5>
@@ -151,7 +151,7 @@
                                 <div class="row main-imgs">
                                     <foreach name = "commodity['images']" item = "image">
                                         <div class="col-xs-4">
-                                            <img src="<{$image}>" class="img-responsive img-square img-full mobile">
+                                            <img src="__PUBLIC__/picture/<{$image}>" class="img-responsive img-square img-full mobile">
                                         </div>
                                     </foreach>
                                 </div>
@@ -213,7 +213,7 @@
                                                 <h5>No.<{$item->rank}></h5>
                                             </div>
                                             <div class="col-md-3 clear-pad">
-                                                <img src="<{item['avatar_url']}>" class="img-responsive img-circle">
+                                                <img src="__PUBLIC__/picture/<{item['avatar_url']}>" class="img-responsive img-circle">
                                             </div>
                                             <div class="col-md-6 clear-pad">
                                                 <h6><{$item['title']}></h6>
@@ -353,7 +353,7 @@
                             <foreach name="detail_msgs" item = "detail_msg">
                                 <div class="list-group-item row clear-mar-lr">
                                     <div class="col-xs-1 clear-pad">
-                                        <img src="<{$detail_msg['avatar_url']}>" class="img-responsive img-circle msg-img">
+                                        <img src="__PUBLIC__/picture/<{$detail_msg['avatar_url']}>" class="img-responsive img-circle msg-img">
                                     </div>
                                     <div class="col-xs-1 clear-pad msg-title">
                                         <div><{$detail_msg['username']}></div>
@@ -395,7 +395,7 @@
                         <div class="col-xs-12 main">
                             <div class="row">
                                 <div class="col-xs-1 clear-pad-right">
-                                    <img src="<{$buy['avatar_url']}>" class="img-responsive img-circle avatar">
+                                    <img src="__PUBLIC__/picture/<{$buy['avatar_url']}>" class="img-responsive img-circle avatar">
                                 </div>
                                 <div class="col-xs-10">
                                     <h5><{$buy['seller_name']}></h5>
@@ -403,7 +403,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <img src="<{$buy['commodity_url']}>" class="img-responsive depict">
+                                    <img src="__PUBLIC__/picture/<{$buy['commodity_url']}>" class="img-responsive depict">
                                 </div>
                                 <div class="col-xs-8 clear-pad">
                                     <h4><{$buy['title']}></h4>

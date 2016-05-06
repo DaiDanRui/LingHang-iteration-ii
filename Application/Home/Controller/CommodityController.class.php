@@ -31,7 +31,7 @@ class CommodityController extends Controller
             'release_date as publish_time',
             'star_numbers as save_num','message_numbers as msg_num','description',
             'deleted_date as deadline',
-            'group_concat(path) as images',
+            'group_concat(path) as pic_url',
             'nickname as name',
             'pic_path as url',
         );
@@ -64,7 +64,7 @@ class CommodityController extends Controller
         $model->table($table)->field($field)->where($where)->order($order)->page($page,BROWSE_PAGE_SIZE);
         $rows = $model->group('id')->select();
 //        dump($rows);
-        convertCommoditiesForHtml('images','publish_time',$rows);
+        convertCommoditiesForHtml('pic_url','publish_time',$rows);
 //        dump($rows);
         return $rows;
     }
@@ -151,6 +151,12 @@ class CommodityController extends Controller
             'msg'=>$message,
             'commodity'=>$row,
         );
+    }
+
+    public function getMessage(){
+        $commodity_id = I('id');
+        $array = $this->_getMessage($commodity_id);
+        $this->ajaxReturn($array);
     }
 
     /**
