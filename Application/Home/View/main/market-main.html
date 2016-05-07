@@ -23,9 +23,15 @@
                 <li><a href="<{:U('reward/browse')}>">悬赏</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<{:U('user/registerPage')}>">注册</a></li>
-                <li><a href="<{:U('user/loginPage')}>">登录</a></li>
-                <li><a href="#">关于</a></li>
+                <if condition="$isLogin eq true">
+                    <li><a href="#">CR14</a></li>
+                    <li class="active"><a href="#">我的</a></li>
+                    <li><a href="#">退出</a></li>
+                <else/>
+                    <li><a href="<{:U('user/registerPage')}>">注册</a></li>
+                    <li><a href="<{:U('user/loginPage')}>">登录</a></li>
+                    <li><a href="#">关于</a></li>
+                </if>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>
