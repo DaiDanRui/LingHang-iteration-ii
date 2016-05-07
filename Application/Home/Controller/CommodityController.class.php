@@ -84,12 +84,13 @@ class CommodityController extends Controller
      */
     public function upload()
     {
+        dump($_FILES);
+        dump(APP_PATH);
         if(!isLogined()){
             $this->success('','');
             exit;
         }
         else{
-            echo  'upload';
             exit;
         }
         $commodity_message = array(
@@ -112,6 +113,7 @@ class CommodityController extends Controller
     }
 
     private function uploadPictures($commodity_id){
+        import('@.Logic.FileUpload');
         $picturePaths = getUploadPicturesAndMove();
         $pictures = array();
         foreach ($picturePaths as $path){
