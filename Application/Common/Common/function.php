@@ -47,10 +47,12 @@ define('CURRENT_LOGIN_AVATAR',12259);
 define('REWARD',1);
 define('SKILL',2);
 define('DEFAULT_AVATAR','avatar.jpg');
+define('DEFUALT_PIC','pic.jpg');
 
 define('INCOME','收入');
 define('OUTCOME','支出');
 
+define('PLEASE_LOGIN','请先登录');
 
 function isLogined(){
     return isset($_SESSION[CURRENT_LOGIN_ID]);
@@ -108,7 +110,9 @@ function getCommodityTypesArray($index){
     }return $array[0];
 }
 
-
+function isDesktop(){
+    return true;
+}
 
 session_start();
 $_SESSION[CURRENT_LOGIN_ID] = 2;

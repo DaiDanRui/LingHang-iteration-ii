@@ -13,10 +13,16 @@ return array(
         'user/register'=>'user/register',
 
 
-        'skill/browse' => 'skill/browse',
-        'skill/browse/page/:page' => 'skill/browse',
+        'skill/browse' => 'commodity/skill',
+        'reward/browse' => 'commodity/reward',
+        'commodity/browse' => 'commodity/skill',
+        'skill/browse/page/:page' => 'commodity/browse',
+        'reward/browse/page/:page' => 'commodity/browse',
+        'commodity/browse/page/:page' => 'commodity/browse',
+
+        'skill/details/id/:id' => 'commodity/details',
+        'reward/details/id/:id' => 'commodity/details',
         'commodity/upload' => 'commodity/upload',
-        'skill/details/id/:id' => 'skill/details',
 
         'myCommodity/skill/page/:page'=>'myCommodity/publishSkill',
         'myCommodity/reward'=>'myCommodity/publishReward',
@@ -30,10 +36,13 @@ return array(
         'transaction/accepted/skill/page/:page'=>'transaction/transactionAcceptedSkill',
 
         'star/add/commodity_id/:commodity_id'=>'star/add',
-        'evaluation/myEvaluated/page/:page'=>'evaluation/myEvaluated',
-        'evaluation/myEvaluation/page/:page'=>'evaluation/myEvaluation',
+        'myStarReward'=>'star/myStarReward',
+        'myStarSkill'=>'star/myStarSkill',
+        'evaluation/reward/page/:page'=>'evaluation/myEvaluatedReward',
+        'evaluation/skill/page/:page'=>'evaluation/myEvaluatedSkill',
 
         'my-main'=>'mySetting/myPage',
+        'mySetting/myPage'=>'mySetting/myPage',
         'my-account/income'=>'budget/income',
         'my-account/outcome'=>'budget/outcome',
 

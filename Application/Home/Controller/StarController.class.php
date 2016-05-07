@@ -46,11 +46,17 @@ class StarController extends  Controller
 
     }
 
+    public function myStarSkill(){
+        $this->_myStars(SKILL);
+    }
+    public function myStarReward(){
+        $this->_myStars(REWARD);
+    }
     /**
      * 我赞过的
      * 我收藏的
      */
-    public function myStars(){
+    private function _myStars($type){
         $page = (int) I('page');
         $current_loginer = $_SESSION[CURRENT_LOGIN_ID];
         $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture','tbl_praise'=>'praise');
@@ -65,7 +71,8 @@ class StarController extends  Controller
             'pic_path as url',
         );
         $model = new PraiseModel();
-        $where = 'praise.praiser_id='."'$current_loginer'"
+
+        $where = 'praise.praiser_id='."'$current_loginer'".' AND commodity.course_or_reward='."'$type'"
                 . 'AND praise.commodity_id=commodity.commodity_id AND praise.commodity_id=picture.commodity_id';
         $model->table($table)->field($field)->where($where)->page($page,BROWSE_PAGE_SIZE)->group('id');
         $result = $model->select();

@@ -18,10 +18,27 @@ class CommodityController extends Controller
 {
 
 
+    public function skill(){
+        $this->_browseInfo(SKILL);
+    }
+    public function reward(){
+        $this->_browseInfo(REWARD);
+    }
     /**
      * 浏览商品模式
      */
-    public function browse($type)
+    public function browse()
+    {
+        $type = SKILL;
+        if(isset($_REQUEST['type'])){
+            $type = $_REQUEST['type']==REWARD? 1:2;
+        }
+        $array = $this->_browseInfo($type);
+    }
+    /**
+     * 浏览商品模式
+     */
+    private function _browseInfo($type)
     {
 
         $page = (int) I('page');
@@ -65,10 +82,14 @@ class CommodityController extends Controller
         $model = new CommodityModel();
         $model->table($table)->field($field)->where($where)->order($order)->page($page,BROWSE_PAGE_SIZE);
         $rows = $model->group('id')->select();
-//        dump($rows);
         convertCommoditiesForHtml('pic_url','publish_time',$rows);
-//        dump($rows);
-        return $rows;
+
+        $this->assign('commodities',$rows);
+        $this->assign('',$_SESSION[CURRENT_LOGIN_USERNAME]);
+        $this->assign('currecurrentUsernamentUserPhone',$_SESSION[CURRENT_LOGIN_PHONE]);
+        $this->assign('isLogin',isLogined());
+        $this->assign('type',$type);
+        $this->display('main/market-main');
     }
 
     public function uploadPage($type){
@@ -84,14 +105,12 @@ class CommodityController extends Controller
      */
     public function upload()
     {
-        dump($_FILES);
-        dump(APP_PATH);
         if(!isLogined()){
-            $this->success('','');
-            exit;
+            $this->success(PLEASE_LOGIN,U('user/loginPage'));
         }
-        else{
-            exit;
+        $phone =  I('phone');
+        if(strlen($phone)!=11){
+            $this->error('wrong format');
         }
         $commodity_message = array(
             'course_or_reward'  => (int)I('course_or_reward'),
@@ -99,35 +118,46 @@ class CommodityController extends Controller
             'publisher_id' => $_SESSION[CURRENT_LOGIN_ID]     ,
             'price' => (int)I('price') ,
             'release_date' =>  getCurrentTime(),
-            'deleted_date' => I('time'),
+            'deleted_date' => getCurrentTime(),//deadline
             'title' => I('topic'),
             'description' => I('description')  	,
-            'communication_number' => I('phone')
+            'communication_number' => $phone
             );
         $model = new CommodityModel();
         $result = $model->add($commodity_message);
-        dump($result);
         if($result){
-            $this->uploadPictures($result);
+            $this->_uploadPictures($result);
         }
     }
 
-    private function uploadPictures($commodity_id){
-        import('@.Logic.FileUpload');
-        $picturePaths = getUploadPicturesAndMove();
+
+    private function _uploadPictures($commodity_id){
+        import('@/Logic/FileUpload');
+        $pictureInfo = getUploadPicturesAndMove();
         $pictures = array();
-        foreach ($picturePaths as $path){
-            $pictures[] = array('commodity_id'=>$commodity_id,'path'=>$path);
+        foreach ($pictureInfo as $path){
+            $pictures[] = array('commodity_id'=>$commodity_id,'path'=>$path['savepath'].'/'.$path['savename']);
         }
         $model = new PictureModel();
-        $last_id = $model->addAll($pictures);
-        dump($last_id);
+        $model->addAll($pictures);
     }
+
+
+    public function details(){
+
+        $message = $this->detailsInformation();
+        foreach($message as $key=>$value ) {
+            $this->assign($key,$value);
+        }
+        $this->display('main/market-skill');
+    }
+
+
     /**
      * 详细查看某一个具体悬赏或者技能
      * 包括商品信息，留言信息
      */
-    public function details()
+    public function detailsInformation()
     {
         $commodity_id = I('id');
         $table = array(

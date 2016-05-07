@@ -25,7 +25,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <if condition="$isLogin eq true">
                     <li><a href="#">CR14</a></li>
-                    <li class="active"><a href="#">我的</a></li>
+                    <li class="active"><a href="<{:U('mySetting/myPage')}>">我的</a></li>
                     <li><a href="#">退出</a></li>
                 <else/>
                     <li><a href="<{:U('user/registerPage')}>">注册</a></li>
@@ -139,7 +139,7 @@
                             <div class="panel-heading to-detail">
                                 <div class="row clear-mar-lr">
                                     <div class="col-xs-2 clear-pad mobile">
-                                        <img src="__PUBLIC__/picture/<{$user_avatar_url}>" class="img-responsive img-circle">
+                                        <img src="__PUBLIC__/picture/<{$commodity['avatar_url']}>" class="img-responsive img-circle">
                                     </div>
                                     <div class="col-md-12 col-xs-8 clear-pad">
                                         <h5><{$commodity['title']}></h5>
@@ -155,7 +155,7 @@
                                     <{$commodity['description']}>
                                 </div>
                                 <div class="row main-imgs">
-                                    <foreach name = "commodity['images']" item = "image">
+                                    <foreach name = "commodity['pic_url']" item = "image">
                                         <div class="col-xs-4">
                                             <img src="__PUBLIC__/picture/<{$image}>" class="img-responsive img-square img-full mobile">
                                         </div>

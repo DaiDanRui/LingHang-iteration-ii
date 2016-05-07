@@ -31,10 +31,18 @@ class EvaluationController extends Controller
         dump($array_for_html);
     }
 
-    public function myEvaluated(){
+    public function myEvaluatedReward(){
+        $this->_myEvaluated(REWARD);
+    }
+    public function myEvaluatedSkill(){
+        $this->_myEvaluated(SKILL);
+    }
+
+    public function _myEvaluated($type){
 
         $evaluated_id = $_SESSION[CURRENT_LOGIN_ID];
         $where = 'evaluation.evaluated_id='."'$evaluated_id'"
+                .'AND commodity.skill_or_reward='."'$type'"
                 .' AND evaluation.evaluator_id=user.user_id';
         $array_for_html = $this->__commonEvaluation($where);
         dump($array_for_html);
