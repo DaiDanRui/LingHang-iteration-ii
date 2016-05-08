@@ -162,7 +162,7 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-md-10">
-                                            <if condition="<{$item[type]}> eq 1">
+                                            <if condition="$item[type] eq 1">
                                                 <h4>悬赏:&nbsp;&nbsp;<{$item[title]}></h4>
                                             <else/>
                                                 <h4>接单:&nbsp;&nbsp;<{$item[title]}></h4>
@@ -176,7 +176,7 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-10">
-                                            <if condition="<{$item[type]}> eq 1">
+                                            <if condition="$item[type] eq 1">
                                                 <div>支出:&nbsp;&nbsp;￥<{$item[money]}></div>
                                             <else/>
                                                 <div>收入:&nbsp;&nbsp;￥<{$item[money]}></div>

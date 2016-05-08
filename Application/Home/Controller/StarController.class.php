@@ -59,7 +59,7 @@ class StarController extends  Controller
     private function _myStars($type){
         $page = (int) I('page');
         $current_loginer = $_SESSION[CURRENT_LOGIN_ID];
-        $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture','tbl_praise'=>'praise');
+        $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture','tbl_praise'=>'praise','tbl_user'=>'user');
         $field = array(
             'commodity.commodity_id as id',
             'publisher_id',
@@ -72,14 +72,21 @@ class StarController extends  Controller
         );
         $model = new PraiseModel();
 
-        $where = 'praise.praiser_id='."'$current_loginer'".' AND commodity.course_or_reward='."'$type'"
-                . 'AND praise.commodity_id=commodity.commodity_id AND praise.commodity_id=picture.commodity_id';
+        $where = 'praise.praiser_id='."'$current_loginer'".' AND commodity.skill_or_reward='."'$type'"
+                . 'AND praise.commodity_id=commodity.commodity_id'
+                .' AND praise.commodity_id=picture.commodity_id'
+                .' AND commodity.publisher_id=user.user_id';
         $model->table($table)->field($field)->where($where)->page($page,BROWSE_PAGE_SIZE)->group('id');
         $result = $model->select();
 
         convertCommoditiesForHtml('imgs','time',$result);
-        dump($result);
-        return $result;
+        if(isDesktop()){
+            $page = 'personal/des-my-star';
+        }else{
+            $page = 'personal/my-star';
+        }
+        $this->assign('commodity',$result);
+        $this->display($page);
     }
 
 

@@ -2,8 +2,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../../css/boots/bootstrap.min.css" rel="stylesheet">
-    <link href="../../css/less/personal/personal-my-publish.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/boots/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/less/personal/personal-my-publish.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row main-imgs">
-                                <foreach name = "publish->images" item = "image">
+                                <foreach name = "$publish['images']" item = "image">
                                     <div class="col-xs-4">
                                         <img src="<{$image}>" class="img-responsive img-square img-full mobile">
                                     </div>
@@ -44,22 +44,22 @@
                         </div>
                         <div class="panel-footer">
                             <div class="row clear-mar-lr">
-                                <img src="../../img/test2.jpg" class="img-responsive img-circle desktop">
-                                <label class="num">剩余<{$publish->lefttime}>天</label>
+                                <img src="__PUBLIC__/img/test2.jpg" class="img-responsive img-circle desktop">
+                                <label class="num">剩余<{$publish['lefttime']}>天</label>
                                 <label class="icon-sm num">编辑</label>
                                 <label class="icon-sm save"></label>
                                 <label class="icon-sm num remove-btn">删除</label>
                                 <label class="icon-sm msg"></label>
-                                <if condition="<{$publish->save_num}> gt 99">
+                                <if condition="$publish['save_num'] gt 99">
                                     <label class="icon-sm num">99+</label>
                                 <else/>
-                                    <label class="icon-sm num"><{$publish->save_num}></label>
+                                    <label class="icon-sm num"><{$publish['save_num']}></label>
                                 </if>
                                 <label class="icon-sm save"></label>
-                                <if condition="<{$publish->msg_num}> gt 99">
+                                <if condition="$publish['msg_num'] gt 99">
                                     <label class="icon-sm num">99+</label>
                                     <else/>
-                                    <label class="icon-sm num"><{$publish->msg_num}></label>
+                                    <label class="icon-sm num"><{$publish['msg_num']}></label>
                                 </if>
                                 <label class="icon-sm msg"></label>
                             </div>
@@ -78,9 +78,9 @@
     </div>
 </nav>
 
-    <script src="../../js/jquery.js"></script>
-    <script src="../../js/fileinput.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/bootstrap-datepicker.js"></script>
-    <script src="../../js/common.js"></script>
+    <script src="__PUBLIC__/js/jquery.js"></script>
+    <script src="__PUBLIC__/js/fileinput.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap-datepicker.js"></script>
+    <script src="__PUBLIC__/js/common.js"></script>
 </body>

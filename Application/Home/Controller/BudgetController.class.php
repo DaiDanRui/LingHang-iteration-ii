@@ -56,31 +56,44 @@ class BudgetController extends Controller
 
 
 
-    public function budgetPay(){
+    public function outcome(){
         $loginer = $_SESSION[CURRENT_LOGIN_ID];
         $where = " payer_id='$loginer' ".' AND user.user_id=holder_id AND transaction.commodity_id=commodity.commodity_id ';
         $ret = $this->_budget($where);
         $this->_converBudgetForHtml($ret,OUTCOME);
+        $this->assign('type',0);
+        if(isDesktop()){
+            $page = ('personal/des-my-account');
+        }else{
+            $page = ('personal/my-account');
+        }$this->display($page);
     }
 
-    public function budgetIncome(){
+    public function income(){
         $current_userr = $_SESSION[CURRENT_LOGIN_ID];
-        $where = " holder_id='$current_userr''".' AND user.user_id=payer_id AND transaction.commodity_id=commodity.commodity_id ';
+        $where = " holder_id='$current_userr'".' AND user.user_id=payer_id AND transaction.commodity_id=commodity.commodity_id ';
         $ret = $this->_budget($where);
         $this->_converBudgetForHtml($ret,INCOME);
+        $this->assign('type',1);
+        if(isDesktop()){
+            $page = ('personal/des-my-account');
+        }else{
+            $page = ('personal/my-account');
+        }
+        $this->display($page);
     }
 
 
     private function _budget($where){
 
-        $tables = array('tbl_commodity commodity','tbl_budget budget','tbl_user user');
+        $tables = array('tbl_commodity'=> 'commodity','tbl_transaction'=>'transaction','tbl_budget' => 'budget','tbl_user'=> 'user');
         $fields = array(
             'publisher_id',
             'pay_date as time',
             'price',
             'title',
             'commodity.commodity_id',
-            'course_or_reward as type',
+            'skill_or_reward as type',
             'user_id as trader'
         );
         $model = new BudgetModel();

@@ -31,6 +31,7 @@ class EvaluationController extends Controller
         dump($array_for_html);
     }
 
+
     public function myEvaluatedReward(){
         $this->_myEvaluated(REWARD);
     }
@@ -45,7 +46,13 @@ class EvaluationController extends Controller
                 .'AND commodity.skill_or_reward='."'$type'"
                 .' AND evaluation.evaluator_id=user.user_id';
         $array_for_html = $this->__commonEvaluation($where);
-        dump($array_for_html);
+//        dump($array_for_html);
+        if(isDesktop()){
+            $page = 'personal/des-my-evaluate-detail';
+        }else{
+            $page = 'personal/my-evaluate-detail';
+        }
+        $this->display($page);
     }
 
 

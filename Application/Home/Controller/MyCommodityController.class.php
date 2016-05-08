@@ -23,7 +23,8 @@ class MyCommodityController extends Controller
      * 我发布的技能
      */
     public function  publishSkill(){
-        $this->publish(SKILL);
+         $this->publish(SKILL);
+
     }
 
     /**
@@ -41,7 +42,7 @@ class MyCommodityController extends Controller
 
         $page = (int) I('page');
         $current_user = $_SESSION[CURRENT_LOGIN_ID];
-        $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture');
+        $table = array('tbl_commodity' =>'commodity','tbl_picture' =>'picture','tbl_user'=>'user');
 
         $where = array(
             'commodity.skill_or_reward'=>$type,
@@ -52,21 +53,34 @@ class MyCommodityController extends Controller
             'publisher_id',
             'title','price',
             'release_date as time',
+            'deleted_date as lefttime',
             'star_numbers','message_numbers','description',
             'group_concat(path) as imgs',
             'nickname as name',
             'pic_path as url',
+            'star_numbers as save_num','message_numbers as msg_num',
         );;
         $model = new CommodityModel();
         $model->table($table)->field($field)->where($where)->page($page,BROWSE_PAGE_SIZE)
             ->where('commodity.commodity_id=picture.commodity_id');
         $rows = $model->select();
-        $imgs = &$rows['imgs'];
-        $time = &$rows['time'];
-        $imgs = explode(',',$imgs);
-        $time = getBeforetime($time);
-        dump($rows);
-        return $rows;
+
+        foreach($rows as &$row){
+            $imgs = &$row['imgs'];
+            $time = &$row['time'];
+            $lefttime = &$row['lefttime'];
+            $imgs = explode(',',$imgs);
+            $time = getBeforetime($time);
+            $lefttime = getBeforetime($lefttime);
+        }
+        $this->assign('publish',$rows);
+        $this->assign('type',$type);
+        if(isDesktop()){
+            $page = 'personal/des-my-publish';
+        }else{
+            $page = 'personal/my-publish';
+        }
+        $this->display($page);
     }
 
 

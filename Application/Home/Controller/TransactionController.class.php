@@ -20,7 +20,13 @@ class TransactionController extends  Controller
      */
     public function transactionAcceptedSkill(){
         $tree_value=$this->_transactionAccepted(SKILL);
-        dump($tree_value);
+        $this->assign('commodity',$tree_value);
+        if(isDesktop()){
+            $page = 'personal/des-my-accepted';
+        }else{
+            $page = 'personal/my-accepted';
+        }
+        $this->display($page);
     }
 
     /**
@@ -28,7 +34,13 @@ class TransactionController extends  Controller
      */
     public function transactionAcceptedReward(){
         $tree_value=$this->_transactionAccepted(REWARD);
-        dump($tree_value);
+        $this->assign('commodity',$tree_value);
+        if(isDesktop()){
+            $page = 'personal/des-my-accepted';
+        }else{
+            $page = 'personal/my-accepted';
+        }
+        $this->display($page);
     }
 
     private function _transactionAccepted($type){
@@ -44,7 +56,8 @@ class TransactionController extends  Controller
      */
     public function transactionSkill(){
         $tree_value=$this->_transaction(SKILL);
-        dump($tree_value);
+        $this->assign('commodity',$tree_value);
+
     }
 
     /**
@@ -52,7 +65,8 @@ class TransactionController extends  Controller
      */
     public function transactionReward(){
         $tree_value=$this->_transaction(REWARD);
-        dump($tree_value);
+        $this->assign('commodity',$tree_value);
+
     }
 
     /**
@@ -88,7 +102,6 @@ class TransactionController extends  Controller
         $model = new TransactionModel();
         $model->table($table)->field($field)->page($page,BROWSE_PAGE_SIZE)->where($whereString);
         $array = $model->select();
-        dump($array);
         convertCommoditiesForHtml('url_pic','time',$array);
         return $array;
     }
