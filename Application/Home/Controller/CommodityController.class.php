@@ -85,8 +85,8 @@ class CommodityController extends Controller
         convertCommoditiesForHtml('pic_url','publish_time',$rows);
 
         $this->assign('commodities',$rows);
-        $this->assign('',$_SESSION[CURRENT_LOGIN_USERNAME]);
-        $this->assign('currecurrentUsernamentUserPhone',$_SESSION[CURRENT_LOGIN_PHONE]);
+        $this->assign('currentUsername',$_SESSION[CURRENT_LOGIN_USERNAME]);
+        $this->assign('currentUserPhone',$_SESSION[CURRENT_LOGIN_PHONE]);
         $this->assign('isLogin',isLogined());
         $this->assign('type',$type);
         $this->display('main/market-main');

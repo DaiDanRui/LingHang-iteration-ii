@@ -111,7 +111,7 @@ function getCommodityTypesArray($index){
 }
 
 function isDesktop(){
-    return false;
+    return true;
 }
 
 session_start();
