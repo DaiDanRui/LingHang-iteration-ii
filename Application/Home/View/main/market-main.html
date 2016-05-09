@@ -262,10 +262,10 @@
                     <div class="row">
                         <form class="form-horizontal col-xs-12" method="post" action="<{:U('commodity/upload')}>" enctype="multipart/form-data">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="主题">
+                                <input type="text" class="form-control" placeholder="主题" name="title">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="简要概述:"></textarea>
+                                <textarea class="form-control"  name="description" placeholder="简要概述:"></textarea>
                             </div>
                             <div class="form-group">
                                 <input id="boots-file" name="files" type="file" class="file form-control" multiple data-show-upload="false" data-show-caption="false">
@@ -273,7 +273,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="deadline">截止日期</span>
-                                    <input class="form-control datepicker" placeholder="请选择" aria-describedby="deadline" data-date-format="yyyy-mm-dd">
+                                    <input class="form-control datepicker" placeholder="请选择" name="deadline" aria-describedby="deadline" data-date-format="yyyy-mm-dd">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -283,13 +283,14 @@
                                         <else/>
                                         <span class="input-group-addon" id="price">价格</span>
                                     </if>
-                                    <input class="form-control" placeholder="请填写" aria-describedby="pay">
+                                    <input class="form-control" placeholder="请填写" name="price" aria-describedby="price">
                                 </div>
                             </div>
+                            <div><input type="hidden" name="skill_or_reward" value="<{$type}>" /></div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="phone">联系方式</span>
-                                    <input class="form-control" placeholder="请填写" aria-describedby="phone">
+                                    <input class="form-control" placeholder="请填写" name="phone" aria-describedby="phone">
                                 </div>
                             </div>
                             <div class="modal-footer">

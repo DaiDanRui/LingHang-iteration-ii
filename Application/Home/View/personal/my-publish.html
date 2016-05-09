@@ -22,19 +22,19 @@
                         <div class="panel-heading">
                             <div class="row clear-mar-lr">
                                 <div class="col-md-12 col-xs-10 clear-pad">
-                                    <h5><{$publish->title}></h5>
-                                    <h5 class="price desktop">￥<{$publish->price}></h5>
+                                    <h5><{$publish['title']}></h5>
+                                    <h5 class="price desktop">￥<{$publish['price']}></h5>
                                 </div>
                                 <div class="col-xs-2 clear-pad mobile">
-                                    <h5 class="price">￥<{$publish->price}></h5>
+                                    <h5 class="price">￥<{$publish['price']}></h5>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="row main-imgs">
-                                <foreach name = "$publish['images']" item = "image">
+                                <foreach name = "publish['images']" item = "image">
                                     <div class="col-xs-4">
-                                        <img src="<{$image}>" class="img-responsive img-square img-full mobile">
+                                        <img src="__PUBLIC__/picture/<{$image}>" class="img-responsive img-square img-full mobile"/>
                                     </div>
                                 </foreach>
                             </div>

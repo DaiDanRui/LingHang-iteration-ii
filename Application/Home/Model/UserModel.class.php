@@ -38,4 +38,12 @@ class UserModel extends Model{
         'introduction',
 
     );
+
+    /**
+     * @param $id
+     */
+    function findByID($id){
+        $where = array('user_id'=>$id);
+        return $this->where($where)->select();
+    }
 }

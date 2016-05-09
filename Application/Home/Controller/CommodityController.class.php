@@ -109,24 +109,21 @@ class CommodityController extends Controller
             $this->success(PLEASE_LOGIN,U('user/loginPage'));
         }
         $phone =  I('phone');
-        if(strlen($phone)!=11){
-            $this->error('wrong format');
-        }
         $commodity_message = array(
-            'course_or_reward'  => (int)I('course_or_reward'),
+            'skill_or_reward'  => I('course_or_reward')==1?1:2,
             'type' =>getCommodityTypesAssociate($_POST['type']),
             'publisher_id' => $_SESSION[CURRENT_LOGIN_ID]     ,
             'price' => (int)I('price') ,
             'release_date' =>  getCurrentTime(),
             'deleted_date' => getCurrentTime(),//deadline
-            'title' => I('topic'),
-            'description' => I('description')  	,
-            'communication_number' => $phone
+            'title' => I('title'),
+            'description' => I('description')
             );
         $model = new CommodityModel();
         $result = $model->add($commodity_message);
         if($result){
             $this->_uploadPictures($result);
+            $this->success('commodity/browse');
         }
     }
 
@@ -135,9 +132,13 @@ class CommodityController extends Controller
         import('@/Logic/FileUpload');
         $pictureInfo = getUploadPicturesAndMove();
         $pictures = array();
+//        dump($pictureInfo);
+
         foreach ($pictureInfo as $path){
-            $pictures[] = array('commodity_id'=>$commodity_id,'path'=>$path['savepath'].'/'.$path['savename']);
+            $pictures[] = array('commodity_id'=>$commodity_id,'path'=>$path['savepath'].$path['savename']);
         }
+//        dump($pictures);
+//        exit;
         $model = new PictureModel();
         $model->addAll($pictures);
     }

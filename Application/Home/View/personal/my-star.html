@@ -22,7 +22,7 @@
                     <div class="panel-heading">
                         <div class="row clear-mar-lr">
                             <div class="col-xs-2 clear-pad mobile">
-                                <img src="<{star['avatar_url']}>" class="img-responsive img-circle">
+                                <img src="__PUBLIC__/picture/<{$star['avatar_url']}>" class="img-responsive img-circle">
                             </div>
                             <div class="col-md-12 col-xs-8 clear-pad">
                                 <h5><{$star['title']}></h5>
@@ -38,9 +38,9 @@
                             <{$star['description']}>
                         </div>
                         <div class="row main-imgs">
-                            <foreach name="$star['images']" item="image">
+                            <foreach name="star['images']" item="image">
                                 <div class="col-xs-4">
-                                    <img src="<{$image}>" class="img-responsive img-square img-full mobile">
+                                    <img src="__PUBLIC__/picture/<{$image}>" class="img-responsive img-square img-full mobile">
                                 </div>
                             </foreach>
                         </div>

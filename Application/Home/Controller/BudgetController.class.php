@@ -10,6 +10,7 @@ namespace Home\Controller;
 
 
 use Home\Model\BudgetModel;
+use Home\Model\UserModel;
 use Think\Controller;
 
 class BudgetController extends Controller
@@ -59,32 +60,20 @@ class BudgetController extends Controller
     public function outcome(){
         $loginer = $_SESSION[CURRENT_LOGIN_ID];
         $where = " payer_id='$loginer' ".' AND user.user_id=holder_id AND transaction.commodity_id=commodity.commodity_id ';
-        $ret = $this->_budget($where);
-        $this->_converBudgetForHtml($ret,OUTCOME);
-        $this->assign('type',0);
-        if(isDesktop()){
-            $page = ('personal/des-my-account');
-        }else{
-            $page = ('personal/my-account');
-        }$this->display($page);
+        $this->_budget($where,1);
+
+//        $this->assign('isIncome',0);
     }
 
     public function income(){
-        $current_userr = $_SESSION[CURRENT_LOGIN_ID];
-        $where = " holder_id='$current_userr'".' AND user.user_id=payer_id AND transaction.commodity_id=commodity.commodity_id ';
-        $ret = $this->_budget($where);
-        $this->_converBudgetForHtml($ret,INCOME);
-        $this->assign('type',1);
-        if(isDesktop()){
-            $page = ('personal/des-my-account');
-        }else{
-            $page = ('personal/my-account');
-        }
-        $this->display($page);
+        $current_user = $_SESSION[CURRENT_LOGIN_ID];
+        $where = " holder_id='$current_user'".' AND user.user_id=payer_id AND transaction.commodity_id=commodity.commodity_id ';
+         $this->_budget($where,1);
+
     }
 
 
-    private function _budget($where){
+    private function _budget($where,$isIncome){
 
         $tables = array('tbl_commodity'=> 'commodity','tbl_transaction'=>'transaction','tbl_budget' => 'budget','tbl_user'=> 'user');
         $fields = array(
@@ -94,25 +83,33 @@ class BudgetController extends Controller
             'title',
             'commodity.commodity_id',
             'skill_or_reward as type',
-            'user_id as trader'
+            'user.user_id as trader',
+            'user.nickname'=>'username',
         );
         $model = new BudgetModel();
-        $retarray = $model->table($tables)->field($fields)->where($where)->select();
-        return $retarray;
+        $rows = $model->table($tables)->field($fields)->where($where)->select();
+
+        $model = new UserModel();
+        $userInfo = $model->findByID($_SESSION[CURRENT_LOGIN_ID]);
+        if(!$userInfo){
+            $this->error(PLEASE_LOGIN);
+        }
+        $userInformation = $userInfo[0];
+        $this->assign('username',$userInformation['nickname']);
+        $this->assign('income',$userInformation['income']);
+        $this->assign('outcome',$userInformation['outcome']);
+        $this->assign('avatar_url',$_SESSION[CURRENT_LOGIN_AVATAR]);
+        $this->assign('isIncome',$isIncome);
+        $this->assign('records',$rows);
+
+        if(isDesktop()){
+            $page = ('personal/des-my-account');
+        }else{
+            $page = ('personal/my-account');
+        }
+        $this->display($page);
     }
 
-    /**
-     * @param $array
-     * @param $income_or_outcome string
-     * @return array
-     */
-    private function _converBudgetForHtml(&$array, $income_or_outcome){
-        foreach ($array as &$temp_account_ary) {
-            $course_or_reward = $temp_account_ary['type']==REWARD? '悬赏':'技能';
-            $account_ary[] = array(
-                'type' => $course_or_reward,
-                'price_type' =>$income_or_outcome,
-            );
-        }
-    }
+
+
 }

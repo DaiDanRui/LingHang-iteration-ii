@@ -69,14 +69,15 @@ class EvaluationController extends Controller
             'tbl_transaction'=>'transaction',
         );
         $fields = array(
-            'evaluation.score1 as point_study',
-            'evaluation.score2 as point_care',
-            'evaluation.score3 as point_total',
+            'evaluation.score1 as language_starts',
+            'evaluation.score2 as patient_starts',
+            'evaluation.score3 as total_starts',
             'user.pic_path as url_header',
             'user.nickname as username',
             'commodity.price',
             'commodity.title',
             'commodity.commodity_id',
+            'evaluation.evaluate_time as time'
         );
         $where .= ' AND evaluation.transaction_id=transaction.transaction_id'
                 .' AND transaction.commodity_id=commodity.commodity_id';

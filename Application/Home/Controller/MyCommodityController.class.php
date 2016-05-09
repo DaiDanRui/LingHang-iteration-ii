@@ -54,8 +54,10 @@ class MyCommodityController extends Controller
             'title','price',
             'release_date as time',
             'deleted_date as lefttime',
-            'star_numbers','message_numbers','description',
-            'group_concat(path) as imgs',
+            'star_numbers as save_num',
+            'message_numbers as msg_num',
+            'description',
+            'group_concat(path) as images',
             'nickname as name',
             'pic_path as url',
             'star_numbers as save_num','message_numbers as msg_num',
@@ -65,15 +67,16 @@ class MyCommodityController extends Controller
             ->where('commodity.commodity_id=picture.commodity_id');
         $rows = $model->select();
 
+
         foreach($rows as &$row){
-            $imgs = &$row['imgs'];
+            $imgs = &$row['images'];
             $time = &$row['time'];
             $lefttime = &$row['lefttime'];
             $imgs = explode(',',$imgs);
             $time = getBeforetime($time);
             $lefttime = getBeforetime($lefttime);
         }
-        $this->assign('publish',$rows);
+        $this->assign('publishes',$rows);
         $this->assign('type',$type);
         if(isDesktop()){
             $page = 'personal/des-my-publish';

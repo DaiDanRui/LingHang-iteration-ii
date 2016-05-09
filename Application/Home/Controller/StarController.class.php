@@ -64,11 +64,13 @@ class StarController extends  Controller
             'commodity.commodity_id as id',
             'publisher_id',
             'title','price',
-            'release_date as time',
-            'star_numbers','message_numbers','description',
-            'group_concat(path) as imgs',
-            'nickname as name',
-            'pic_path as url',
+            'release_date as publish_time',
+            'star_numbers as save_num',
+            'message_numbers as msg_num',
+            'description',
+            'group_concat(path) as images',
+            'nickname as username',
+            'pic_path as avatar_url',
         );
         $model = new PraiseModel();
 
@@ -79,13 +81,13 @@ class StarController extends  Controller
         $model->table($table)->field($field)->where($where)->page($page,BROWSE_PAGE_SIZE)->group('id');
         $result = $model->select();
 
-        convertCommoditiesForHtml('imgs','time',$result);
+        convertCommoditiesForHtml('images','publish_time',$result);
         if(isDesktop()){
             $page = 'personal/des-my-star';
         }else{
             $page = 'personal/my-star';
         }
-        $this->assign('commodity',$result);
+        $this->assign('stars',$result);
         $this->display($page);
     }
 
