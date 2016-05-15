@@ -10,6 +10,7 @@ namespace Home\Controller;
 
 
 use Home\Model\CommodityModel;
+use Home\Model\MessageModel;
 use Home\Model\PictureModel;
 use Home\Model\PraiseModel;
 use Think\Controller;
@@ -33,7 +34,7 @@ class CommodityController extends Controller
         if(isset($_REQUEST['type'])){
             $type = $_REQUEST['type']==REWARD? 1:2;
         }
-        $array = $this->_browseInfo($type);
+        $this->_browseInfo($type);
     }
     /**
      * 浏览商品模式
@@ -155,6 +156,15 @@ class CommodityController extends Controller
         $model->addAll($pictures);
     }
 
+    public function buy(){
+        $commodity_id = I('id');
+        $message = $this->_getCommodityInfo($commodity_id);
+
+        foreach($message as $key=>$value){
+            $this->assign($key,$value);
+        }
+        $this->display('main/market-skill-buy');
+    }
 
     public function details(){
 
@@ -173,6 +183,18 @@ class CommodityController extends Controller
     public function detailsInformation()
     {
         $commodity_id = I('id');
+
+        $row = $this->_getCommodityInfo($commodity_id);
+        $message = $this->_getMessage($commodity_id);
+
+        return array(
+            'msg'=>$message,
+            'commodity'=>$row,
+        );
+    }
+
+
+    private function _getCommodityInfo($commodity_id){
         $table = array(
             'tbl_commodity' =>'commodity','tbl_picture' =>'picture' ,'tbl_user' =>'user'
         );
@@ -190,20 +212,15 @@ class CommodityController extends Controller
         $where = array('commodity.commodity_id'=>$commodity_id,);
         $model = new CommodityModel();
         $model->table($table)->field($field)->where($where)
-              ->where('commodity.publisher_id=user.user_id AND commodity.commodity_id=picture.commodity_id')
-              ->group('commodity.commodity_id');
+            ->where('commodity.publisher_id=user.user_id AND commodity.commodity_id=picture.commodity_id')
+            ->group('commodity.commodity_id');
         $rows = $model->select();
 
         $row = &$rows[0];
         $publish_time = &$row['publish_time'];
         $publish_time = getBeforetime($publish_time);
         $row['id'] = $commodity_id;
-
-        $message = $this->_getMessage($commodity_id);
-        return array(
-            'msg'=>$message,
-            'commodity'=>$row,
-        );
+        return $row;
     }
 
 

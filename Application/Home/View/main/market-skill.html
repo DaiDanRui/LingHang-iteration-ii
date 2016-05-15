@@ -47,7 +47,7 @@
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-xs-4 col-xs-offset-8">
-                        <if condition = "$$commodity['save_num'] gt 99">
+                        <if condition = "$commodity['save_num'] gt 99">
                             <label class="icon-sm num">99+</label>
                         <else/>
                             <label class="icon-sm num"><{$commodity['save_num']}></label>
@@ -97,7 +97,7 @@
     <div class="container-fluid clear-pad nav-bottom">
         <a class="btn col-xs-4" type="text">留言</a>
         <a class="btn col-xs-4" type="text">收藏</a>
-        <a class="btn col-xs-4" type="text">我要买</a>
+        <a class="btn col-xs-4" type="text" href="<{: U('commodity/buy',array('id'=>$commodity['id']),'')}>">我要买</a>
     </div>
 </nav>
 <include file="common/footer"/>
