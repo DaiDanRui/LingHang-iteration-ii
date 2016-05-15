@@ -23,6 +23,10 @@ return array(
         'skill/details/id/:id' => 'commodity/details',
         'reward/details/id/:id' => 'commodity/details',
         'commodity/upload' => 'commodity/upload',
+        'uploadSkill' => 'commodity/uploadSkill',
+        'skill/upload' => 'commodity/uploadSkill',
+        'uploadReward' => 'commodity/uploadReward',
+        'reward/upload' => 'commodity/uploadReward',
 
         'myCommodity/skill/page/:page'=>'myCommodity/publishSkill',
         'myCommodity/reward'=>'myCommodity/publishReward',

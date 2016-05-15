@@ -21,8 +21,12 @@ function getUploadPicturesAndMove(){
 
     $info = $upload->upload();
     if ($info){
-        dump($info);
         return $info;
+    }else{
+        return array(
+            array(
+                'savepath'=>'','savename'=>DEFUALT_PIC
+            )
+        );
     }
-    return array(DEFUALT_PIC);
 }

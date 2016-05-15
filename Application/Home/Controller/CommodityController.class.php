@@ -84,6 +84,8 @@ class CommodityController extends Controller
         $rows = $model->group('id')->select();
         convertCommoditiesForHtml('pic_url','publish_time',$rows);
 
+        dump($rows);
+
         $this->assign('commodities',$rows);
         $this->assign('currentUsername',$_SESSION[CURRENT_LOGIN_USERNAME]);
         $this->assign('currentUserPhone',$_SESSION[CURRENT_LOGIN_PHONE]);
@@ -92,8 +94,14 @@ class CommodityController extends Controller
         $this->display('main/market-main');
     }
 
+    public function uploadSkill(){
+        $this->uploadPage(SKILL);
+    }
+    public  function  uploadReward(){
+        $this->uploadPage(REWARD);
+    }
     public function uploadPage($type){
-        if(isLogined()){
+        if(!isLogined()){
             $this->error('');
         }
         $this->assign('type',$type);
@@ -109,8 +117,9 @@ class CommodityController extends Controller
             $this->success(PLEASE_LOGIN,U('user/loginPage'));
         }
         $phone =  I('phone');
+        $skill_or_reward = I('skill_or_reward')==1?1:2;
         $commodity_message = array(
-            'skill_or_reward'  => I('course_or_reward')==1?1:2,
+            'skill_or_reward'  => $skill_or_reward,
             'type' =>getCommodityTypesAssociate($_POST['type']),
             'publisher_id' => $_SESSION[CURRENT_LOGIN_ID]     ,
             'price' => (int)I('price') ,
@@ -120,10 +129,15 @@ class CommodityController extends Controller
             'description' => I('description')
             );
         $model = new CommodityModel();
+//        dump($model);
         $result = $model->add($commodity_message);
         if($result){
             $this->_uploadPictures($result);
-            $this->success('commodity/browse');
+            if(SKILL==$skill_or_reward){
+                $this->success('success',U('myCommodity/publishSkill'));
+            }else{
+                $this->success('success',U('myCommodity/publishReward'));
+            }
         }
     }
 
@@ -132,13 +146,11 @@ class CommodityController extends Controller
         import('@/Logic/FileUpload');
         $pictureInfo = getUploadPicturesAndMove();
         $pictures = array();
-//        dump($pictureInfo);
 
         foreach ($pictureInfo as $path){
             $pictures[] = array('commodity_id'=>$commodity_id,'path'=>$path['savepath'].$path['savename']);
         }
-//        dump($pictures);
-//        exit;
+        dump($pictures);
         $model = new PictureModel();
         $model->addAll($pictures);
     }

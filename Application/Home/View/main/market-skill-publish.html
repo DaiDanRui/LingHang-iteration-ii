@@ -6,7 +6,7 @@
 </head>
 <body>
     <nav class="navbar navbar-fixed-top">
-        <if condition="<{$type}> eq 1">
+        <if condition="$type eq 1">
             发布悬赏
         <else/>
             发布技能
@@ -14,8 +14,9 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <form class="form-horizontal col-xs-12">
-                <div class="form-group">
+
+            <form class="form-horizontal col-xs-12" action="<{:U('commodity/upload')}>" method="get">
+                <div class="form-group" style="margin-top: 100px">
                     <input name="title" type="text" class="form-control" placeholder="主题">
                 </div>
                 <div class="form-group">
@@ -32,12 +33,13 @@
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <if condition="<{$type}> eq 1">
+                        <if condition="$type eq 1">
                             <span class="input-group-addon" id="pay">赏金</span>
                         <else/>
                             <span class="input-group-addon" id="price">价格</span>
                         </if>
                         <input name="price" class="form-control" placeholder="请填写" aria-describedby="pay">
+                        <input name="skill_or_reward" value="<{$type}>" style="display: none"/>
                     </div>
                 </div>
                 <div class="form-group">

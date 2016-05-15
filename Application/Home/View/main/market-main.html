@@ -212,7 +212,7 @@
                                     <foreach name = "items" item = "item">
                                         <div class="row">
                                             <div class="col-md-3 clear-pad">
-                                                <h5>No.<{$item->rank}></h5>
+                                                <h5>No.<{$item['rank']}></h5>
                                             </div>
                                             <div class="col-md-3 clear-pad">
                                                 <img src="__PUBLIC__/picture/<{item['avatar_url']}>" class="img-responsive img-circle">
@@ -235,8 +235,8 @@
 
 <nav class="navbar navbar-fixed-bottom mobile">
     <div class="container-fluid clear-pad nav-bottom">
-        <a class="btn col-xs-6" type="text">市场</a>
-        <a class="btn col-xs-6" type="text">悬赏</a>
+        <a class="btn col-xs-6"   href="<{:U('skill/browse')}>">市场</a>
+        <a class="btn col-xs-6"   href="<{:U('reward/browse')}>">悬赏</a>
     </div>
     <a class="col-xs-12 pub-container"><img id="publish" class="img-circle img-responsive" src="__PUBLIC__/img/icon-publish.png"></a>
 </nav>
