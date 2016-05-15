@@ -446,6 +446,9 @@
 #info-modal .nav-bottom {
   margin-bottom: -50px;
 }
+#info-modal .pub-container {
+  z-index: 2;
+}
 #info-modal .pub-container #publish {
   margin: 0 auto;
   width: 56px;
