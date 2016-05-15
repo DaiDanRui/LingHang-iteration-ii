@@ -10,6 +10,10 @@ $(document).ready(function () {
         var width = $(document).width();
         if (width > 970) {
             $("#detail-desk").modal();
+        } else {
+            var id = $(this).children(".commodity_id").attr("data-id");
+            //console.log(id);
+            location.href = "http://localhost/LingHang-iteration-ii/index.php/home/skill/details/id/"+id;
         }
     });
 });
