@@ -111,10 +111,10 @@ class TransactionController extends  Controller
      * 有人提请发布信息
      */
     public function create(){
-        $commodity_id = I('commodity_id');
+        $commodity_id = I('id');
         $date = getCurrentTime();
         $pay_id = uniqid();
-
+        $phone = i('phone');
         $transaction_information = array(
             'commodity_id'=>$commodity_id,
             'state'=>0,

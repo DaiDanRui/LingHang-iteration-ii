@@ -85,7 +85,7 @@ class CommodityController extends Controller
         $rows = $model->group('id')->select();
         convertCommoditiesForHtml('pic_url','publish_time',$rows);
 
-        dump($rows);
+
 
         $this->assign('commodities',$rows);
         $this->assign('currentUsername',$_SESSION[CURRENT_LOGIN_USERNAME]);
@@ -130,7 +130,7 @@ class CommodityController extends Controller
             'description' => I('description')
             );
         $model = new CommodityModel();
-//        dump($model);
+
         $result = $model->add($commodity_message);
         if($result){
             $this->_uploadPictures($result);
@@ -151,7 +151,7 @@ class CommodityController extends Controller
         foreach ($pictureInfo as $path){
             $pictures[] = array('commodity_id'=>$commodity_id,'path'=>$path['savepath'].$path['savename']);
         }
-        dump($pictures);
+
         $model = new PictureModel();
         $model->addAll($pictures);
     }
@@ -207,7 +207,7 @@ class CommodityController extends Controller
             'star_numbers as save_num',
             'message_numbers as msg_num',
             'picture.path as commodity_url',
-            'nickname as username',
+            'nickname as seller_name',
             'pic_path as avatar_url',
             'min(picture_id) as picture_id',
             'user.phone ',

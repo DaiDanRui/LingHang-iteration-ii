@@ -1,6 +1,6 @@
 <head>
     <include file="common/header" title="市场-我要买"/>
-    <link href="../../css/less/main/main-buy.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/less/main/main-buy.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-block publish_btn">确认</button>
+    <a class="btn btn-block publish_btn" href="<{: U('transaction/create',array('id'=>$id,'phone'=>$phone),'');}>">确认</a>
 </div>
 
 <include file="common/footer"/>

@@ -41,6 +41,11 @@ return array(
         'transaction/accepted/reward/page/:page'=>'transaction/transactionAcceptedReward',
         'transaction/accepted/skill/page/:page'=>'transaction/transactionAcceptedSkill',
 
+
+        'transaction/create/id/:id/phone/:phone'=>'transaction/create',
+
+
+
         'star/add/commodity_id/:commodity_id'=>'star/add',
         'myStarReward'=>'star/myStarReward',
         'myStarSkill'=>'star/myStarSkill',
