@@ -28,6 +28,8 @@ return array(
         'uploadReward' => 'commodity/uploadReward',
         'reward/upload' => 'commodity/uploadReward',
 
+        'commodity/buy' => 'commodity/buy',
+
         'myCommodity/skill/page/:page'=>'myCommodity/publishSkill',
         'myCommodity/reward'=>'myCommodity/publishReward',
         'my-accepted/skill'=>'myCommodity/publishSkill',

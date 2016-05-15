@@ -70,7 +70,6 @@ class MyCommodityController extends Controller
             ->page($page,BROWSE_PAGE_SIZE);
         $rows = $model->select();
 
-        dump($model->getLastSql());
         foreach($rows as &$row){
             $imgs = &$row['images'];
             $time = &$row['time'];
@@ -79,7 +78,7 @@ class MyCommodityController extends Controller
             $time = getBeforetime($time);
             $lefttime = getBeforetime($lefttime);
         }
-        dump($rows);
+
         $this->assign('publishes',$rows);
         $this->assign('avatar',$_SESSION[CURRENT_LOGIN_AVATAR]);
         $this->assign('type',$type);
