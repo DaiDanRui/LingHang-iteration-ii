@@ -22,7 +22,7 @@
                     <img src="__PUBLIC__/picture/<{$avatar_url}>" class="img-responsive img-circle avatar">
                 </div>
                 <div class="col-xs-10">
-                    <h5><{$seller_name}></h5>
+                    <h5><{$username}></h5>
                 </div>
             </div>
             <div class="row">
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-    <a class="btn btn-block publish_btn" href="<{: U('transaction/create',array('id'=>$id,'phone'=>$phone),'');}>">确认</a>
+    <a class="btn btn-block publish_btn" href="<{: U('transaction/create',array('id'=>$id,'phone'=>$phone,'title'=>$title),'');}>">确认</a>
 </div>
 
 <include file="common/footer"/>

@@ -12,6 +12,7 @@ namespace Home\Controller;
 use Home\Model\TransactionModel;
 use Think\Controller;
 
+
 class TransactionController extends  Controller
 {
 
@@ -115,6 +116,7 @@ class TransactionController extends  Controller
         $date = getCurrentTime();
         $pay_id = uniqid();
         $phone = i('phone');
+        $title = I('title');
         $transaction_information = array(
             'commodity_id'=>$commodity_id,
             'state'=>0,
@@ -123,9 +125,17 @@ class TransactionController extends  Controller
             'pay_id'=>$pay_id,
             'trader_id'=>$_SESSION[CURRENT_LOGIN_ID]
         );
-        $model = new TransactionModel();
-        $result = $model->add($transaction_information);
-        dump($result);
+//        dump($transaction_information);
+//        $model = new TransactionModel();
+//        $result = $model->add($transaction_information);
+        if(1){
+            import('@/Logic/SenderSMS');
+            send($phone,$title,$_SESSION[CURRENT_LOGIN_USERNAME],$_SESSION[CURRENT_LOGIN_PHONE]);
+            $this->success('sucess',U('commodity/skill'),3);
+        }else{
+            $this->error('wrong');
+        }
+
     }
 
     /**

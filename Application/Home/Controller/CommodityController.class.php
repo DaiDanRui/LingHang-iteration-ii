@@ -52,7 +52,7 @@ class CommodityController extends Controller
             'star_numbers as save_num','message_numbers as msg_num','description',
             'deleted_date as deadline',
             'group_concat(path) as pic_url',
-            'nickname as name',
+            'nickname as username',
             'pic_path as avatar_url',
         );
         $where = 'commodity.publisher_id=user.user_id'
@@ -207,7 +207,7 @@ class CommodityController extends Controller
             'star_numbers as save_num',
             'message_numbers as msg_num',
             'picture.path as commodity_url',
-            'nickname as seller_name',
+            'nickname as username',
             'pic_path as avatar_url',
             'min(picture_id) as picture_id',
             'user.phone ',
