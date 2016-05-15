@@ -160,9 +160,11 @@ class CommodityController extends Controller
         $commodity_id = I('id');
         $message = $this->_getCommodityInfo($commodity_id);
 
+
         foreach($message as $key=>$value){
             $this->assign($key,$value);
         }
+        $this->assign('buyer_name',$_SESSION[CURRENT_LOGIN_USERNAME]);
         $this->display('main/market-skill-buy');
     }
 
@@ -208,6 +210,7 @@ class CommodityController extends Controller
             'nickname as username',
             'pic_path as avatar_url',
             'min(picture_id) as picture_id',
+            'user.phone ',
         );
         $where = array('commodity.commodity_id'=>$commodity_id,);
         $model = new CommodityModel();
