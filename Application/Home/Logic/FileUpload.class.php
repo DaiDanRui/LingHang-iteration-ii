@@ -14,13 +14,16 @@ use Think\Upload;
 function getUploadPicturesAndMove(){
 
     $upload = new Upload();// 实例化上传类
-    $upload->maxSize  = 3145728 ;// 设置附件上传大小
+    $upload->maxSize  = 3145728*8 ;// 设置附件上传大小
     $upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
     $upload->rootPath = './Public/picture/';
     $upload->savePath =  '';// 设置附件上传目录
 
+    dump($_FILES);
+
     $info = $upload->upload();
-    if ($info){
+    dump($upload->getError());
+    if (!empty($info)){
         return $info;
     }else{
         return array(
