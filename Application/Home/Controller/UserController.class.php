@@ -59,7 +59,6 @@ class UserController extends Controller
             $this->error('nickname not exists');
         }else{
             $password = $search_array['password'];
-            dump($password);
             $user_id = $search_array['user_id'];
             $user_pic = $search_array['pic_path'];
             $user_phone = $search_array['phone'];
@@ -122,7 +121,7 @@ class UserController extends Controller
     public function logout(){
         if(isLogined()){
             session('[destroy]');
-            $this->error('成功登出',U('commodity/skill'),2);
+            $this->error('成功登出',U('user/loginPage'),1);
         }else{
             $this->error('请先登录',U('user/loginPage'),1);
         }

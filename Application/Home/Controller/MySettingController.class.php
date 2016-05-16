@@ -19,7 +19,7 @@ class MySettingController extends  Controller
      */
     public function myPage(){
         if(!isLogined()){
-            $this->error(PLEASE_LOGIN);
+            $this->error(PLEASE_LOGIN,U('user/loginPage'),1);
         }
         $page = 'personal/my-main';
         if(isDesktop()){
