@@ -104,7 +104,8 @@ body {
 .main-card .panel-footer .icon-sm {
   float: right;
   margin-top: 11px;
-  margin-right: 2px;
+  margin-right: 4px;
+  margin-left: 7px;
   width: 16px;
   height: 13px;
   background-size: cover;
@@ -112,6 +113,7 @@ body {
 .main-card .panel-footer .num {
   margin-top: 8px;
   margin-right: 3px;
+  margin-left: 3px;
   width: auto;
   font-weight: 200;
   color: #cccccc;
@@ -121,6 +123,15 @@ body {
 }
 .main-card .panel-footer .msg {
   background-image: url("../../../img/icon-msg.png");
+}
+.main-card .panel-footer .edit {
+  background-image: url("../../../img/icon-edit.png");
+}
+.main-card .panel-footer .eye {
+  background-image: url("../../../img/icon-eye.png");
+}
+.main-card .panel-footer .remove {
+  background-image: url("../../../img/icon-delete.png");
 }
 .main-card .panel-heading,
 .main-card .panel-footer {
@@ -170,6 +181,17 @@ body {
   color: white;
   border-width: 0;
   border-radius: 0;
+}
+@media (max-width: 768px) {
+  .main-container {
+    padding-bottom: 50px;
+  }
+}
+.home-back {
+  margin-top: 7px;
+}
+.navbar .title {
+  color: white;
 }
 body {
   padding-top: 50px;
@@ -503,7 +525,8 @@ body {
 #detail-desk .modal-content > .modal-body .body-right .icon-sm {
   float: right;
   margin-top: 11px;
-  margin-right: 2px;
+  margin-right: 4px;
+  margin-left: 7px;
   width: 16px;
   height: 13px;
   background-size: cover;
@@ -511,6 +534,7 @@ body {
 #detail-desk .modal-content > .modal-body .body-right .num {
   margin-top: 8px;
   margin-right: 3px;
+  margin-left: 3px;
   width: auto;
   font-weight: 200;
   color: #cccccc;
@@ -520,6 +544,15 @@ body {
 }
 #detail-desk .modal-content > .modal-body .body-right .msg {
   background-image: url("../../../img/icon-msg.png");
+}
+#detail-desk .modal-content > .modal-body .body-right .edit {
+  background-image: url("../../../img/icon-edit.png");
+}
+#detail-desk .modal-content > .modal-body .body-right .eye {
+  background-image: url("../../../img/icon-eye.png");
+}
+#detail-desk .modal-content > .modal-body .body-right .remove {
+  background-image: url("../../../img/icon-delete.png");
 }
 #detail-desk .modal-content > .modal-body .body-right .content {
   height: 100px;
@@ -597,7 +630,8 @@ body {
 #buy-desk .modal-content > .modal-body .body-right .icon-sm {
   float: right;
   margin-top: 11px;
-  margin-right: 2px;
+  margin-right: 4px;
+  margin-left: 7px;
   width: 16px;
   height: 13px;
   background-size: cover;
@@ -605,6 +639,7 @@ body {
 #buy-desk .modal-content > .modal-body .body-right .num {
   margin-top: 8px;
   margin-right: 3px;
+  margin-left: 3px;
   width: auto;
   font-weight: 200;
   color: #cccccc;
@@ -614,6 +649,15 @@ body {
 }
 #buy-desk .modal-content > .modal-body .body-right .msg {
   background-image: url("../../../img/icon-msg.png");
+}
+#buy-desk .modal-content > .modal-body .body-right .edit {
+  background-image: url("../../../img/icon-edit.png");
+}
+#buy-desk .modal-content > .modal-body .body-right .eye {
+  background-image: url("../../../img/icon-eye.png");
+}
+#buy-desk .modal-content > .modal-body .body-right .remove {
+  background-image: url("../../../img/icon-delete.png");
 }
 #buy-desk .modal-content > .modal-body .body-right .content {
   height: 100px;
@@ -698,7 +742,8 @@ body {
 #msg-desk .modal-content > .modal-body .body-right .icon-sm {
   float: right;
   margin-top: 11px;
-  margin-right: 2px;
+  margin-right: 4px;
+  margin-left: 7px;
   width: 16px;
   height: 13px;
   background-size: cover;
@@ -706,6 +751,7 @@ body {
 #msg-desk .modal-content > .modal-body .body-right .num {
   margin-top: 8px;
   margin-right: 3px;
+  margin-left: 3px;
   width: auto;
   font-weight: 200;
   color: #cccccc;
@@ -715,6 +761,15 @@ body {
 }
 #msg-desk .modal-content > .modal-body .body-right .msg {
   background-image: url("../../../img/icon-msg.png");
+}
+#msg-desk .modal-content > .modal-body .body-right .edit {
+  background-image: url("../../../img/icon-edit.png");
+}
+#msg-desk .modal-content > .modal-body .body-right .eye {
+  background-image: url("../../../img/icon-eye.png");
+}
+#msg-desk .modal-content > .modal-body .body-right .remove {
+  background-image: url("../../../img/icon-delete.png");
 }
 #msg-desk .modal-content > .modal-body .body-right .content {
   height: 100px;

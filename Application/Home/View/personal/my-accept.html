@@ -5,9 +5,9 @@
 <body>
 <nav class="navbar navbar-fixed-top">
     <div class="container-fluid clear-pad">
-        <div class="col-xs-1">
-
-        </div>
+        <a class="col-xs-1" onclick="history.go(-1)">
+            <img src="__PUBLIC__/img/back.png" class="home-back">
+        </a>
         <div class="col-xs-10">
             <div class="title"> 我接受的 </div>
         </div>
@@ -45,9 +45,9 @@
                             <img src="<{$accept['avatar_url']}>" class="img-responsive img-circle desktop">
                             <label class="num"><{$accept['time']}></label>
                             <label class="icon-sm num">删除</label>
-                            <label class="icon-sm save"></label>
+                            <label class="icon-sm remove"></label>
                             <label class="icon-sm num">查看评价</label>
-                            <label class="icon-sm msg"></label>
+                            <label class="icon-sm eye"></label>
                         </div>
                     </div>
                 </div>

@@ -5,23 +5,23 @@
 <body>
 <nav class="navbar navbar-fixed-top">
     <div class="container-fluid clear-pad">
-        <div class="col-xs-1">
-
-        </div>
+        <a class="col-xs-1" onclick="history.go(-1)">
+            <img src="__PUBLIC__/img/back.png" class="home-back">
+        </a>
         <div class="col-xs-10">
             <div class="title"> 我发布的 </div>
         </div>
     </div>
 </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid main-container">
         <div class="row">
             <div class="col-xs-12">
                 <foreach name="publishes" item="publish">
                     <div class="panel panel-default main-card">
                         <div class="panel-heading">
                             <div class="row clear-mar-lr">
-                                <div class="col-md-12 col-xs-10 clear-pad">
+                                <div class="col-md-12 col-xs-10">
                                     <h5><{$publish['title']}></h5>
                                     <h5 class="price desktop">￥<{$publish['price']}></h5>
                                 </div>
@@ -44,9 +44,9 @@
                                 <img src="__PUBLIC__/picture/<{$avatar}>" class="img-responsive img-circle desktop">
                                 <label class="num">剩余<{$publish['lefttime']}>天</label>
                                 <label class="icon-sm num">编辑</label>
-                                <label class="icon-sm save"></label>
+                                <label class="icon-sm edit"></label>
                                 <label class="icon-sm num remove-btn">删除</label>
-                                <label class="icon-sm msg"></label>
+                                <label class="icon-sm remove"></label>
                                 <if condition="$publish['save_num'] gt 99">
                                     <label class="icon-sm num">99+</label>
                                 <else/>
