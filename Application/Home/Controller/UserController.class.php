@@ -68,8 +68,7 @@ class UserController extends Controller
                 session(CURRENT_LOGIN_USERNAME,$nickname);
                 session(CURRENT_LOGIN_AVATAR,$user_pic);
                 session(CURRENT_LOGIN_PHONE,$user_phone);
-                dump(session());
-                $this->success('success to login',U('skill/browse'));
+                $this->success('success to login',U('skill/browse'),1);
             }else{
                 $this->error('wrong password');
             }
@@ -123,8 +122,9 @@ class UserController extends Controller
     public function logout(){
         if(isLogined()){
             session('[destroy]');
+            $this->error('成功登出',U('commodity/skill'),2);
         }else{
-            $this->error('请先登录');
+            $this->error('请先登录',U('user/loginPage'),1);
         }
     }
 

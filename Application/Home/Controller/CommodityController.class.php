@@ -101,7 +101,7 @@ class CommodityController extends Controller
         $this->uploadPage(SKILL);
     }
     public  function  uploadReward(){
-//        $this->uploadPage(REWARD);
+       $this->uploadPage(REWARD);
     }
     public function uploadPage($type){
         if(!isLogined()){
@@ -137,9 +137,9 @@ class CommodityController extends Controller
         if($result){
             $this->_uploadPictures($result);
             if(SKILL==$skill_or_reward){
-                $this->success('success',U('myCommodity/publishSkill'));
+                $this->success('success',U('commodity/skill'));
             }else{
-                $this->success('success',U('myCommodity/publishReward'));
+                $this->success('success',U('commodity/skill'));
             }
         }
     }

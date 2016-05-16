@@ -57,7 +57,7 @@ class TransactionController extends  Controller
      */
     public function transactionSkill(){
         $tree_value=$this->_transaction(SKILL);
-        $this->assign('commodity',$tree_value);
+        $this->assign('accepts',$tree_value);
         if(isDesktop()){
             $page = 'personal/des-my-accept';
         }else{
@@ -71,7 +71,7 @@ class TransactionController extends  Controller
      */
     public function transactionReward(){
         $tree_value=$this->_transaction(REWARD);
-        $this->assign('commodity',$tree_value);
+        $this->assign('accepts',$tree_value);
         if(isDesktop()){
             $page = 'personal/des-my-accept';
         }else{
@@ -93,6 +93,7 @@ class TransactionController extends  Controller
 
 
     private function _searchTransaction($whereString){
+
         $page = (int) I('page');
         $table = array(
             'tbl_transaction'=>'transaction',
@@ -100,20 +101,25 @@ class TransactionController extends  Controller
             'tbl_picture' =>'picture' ,
             'tbl_user' =>'user'
         );
+        $whereString = $whereString.' and commodity.commodity_id=picture.commodity_id ';
         $field = array(
             'commodity.commodity_id as id',
             'publisher_id',
             'title','price',
             'release_date as time',
             'star_numbers','message_numbers','description',
-            'group_concat(path) as commodity_url',
-            'nickname as acceptor',
+            'max(path) as commodity_url',
+            'nickname as username',
             'pic_path as avatar_url',
         );
         $model = new TransactionModel();
-        $model->table($table)->field($field)->page($page,BROWSE_PAGE_SIZE)->where($whereString);
+        $model->table($table)->field($field)->page($page,BROWSE_PAGE_SIZE)->where($whereString)->group('id');
         $array = $model->select();
-        convertCommoditiesForHtml('url_pic','time',$array);
+
+        foreach ($array as &$row){
+            $time = &$row['time'];
+            $time = getBeforetime($time);
+        }
         return $array;
     }
 
@@ -135,10 +141,10 @@ class TransactionController extends  Controller
             'pay_id'=>$pay_id,
             'trader_id'=>$_SESSION[CURRENT_LOGIN_ID]
         );
-//        dump($transaction_information);
-//        $model = new TransactionModel();
-//        $result = $model->add($transaction_information);
-        if(1){
+        dump($transaction_information);
+        $model = new TransactionModel();
+        $result = $model->add($transaction_information);
+        if($result){
             import('@/Logic/SenderSMS');
             $response = send($phone,$title,$_SESSION[CURRENT_LOGIN_USERNAME],$_SESSION[CURRENT_LOGIN_PHONE]);
             $this->success('sucess with '.$response,U('commodity/skill'),3);
