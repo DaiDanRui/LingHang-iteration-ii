@@ -2,6 +2,8 @@
 return array(
 	//'配置项'=>'配置值'
 
+    'SESSION_AUTO_STAR' => true,
+
     'URL_MODEL'=>1,
     /**路由配置*/
     'URL_ROUTER_ON'   => true,
@@ -22,6 +24,7 @@ return array(
 
         'skill/details/id/:id' => 'commodity/details',
         'reward/details/id/:id' => 'commodity/details',
+        'commodity/details/id/:id' => 'commodity/details',
         'commodity/upload' => 'commodity/upload',
         'uploadSkill' => 'commodity/uploadSkill',
         'skill/upload' => 'commodity/uploadSkill',

@@ -28,7 +28,6 @@ class EvaluationController extends Controller
         $evaluator = $_SESSION[CURRENT_LOGIN_ID];
         $where = 'evaluation.evaluator_id='."'$evaluator'".' AND evaluation.evaluated_id=user.user_id';
         $array_for_html = $this->__commonEvaluation($where);
-        dump($array_for_html);
     }
 
 
@@ -46,12 +45,14 @@ class EvaluationController extends Controller
                 .'AND commodity.skill_or_reward='."'$type'"
                 .' AND evaluation.evaluator_id=user.user_id';
         $array_for_html = $this->__commonEvaluation($where);
-//        dump($array_for_html);
+
+
         if(isDesktop()){
             $page = 'personal/des-my-evaluate-detail';
         }else{
             $page = 'personal/my-evaluate-detail';
         }
+        $this->assign('comments',$array_for_html);
         $this->display($page);
     }
 
@@ -72,7 +73,7 @@ class EvaluationController extends Controller
             'evaluation.score1 as language_starts',
             'evaluation.score2 as patient_starts',
             'evaluation.score3 as total_starts',
-            'user.pic_path as url_header',
+            'user.pic_path as avatar_url',
             'user.nickname as username',
             'commodity.price',
             'commodity.title',
@@ -83,7 +84,6 @@ class EvaluationController extends Controller
                 .' AND transaction.commodity_id=commodity.commodity_id';
         $model = new EvaluationModel();
         $evaluation_array = $model->table($tables)->field($fields)->page($page)->where($where)->select();
-        dump($evaluation_array);
         return $evaluation_array;
     }
 
@@ -137,7 +137,6 @@ class EvaluationController extends Controller
                 'score3'=>$score3
             );
             $result = $model->add($evaluation_array);
-            dump($result);
             return $result;
 
     }

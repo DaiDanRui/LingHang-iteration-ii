@@ -68,6 +68,7 @@ class UserController extends Controller
                 session(CURRENT_LOGIN_USERNAME,$nickname);
                 session(CURRENT_LOGIN_AVATAR,$user_pic);
                 session(CURRENT_LOGIN_PHONE,$user_phone);
+                dump(session());
                 $this->success('success to login',U('skill/browse'));
             }else{
                 $this->error('wrong password');

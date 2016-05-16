@@ -92,6 +92,7 @@ class CommodityController extends Controller
         $this->assign('currentUserPhone',$_SESSION[CURRENT_LOGIN_PHONE]);
         $this->assign('isLogin',isLogined());
         $this->assign('type',$type);
+        $this->assign('url',U(''));
         $this->display('main/market-main');
     }
 
@@ -164,11 +165,13 @@ class CommodityController extends Controller
         foreach($message as $key=>$value){
             $this->assign($key,$value);
         }
+
         $this->assign('buyer_name',$_SESSION[CURRENT_LOGIN_USERNAME]);
         $this->display('main/market-skill-buy');
     }
 
     public function details(){
+
 
         $message = $this->detailsInformation();
         foreach($message as $key=>$value ) {

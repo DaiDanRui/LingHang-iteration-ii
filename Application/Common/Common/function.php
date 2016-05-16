@@ -6,6 +6,8 @@
 * Date: 2016/4/3
 * Time: 21:40
 */
+
+
 /**
  * 具有函数副左右.
  * <br/>图片集合转换为数组‘url’
@@ -39,11 +41,11 @@ function convertCommoditiesWithOnePic($dateKey,&$tableRows){
 
 
 
-define('CURRENT_LOGIN_ID',15256);
-define('CURRENT_LOGIN_USERNAME',12257);
-define('BROWSE_PAGE_SIZE',10);
-define('CURRENT_LOGIN_PHONE',12258);
-define('CURRENT_LOGIN_AVATAR',12259);
+define('CURRENT_LOGIN_ID','id');
+define('CURRENT_LOGIN_USERNAME','name');
+define('BROWSE_PAGE_SIZE','page_size');
+define('CURRENT_LOGIN_PHONE','phone_number');
+define('CURRENT_LOGIN_AVATAR','avatar');
 define('REWARD',1);
 define('SKILL',2);
 define('DEFAULT_AVATAR','avatar.jpg');
@@ -114,8 +116,8 @@ function isDesktop(){
     return false;
 }
 
-session_start();
-$_SESSION[CURRENT_LOGIN_ID] = 3;
-$_SESSION[CURRENT_LOGIN_AVATAR] = DEFAULT_AVATAR;
-$_SESSION[CURRENT_LOGIN_PHONE] = 18795855867;
-$_SESSION[CURRENT_LOGIN_USERNAME] = 'dai';
+
+//$_SESSION[CURRENT_LOGIN_ID] = 3;
+//$_SESSION[CURRENT_LOGIN_AVATAR] = DEFAULT_AVATAR;
+//$_SESSION[CURRENT_LOGIN_PHONE] = 18795855867;
+//$_SESSION[CURRENT_LOGIN_USERNAME] = 'dai';

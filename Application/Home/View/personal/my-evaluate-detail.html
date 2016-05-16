@@ -22,20 +22,20 @@
                     <div class="panel-heading">
                         <div class="row clear-mar-lr">
                             <div class="col-xs-2 clear-pad mobile">
-                                <img src="<{$comment->avatar_url}>" class="img-responsive img-circle">
+                                <img src="__PUBLIC__/picture/<{$comment['avatar_url']}>" class="img-responsive img-circle">
                             </div>
                             <div class="col-md-12 col-xs-8 clear-pad">
-                                <h5><{$comment->username}> for me</h5>
+                                <h5><{$comment['username']}> for me</h5>
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-10">
-                                <h4><{$comment->title}></h4>
+                                <h4><{$comment['title']}></h4>
                             </div>
                             <div class="col-xs-2 clear-pad-left">
-                                <h5 class="price">￥<{$comment->price}></h5>
+                                <h5 class="price">￥<{$comment['price']}></h5>
                             </div>
                         </div>
                         <div class="row">
@@ -46,9 +46,9 @@
                                     </div>
                                     <div class="col-xs-7 clear-pad-left">
                                         <h5>
-                                            <!--<for start="1" end="<{$comment['language_starts']}>">-->
-                                            <!--<span class="glyphicon glyphicon-star"></span>-->
-                                            <!--</for>-->
+                                            <for start="2" end="$comment['language_starts']">
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            </for>
                                         </h5>
                                     </div>
                                 </div>
@@ -60,9 +60,9 @@
                                     </div>
                                     <div class="col-xs-7 clear-pad-left">
                                         <h5>
-                                            <!--<for start="1" end="<{$comment['patient_starts']}>">-->
-                                                <!--<span class="glyphicon glyphicon-star"></span>-->
-                                            <!--</for>-->
+                                            <for start="1" end="$comment['patient_starts']">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </for>
                                         </h5>
                                     </div>
                                 </div>
@@ -76,9 +76,9 @@
                                     </div>
                                     <div class="col-xs-7 clear-pad-left">
                                         <h5>
-                                            <!--<for start="1" end="<{$comment['total_starts']}>">-->
-                                                <!--<span class="glyphicon glyphicon-star"></span>-->
-                                            <!--</for>-->
+                                            <for start="3" end="$comment['total_starts']">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                            </for>
                                         </h5>
                                     </div>
                                 </div>

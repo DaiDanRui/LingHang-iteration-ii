@@ -52,7 +52,8 @@
         curl_setopt($curlConn, CURLOPT_URL, $URL);
 
         $response = curl_exec($curlConn);
-//    $responseCode = curl_getinfo($curlConn, CURLINFO_HTTP_CODE);
+        $responseCode = curl_getinfo($curlConn, CURLINFO_HTTP_CODE);
         curl_close($curlConn);
-        return $response;
+
+        return $responseCode;
     }

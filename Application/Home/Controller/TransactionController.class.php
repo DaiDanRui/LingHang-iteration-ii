@@ -21,7 +21,7 @@ class TransactionController extends  Controller
      */
     public function transactionAcceptedSkill(){
         $tree_value=$this->_transactionAccepted(SKILL);
-        $this->assign('commodity',$tree_value);
+        $this->assign('accepts',$tree_value);
         if(isDesktop()){
             $page = 'personal/des-my-accepted';
         }else{
@@ -35,7 +35,7 @@ class TransactionController extends  Controller
      */
     public function transactionAcceptedReward(){
         $tree_value=$this->_transactionAccepted(REWARD);
-        $this->assign('commodity',$tree_value);
+        $this->assign('accepts',$tree_value);
         if(isDesktop()){
             $page = 'personal/des-my-accepted';
         }else{
@@ -96,9 +96,9 @@ class TransactionController extends  Controller
             'title','price',
             'release_date as time',
             'star_numbers','message_numbers','description',
-            'group_concat(path) as url_pic',
+            'group_concat(path) as commodity_url',
             'nickname as acceptor',
-            'pic_path as url_header',
+            'pic_path as avatar_url',
         );
         $model = new TransactionModel();
         $model->table($table)->field($field)->page($page,BROWSE_PAGE_SIZE)->where($whereString);
@@ -130,8 +130,8 @@ class TransactionController extends  Controller
 //        $result = $model->add($transaction_information);
         if(1){
             import('@/Logic/SenderSMS');
-            send($phone,$title,$_SESSION[CURRENT_LOGIN_USERNAME],$_SESSION[CURRENT_LOGIN_PHONE]);
-            $this->success('sucess',U('commodity/skill'),3);
+            $response = send($phone,$title,$_SESSION[CURRENT_LOGIN_USERNAME],$_SESSION[CURRENT_LOGIN_PHONE]);
+            $this->success('sucess with '.$response,U('commodity/skill'),3);
         }else{
             $this->error('wrong');
         }
