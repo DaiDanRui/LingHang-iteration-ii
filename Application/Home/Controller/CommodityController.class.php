@@ -97,14 +97,15 @@ class CommodityController extends Controller
     }
 
     public function uploadSkill(){
+
         $this->uploadPage(SKILL);
     }
     public  function  uploadReward(){
-        $this->uploadPage(REWARD);
+//        $this->uploadPage(REWARD);
     }
     public function uploadPage($type){
         if(!isLogined()){
-            $this->error('');
+            $this->error('without login',U('user/loginPage'));
         }
         $this->assign('type',$type);
         $this->display('main/market-skill-publish');
@@ -160,19 +161,14 @@ class CommodityController extends Controller
     public function buy(){
         $commodity_id = I('id');
         $message = $this->_getCommodityInfo($commodity_id);
-
-
         foreach($message as $key=>$value){
             $this->assign($key,$value);
         }
-
         $this->assign('buyer_name',$_SESSION[CURRENT_LOGIN_USERNAME]);
         $this->display('main/market-skill-buy');
     }
 
     public function details(){
-
-
         $message = $this->detailsInformation();
         foreach($message as $key=>$value ) {
             $this->assign($key,$value);

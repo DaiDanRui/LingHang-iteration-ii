@@ -58,7 +58,12 @@ class TransactionController extends  Controller
     public function transactionSkill(){
         $tree_value=$this->_transaction(SKILL);
         $this->assign('commodity',$tree_value);
-
+        if(isDesktop()){
+            $page = 'personal/des-my-accept';
+        }else{
+            $page = 'personal/my-accept';
+        }
+        $this->display($page);
     }
 
     /**
@@ -67,7 +72,12 @@ class TransactionController extends  Controller
     public function transactionReward(){
         $tree_value=$this->_transaction(REWARD);
         $this->assign('commodity',$tree_value);
-
+        if(isDesktop()){
+            $page = 'personal/des-my-accept';
+        }else{
+            $page = 'personal/my-accept';
+        }
+        $this->display($page);
     }
 
     /**
