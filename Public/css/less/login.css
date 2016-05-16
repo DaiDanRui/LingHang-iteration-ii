@@ -1,4 +1,7 @@
 @import "../boots/bootstrap.css";
+body {
+  font-family: "Microsoft YaHei";
+}
 .img-full {
   width: 100%;
   height: auto;
@@ -41,8 +44,9 @@
   }
 }
 .main-card {
-  border: none;
-  margin-bottom: 0;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+  margin-bottom: 7px;
 }
 .main-card .panel-heading {
   padding: 0;
@@ -72,15 +76,18 @@
 }
 @media (max-width: 768px) {
   .main-card .panel-body {
+    padding-top: 4px;
+    padding-bottom: 4px;
     height: auto;
   }
   .main-card .panel-body .main-imgs {
     margin-left: 0;
     margin-right: 0;
+    margin-top: 3px;
   }
   .main-card .panel-body .main-imgs > .col-xs-4 {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 .main-card .panel-footer {
@@ -119,6 +126,18 @@
 .main-card .panel-footer {
   background-color: transparent;
   border: none;
+}
+@media (max-width: 768px) {
+  .main-card .panel-body,
+  .main-card .panel-footer {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .main-card .panel-body,
+  .main-card .panel-footer {
+    border-top: 1px solid #cccccc;
+    border-radius: 0;
+  }
 }
 @media (max-width: 768px) {
   .navbar-fixed-top {

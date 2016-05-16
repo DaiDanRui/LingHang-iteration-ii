@@ -238,7 +238,7 @@
         <a class="btn col-xs-6"   href="<{:U('skill/browse')}>">市场1</a>
         <a class="btn col-xs-6"   href="<{:U('reward/browse')}>">悬赏2</a>
     </div>
-    <a class="col-xs-offset-5 col-xs-2 pub-container clear-pad"><img id="publish" class="img-circle img-responsive" src="__PUBLIC__/img/icon-publish.png"></a>
+    <a class="col-xs-offset-5 col-xs-2 pub-container clear-pad" href="<{:U('commodity/uploadPage')}>"><img id="publish" class="img-circle img-responsive" src="__PUBLIC__/img/icon-publish.png"></a>
 </nav>
 
 <!-- 模态框（publish） -->
@@ -506,6 +506,11 @@
         </form><!-- /.modal-content -->
     </div>
 </div>
+
+<script>
+//    var root = "http://localhost/LingHang-iteration-ii/";
+    var root = "__ROOT__/index.php/Home/";
+</script>
 
 <include file="common/footer"/>
 <script src="__PUBLIC__/js/market-main.js"></script>

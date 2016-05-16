@@ -13,7 +13,7 @@ $(document).ready(function () {
         } else {
             var id = $(this).children(".commodity_id").attr("data-id");
             //console.log(id);
-            location.href = "http://localhost/LingHang-iteration-ii/index.php/home/skill/details/id/"+id;
+            location.href = root+"skill/details/id/"+id;
         }
     });
 });
