@@ -115,7 +115,8 @@ body{
     .icon-sm{
       float: right;
       margin-top: 11px;
-      margin-right: 2px;
+      margin-right: 4px;
+      margin-left: 7px;
       width: 16px;
       height: 13px;
       background-size: cover;
@@ -123,6 +124,7 @@ body{
     .num{
       margin-top: 8px;
       margin-right: 3px;
+      margin-left: 3px;
       width: auto;
       font-weight: 200;
       color: @gray;
@@ -132,6 +134,15 @@ body{
     }
     .msg{
       background-image: url("../../../img/icon-msg.png");
+    }
+    .edit{
+      background-image: url("../../../img/icon-edit.png");
+    }
+    .eye{
+      background-image: url("../../../img/icon-eye.png");
+    }
+    .remove{
+      background-image: url("../../../img/icon-delete.png");
     }
   }
   .panel-heading,.panel-footer{
@@ -186,4 +197,22 @@ body{
   color: white;
   border-width: 0;
   border-radius: 0;
+}
+
+//主card padding bottom 问题
+@media (max-width: @screen-sm-min) {
+  .main-container{
+    padding-bottom: 50px;
+  }
+}
+
+//home-back
+.home-back{
+  margin-top: 7px;
+}
+
+.navbar{
+  .title{
+    color: white;
+  }
 }

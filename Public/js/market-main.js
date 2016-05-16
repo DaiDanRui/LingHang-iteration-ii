@@ -16,4 +16,7 @@ $(document).ready(function () {
             location.href = root+"skill/details/id/"+id;
         }
     });
+    $("#home").click(function(){
+        location.href = root+"mySetting/myPage";
+    });
 });
